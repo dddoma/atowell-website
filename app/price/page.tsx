@@ -1,0 +1,3 @@
+import type { Metadata } from "next"; import { mounjaroPrices, wegovyPrices, nonCoveredVisitFee, priceUpdatedAt } from "@/data/clinic";
+export const metadata:Metadata={title:"비급여 가격 안내",description:"아토웰의원 마운자로·위고비 등 비급여 가격 안내.",alternates:{canonical:"/price"}};
+export default function Page(){return <div className="wrap section"><h1>비급여 가격 안내</h1><h2>마운자로</h2><table><tbody>{mounjaroPrices.map(x=><tr key={x.dose}><td>{x.dose} · {x.quantity}</td><td>{x.price.toLocaleString()}원</td></tr>)}</tbody></table><h2>위고비</h2><table><tbody>{wegovyPrices.map(x=><tr key={x.dose}><td>{x.dose} · {x.quantity}</td><td>{x.price.toLocaleString()}원</td></tr>)}</tbody></table><p className="notice">비급여 진료비 방문당 {nonCoveredVisitFee.toLocaleString()}원 · 최종 업데이트 {priceUpdatedAt}</p></div>}

@@ -1,0 +1,10 @@
+import Link from "next/link";
+import { clinic, mounjaroPrices } from "@/data/clinic";
+import { medicalClinicSchema } from "@/lib/schema";
+export default function Home(){return <>
+<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(medicalClinicSchema)}} />
+<section className="hero"><div className="wrap"><div className="kicker">ATOWELL CLINIC · GYEONGJU</div><h1>피부 건강과<br/>비만 진료를 한곳에서</h1><p className="lead">경주 황성동 아토웰의원입니다. 피부질환 진료와 피부미용, 비만치료 상담을 제공하며 마운자로·위고비 비급여 가격을 공개합니다.</p><div className="actions"><Link className="btn primary" href="/clinic/mounjaro">마운자로 안내</Link><Link className="btn" href="/location">진료시간·오시는 길</Link></div></div></section>
+<section className="section"><div className="wrap"><h2>진료 안내</h2><div className="grid"><div className="card"><h3>피부질환</h3><p className="muted">아토피, 습진, 두드러기, 티눈, 사마귀, 무좀, 여드름 등.</p></div><div className="card"><h3>비만치료</h3><p className="muted">식이요법, 인지행동치료, 약물치료 및 마운자로·위고비 처방 상담.</p></div><div className="card"><h3>피부미용</h3><p className="muted">레이저, IPL, 토닝, 프락셀, 보톡스, 필러 등.</p></div></div></div></section>
+<section className="section"><div className="wrap"><h2>마운자로 공개 가격</h2><p className="muted">현재 홈페이지 공개 가격 기준. 처방 여부와 용량은 진료 후 의료진이 결정합니다.</p><table><thead><tr><th>용량</th><th>수량</th><th>가격</th></tr></thead><tbody>{mounjaroPrices.slice(0,3).map(x=><tr key={x.dose}><td>{x.dose}</td><td>{x.quantity}</td><td>{x.price.toLocaleString()}원</td></tr>)}</tbody></table><div className="actions"><Link className="btn" href="/clinic/mounjaro">전 용량 가격과 안내 보기</Link></div></div></section>
+<section className="section"><div className="wrap"><h2>의사가 검토하는 의료정보</h2><p className="lead">앞으로 피부질환과 비만 관련 정보를 ‘질문에 바로 답하는 형식’으로 축적할 공간입니다. 각 글에는 작성·검토일과 참고자료를 명시하는 구조를 사용합니다.</p><div className="grid"><Link className="card" href="/medical/obesity"><h3>비만 의료정보 →</h3><p className="muted">체중관리, 비만치료, 약물치료 관련 정보</p></Link><Link className="card" href="/medical/dermatology"><h3>피부 의료정보 →</h3><p className="muted">흔한 피부질환과 치료에 대한 환자용 정보</p></Link><div className="card"><h3>아토웰의원</h3><p className="muted">{clinic.address}<br/>{clinic.phone}</p></div></div></div></section>
+</>}

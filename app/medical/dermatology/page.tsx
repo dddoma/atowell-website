@@ -1,0 +1,3 @@
+import type { Metadata } from "next";
+export const metadata:Metadata={title:"피부질환 의료정보",description:"아토웰의원이 제공하는 환자용 피부질환 의료정보.",alternates:{canonical:"/medical/dermatology"}};
+export default function Page(){return <div className="wrap section"><div className="kicker">Medical Library</div><h1>피부질환 의료정보</h1><p className="lead">광고 페이지와 분리된 환자용 의료정보 영역입니다. 게시 전 의료진 검토를 원칙으로 설계합니다.</p><div className="grid"><div className="card"><h3>아토피피부염</h3><p className="muted">준비 중 · 증상, 악화요인, 치료, 진료가 필요한 경우</p></div><div className="card"><h3>여드름</h3><p className="muted">준비 중 · 유형별 접근과 흔한 오해</p></div><div className="card"><h3>두드러기</h3><p className="muted">준비 중 · 급성과 만성 두드러기의 이해</p></div></div></div>}

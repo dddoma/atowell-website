@@ -1,0 +1,2 @@
+import Link from "next/link";
+export function Header(){return <header className="nav"><div className="wrap navin"><Link href="/" className="brand">아토웰의원</Link><nav className="links"><Link href="/clinic/mounjaro">마운자로</Link><Link href="/medical/obesity">비만 의료정보</Link><Link href="/medical/dermatology">피부 의료정보</Link><Link href="/price">비급여 가격</Link><Link href="/location">오시는 길</Link></nav></div></header>}
