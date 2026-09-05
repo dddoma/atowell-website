@@ -1,31 +1,29 @@
-# 아토웰의원 Next.js Starter
+# 아토웰의원 웹사이트
 
-## 목적
-- 병원 소개 + 진료 안내 + 공개 비급여 가격
-- 피부질환/비만 의료정보 라이브러리 확장
-- Google/Bing/AI 검색이 읽기 쉬운 정적 HTML, metadata, sitemap, robots, JSON-LD
-- 가격과 병원 정보는 `data/clinic.ts` 한 곳에서 관리
+Next.js + GitHub + Vercel. 진료 안내와 환자용 의료정보를 분리합니다.
 
-## 시작
-```bash
-npm install
-npm run dev
-```
-브라우저에서 http://localhost:3000
+## 실행과 검사
 
-## GitHub → Vercel
-1. GitHub에 새 저장소 생성
-2. 이 폴더를 push
-3. Vercel에서 Add New Project → GitHub 저장소 Import
-4. Next.js가 자동 감지되면 Deploy
-5. Preview URL에서 검토 후 atowell.kr 도메인 연결
+pnpm install --frozen-lockfile
+pnpm build
+pnpm lint
+pnpm start
+node scripts/check-site.mjs
 
-## 원장님이 AI에게 시킬 수 있는 수정 예
-- "data/clinic.ts에서 마운자로 5mg 가격을 390000원으로 수정하고 날짜도 오늘로 바꿔. 관련 화면이 모두 같은 데이터를 쓰는지 확인해."
-- "피부 의료정보에 아토피피부염 글을 하나 추가하되, 공개 전 draft 상태로 만들어. 참고문헌/검토일/검토자 필드를 포함해."
-- "모든 MedicalWebPage의 구조화 데이터를 검사하고 누락된 reviewedBy/dateModified를 추가해."
+검사 대상은 기본 http://localhost:3000 입니다. CHECK_BASE_URL로 변경하며 Preview 검사는 EXPECT_NOINDEX=1을 설정할 수 있습니다.
 
-## 주의
-- 의료정보는 AI가 초안을 만들더라도 의료진 검토 후 공개하세요.
-- 환자 개인정보/진료기록은 이 공개 저장소와 사이트에 넣지 마세요.
-- 의료광고 관련 표현과 비급여 표시는 실제 운영 시 관련 법령·지침에 맞게 최종 검토하세요.
+## 데이터·검색 정보
+
+- data/clinic.ts: 병원 정보, 의료진 이력, 진료시간, 가격과 가격 갱신일.
+- data/navigation.ts: 공통 메뉴와 공개 진료 경로.
+- lib/site.ts: 현재 대표 URL. 도메인 전환 승인 전 atowell.kr로 변경하지 않습니다.
+- lib/metadata.ts: 페이지별 title, description, canonical, Open Graph. Vercel Preview에는 noindex.
+- app/sitemap.ts: 공개 진료 경로만 포함. 의료정보 준비 페이지 제외.
+
+## 게시
+
+작업 브랜치 → Draft PR → Vercel Preview 검토 → 원장 승인 → main 병합 순서입니다. main 변경은 Production 자동 배포를 유발할 수 있으므로 승인 없이 병합하지 않습니다.
+
+의료정보 초안은 app/public 밖에 둡니다. noindex만으로 초안을 보호하지 않습니다. 실제 원장 검수와 참고문헌 확인 후 작성자·검토자·실제 검토일·수정일을 명시하여 공개 경로에 추가합니다. 현재 의료정보 글은 없습니다. 가격 변경일을 의학적 검토일로 사용하지 않습니다.
+
+점검 결과와 검토할 정보는 REVIEW.md를 확인하세요.

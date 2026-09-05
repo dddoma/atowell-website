@@ -1,6 +1,9 @@
 export const clinic = {
   name: "아토웰의원",
   doctor: "권병현 MD, PhD",
+  doctorName: "권병현",
+  doctorCredentials: "MD, PhD",
+  doctorHistory: ["부산대학교 의과대학 졸업", "부산대학교병원 전공의 및 전임의 수료", "전 부산대학교 의과대학 부교수"],
   address: "경상북도 경주시 황성로 25, 2층 (황성동)",
   phone: "054-776-0294",
   email: "dddoma@naver.com",
@@ -32,3 +35,4 @@ export const wegovyPrices = [
 
 export const nonCoveredVisitFee = 15000;
 export const priceUpdatedAt = "2026-09-05";
+

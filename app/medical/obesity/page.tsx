@@ -1,3 +1,5 @@
-import type { Metadata } from "next";
-export const metadata:Metadata={title:"비만 의료정보",description:"아토웰의원이 제공하는 환자용 비만·체중관리 의료정보.",alternates:{canonical:"/medical/obesity"}};
-export default function Page(){return <div className="wrap section"><div className="kicker">Medical Library</div><h1>비만 의료정보</h1><p className="lead">환자가 실제로 궁금해하는 질문을 중심으로, 원장이 검토한 의료정보를 축적하는 공간입니다.</p><div className="grid"><div className="card"><h3>비만은 어떻게 진단하나요?</h3><p className="muted">준비 중 · BMI와 허리둘레를 포함한 기본 개념</p></div><div className="card"><h3>마운자로 사용 시 흔한 이상반응</h3><p className="muted">준비 중 · 근거자료와 진료가 필요한 상황</p></div><div className="card"><h3>체중감량 정체기는 왜 생기나요?</h3><p className="muted">준비 중 · 환자 설명용 콘텐츠 템플릿</p></div></div></div>}
+import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { pageMetadata } from "@/lib/metadata";
+export const metadata = pageMetadata("비만 의료정보", "비만 의료정보 준비 현황. 의료진 검토를 마친 글부터 공개합니다.", "/medical/obesity", false);
+export default function Page() { return <div className="wrap section article"><Breadcrumbs title="비만 의료정보" path="/medical/obesity"/><p className="kicker">의료정보</p><h1>비만 의료정보</h1><p className="lead">의료진 검토를 마친 글부터 공개할 예정입니다.</p><p className="notice">현재 공개된 의료정보 글은 없습니다.</p><p>공개하는 글에는 작성자, 의학적 검토자, 실제 검토일과 참고문헌을 표시합니다.</p><Link className="btn" href="/clinic/obesity">진료 안내 보기</Link></div>; }
