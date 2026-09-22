@@ -36,7 +36,10 @@ export default function Page() {
               <div><dt>전화</dt><dd><a href={`tel:${clinic.phone}`}>{clinic.phone}</a></dd></div>
               <div><dt>주차</dt><dd>{clinic.parking}</dd></div>
             </dl>
-            <a className="button secondary" href={`https://map.naver.com/p/search/${encodeURIComponent(clinic.name)}`} target="_blank" rel="noreferrer">네이버 지도에서 보기</a>
+            <div className="actions map-actions">
+              <a className="button secondary" href={`https://map.naver.com/p/search/${encodeURIComponent(clinic.name)}`} target="_blank" rel="noreferrer">아토웰의원 지도 보기</a>
+              <a className="button secondary" href={`https://map.naver.com/p/search/${encodeURIComponent(clinic.parkingMapName)}`} target="_blank" rel="noreferrer">황성동 공영주차장 지도 보기</a>
+            </div>
           </div>
         </div>
       </section>

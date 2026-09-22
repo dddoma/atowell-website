@@ -5,6 +5,7 @@ export const clinic = {
   phone: "054-776-0294",
   email: "dddoma@naver.com",
   parking: "황성동 공영주차장(무료) 이용",
+  parkingMapName: "황성동 공영주차장",
   hours: [
     ["월·수·금", "09:00 ~ 18:00"],
     ["화·목", "13:30 ~ 18:00"],
