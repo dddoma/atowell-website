@@ -38,10 +38,10 @@ export default function Home() {
         <div className="hero-orb" aria-hidden="true" />
         <div className="wrap hero-content">
           <div className="kicker">ATOWELL CLINIC · GYEONGJU</div>
-          <h1>일상 가까이에서<br />피부와 건강을 돌봅니다</h1>
+          <h1>자연스러운 아름다움과<br />건강을 돌봅니다</h1>
           <p className="lead">
-            경주 황성동 아토웰의원은 피부질환·피부미용·비만치료를 세 축으로,
-            환자의 현재 상태와 필요를 살펴 진료합니다.
+            새 생명이 돋는 연초록처럼 편안하고 건강한 일상을 생각합니다.
+            피부질환·피부미용·비만치료를 세 축으로 환자의 현재 상태와 필요를 살펴 진료합니다.
           </p>
           <div className="actions">
             <Link className="button primary" href="#care">진료 분야 보기</Link>
