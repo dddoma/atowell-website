@@ -18,7 +18,7 @@ export function Footer() {
         <div>
           <strong>이용안내</strong>
           <Link href="/price">비급여 가격</Link>
-          <Link href="/location">진료시간·오시는 길</Link>
+          <Link href="/location">진료시간·예약·오시는 길</Link>
           <Link href="/about">병원소개</Link>
         </div>
       </div>

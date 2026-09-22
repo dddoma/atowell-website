@@ -140,6 +140,15 @@ a.care-card:hover { transform: translateY(-5px); border-color: #b7c9bd; box-shad
 .location-card dd { margin: 0; font-weight: 700; }
 .map-actions { align-items: stretch; }
 .map-actions .button { flex: 1 1 220px; padding-inline: 16px; text-align: center; }
+.reservation-section h2 { max-width: 720px; }
+.reservation-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 22px; }
+.reservation-card { padding: 32px; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
+.reservation-card.remote-card { background: #edf4ef; }
+.reservation-type { color: var(--accent); font-size: 13px; font-weight: 800; }
+.reservation-card h3 { margin: 10px 0 8px; font-size: 27px; letter-spacing: -.035em; }
+.reservation-card > p { margin: 0; color: var(--muted); }
+.reservation-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.reservation-note { margin-top: 16px !important; font-size: 13px; }
 
 .price-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .price-card { min-width: 0; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); }
@@ -203,6 +212,7 @@ td:last-child, th:last-child { text-align: right; }
   .care-card { min-height: 260px; }
   .care-card h3 { margin-top: 35px; }
   .split-section, .profile-grid, .visit-grid { grid-template-columns: 1fr; gap: 45px; }
+  .reservation-grid { grid-template-columns: 1fr; }
   .profile-mark { width: min(70vw, 340px); }
   .price-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
@@ -229,6 +239,8 @@ td:last-child, th:last-child { text-align: right; }
   .topic-list article { grid-template-columns: 1fr; gap: 12px; }
   .topic-list h2 { font-size: 20px; }
   .price-card { padding: 22px 16px; }
+  .reservation-card { padding: 24px 20px; }
+  .reservation-links { display: grid; }
   .price-title { align-items: flex-start; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > div:first-child { grid-column: 1 / -1; }
