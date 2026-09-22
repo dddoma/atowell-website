@@ -15,6 +15,13 @@ export const clinic = {
   ],
 };
 
+export const reservationLinks = {
+  naverVisit: "https://booking.naver.com/booking/13/bizes/585674/items/4098148?startDate=2025-01-01&tr=bnm",
+  naverProcedure: "https://booking.naver.com/booking/13/bizes/585674/items/5447313?startDate=2025-01-01&tr=bnm",
+  ddocdoc: "https://ddocdoc.com/hospital/57171f12e207df2709f182f4",
+  doctorNow: "https://doctornow.co.kr/doctors/9PO0UC",
+};
+
 export const mounjaroPrices = [
   { dose: "2.5mg", quantity: "4펜", price: 310000 },
   { dose: "5mg", quantity: "4펜", price: 410000 },

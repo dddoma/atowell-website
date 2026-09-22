@@ -37,7 +37,7 @@ export function Header() {
             </div>
           </details>
           <Link href="/price">비급여 가격</Link>
-          <Link href="/location">진료시간·오시는 길</Link>
+          <Link href="/location">진료시간·예약·오시는 길</Link>
           <Link href="/about">병원소개</Link>
         </nav>
 
@@ -50,7 +50,7 @@ export function Header() {
             {informationLinks.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
             <strong>이용안내</strong>
             <Link href="/price">비급여 가격</Link>
-            <Link href="/location">진료시간·오시는 길</Link>
+            <Link href="/location">진료시간·예약·오시는 길</Link>
             <Link href="/about">병원소개</Link>
           </nav>
         </details>
