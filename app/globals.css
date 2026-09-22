@@ -144,6 +144,12 @@ a.care-card:hover { transform: translateY(-5px); border-color: #b7c9bd; box-shad
 .price-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .price-card { min-width: 0; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); }
 .price-card h2 { font-size: 32px; }
+.price-title { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; }
+.price-title h2 { margin-bottom: 24px; }
+.price-title span { flex: 0 0 auto; color: var(--muted); font-size: 12px; font-weight: 700; line-height: 1.45; text-align: right; }
+.price-section { margin-top: 64px; }
+.price-section > h2 { font-size: clamp(28px, 4vw, 40px); }
+.table-note { margin: 14px 0 0; color: var(--muted); font-size: 13px; }
 .updated { display: inline-block; margin-top: 25px; padding: 7px 12px; border-radius: 999px; color: var(--accent); background: var(--sage); font-size: 13px; font-weight: 700; }
 .price-notice { margin-top: 25px; }
 .table-scroll { width: 100%; overflow-x: auto; }
@@ -223,6 +229,7 @@ td:last-child, th:last-child { text-align: right; }
   .topic-list article { grid-template-columns: 1fr; gap: 12px; }
   .topic-list h2 { font-size: 20px; }
   .price-card { padding: 22px 16px; }
+  .price-title { align-items: flex-start; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > div:first-child { grid-column: 1 / -1; }
 }
