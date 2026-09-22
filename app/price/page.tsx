@@ -67,7 +67,7 @@ export default function Page() {
           <article className="price-card"><div className="eyebrow">피부미용</div><h2>피부미용 시술</h2><GeneralPriceTable items={aestheticPrices} /></article>
           <article className="price-card"><div className="eyebrow">주사 치료</div><h2>영양수액주사</h2><GeneralPriceTable items={injectionPrices} /><p className="table-note">비타민 칵테일은 베이스 30,000원에 선택한 약제 비용이 추가됩니다.</p></article>
           <article className="price-card"><div className="eyebrow">피부 치료</div><h2>점·사마귀 제거</h2><GeneralPriceTable items={lesionRemovalPrices} /><p className="table-note">1개 제거 비용은 크기에 따라 달라지며, 첫 1개는 최소 20,000원입니다.</p></article>
-          <article className="price-card"><div className="eyebrow">제증명</div><h2>서류 발급</h2><GeneralPriceTable items={documentPrices} /></article>
+          <article className="price-card"><div className="eyebrow">제증명</div><h2>서류 발급</h2><GeneralPriceTable items={documentPrices} /><p className="table-note">진료비 영수증과 진료비 상세 내역서는 실손24에서 확인 가능합니다.</p></article>
         </div>
       </section>
     </>
