@@ -32,8 +32,8 @@ export const wegovyPrices = [
 ];
 
 export const vaccinationPrices = [
-  { item: "가다실9가(인유두종바이러스)", detail: "1회", price: "180,000원" },
-  { item: "가다실9가(인유두종바이러스)", detail: "3회", price: "540,000원" },
+  { item: "가다실9가(HPV)", detail: "1회", price: "180,000원" },
+  { item: "가다실9가(HPV)", detail: "3회", price: "540,000원" },
   { item: "싱글릭스(대상포진)", detail: "1회", price: "220,000원" },
   { item: "싱글릭스(대상포진)", detail: "2회", price: "440,000원" },
   { item: "독감(인플루엔자)", detail: "1회", price: "35,000원" },
@@ -42,9 +42,11 @@ export const vaccinationPrices = [
 ];
 
 export const aestheticPrices = [
-  { item: "필러", detail: "눈가(국산)", price: "30,000원" },
-  { item: "필러", detail: "눈아래(국산)", price: "30,000원" },
-  { item: "필러", detail: "턱(국산)", price: "100,000원" },
+  { item: "보톡스", detail: "미간(국산)", price: "30,000원" },
+  { item: "보톡스", detail: "이마(국산)", price: "30,000원" },
+  { item: "보톡스", detail: "눈가(국산)", price: "30,000원" },
+  { item: "보톡스", detail: "눈아래(국산)", price: "30,000원" },
+  { item: "보톡스", detail: "턱(국산)", price: "100,000원" },
   { item: "필러", detail: "팔자 2개", price: "180,000원" },
   { item: "필러", detail: "미간 및 콧등 1개", price: "100,000원" },
   { item: "IPL", detail: "잡티·재생 1회", price: "120,000원" },
@@ -53,12 +55,15 @@ export const aestheticPrices = [
   { item: "토닝", detail: "이토닝 1회", price: "120,000원" },
   { item: "프락셀", detail: "1회", price: "150,000원" },
   { item: "제모", detail: "겨드랑이 1회", price: "50,000원" },
-  { item: "보톡스", detail: "미간(국산)", price: "30,000원" },
-  { item: "보톡스", detail: "이마(국산)", price: "30,000원" },
 ];
 
 export const injectionPrices = [
-  { item: "비타민 칵테일", detail: "1회", price: "30,000원부터" },
+  { item: "비타민 칵테일", detail: "베이스", price: "30,000원" },
+  { item: "추가 약제", detail: "비타민 C", price: "+15,000원" },
+  { item: "추가 약제", detail: "푸르설티아민(마늘주사)", price: "+15,000원" },
+  { item: "추가 약제", detail: "리코리스(감초주사)", price: "+15,000원" },
+  { item: "추가 약제", detail: "아세트아미노펜(해열진통)", price: "+20,000원" },
+  { item: "추가 약제", detail: "아미노산", price: "+20,000원" },
   { item: "비타민D", detail: "1회", price: "30,000원" },
   { item: "플라몬 태반주사", detail: "1회", price: "30,000원" },
   { item: "신델레라", detail: "1회", price: "30,000원" },
@@ -79,6 +84,7 @@ export const lesionRemovalPrices = [
 export const documentPrices = [
   { item: "진료확인서", detail: "장당", price: "3,000원" },
   { item: "진단서·소견서", detail: "장당", price: "15,000원" },
+  { item: "차트 복사", detail: "장당", price: "10,000원" },
 ];
 
 export const nonCoveredVisitFee = 15000;

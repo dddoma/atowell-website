@@ -60,13 +60,12 @@ export default function Page() {
           <article className="price-card"><div className="eyebrow">비만 약물치료</div><DrugTitle>위고비</DrugTitle><PriceTable items={wegovyPrices} /></article>
         </div>
         <div className="wrap"><p className="notice price-notice">비급여 진료비는 약품비와 별도입니다. 실제 비용은 진료 내용에 따라 달라질 수 있습니다.</p></div>
-        <div className="wrap price-section">
-          <h2>예방접종</h2>
-          <GeneralPriceTable items={vaccinationPrices} />
+        <div className="wrap price-grid price-section">
+          <article className="price-card"><div className="eyebrow">예방의학</div><h2>예방접종</h2><GeneralPriceTable items={vaccinationPrices} /></article>
         </div>
         <div className="wrap price-grid price-section">
           <article className="price-card"><div className="eyebrow">피부미용</div><h2>피부미용 시술</h2><GeneralPriceTable items={aestheticPrices} /></article>
-          <article className="price-card"><div className="eyebrow">주사 치료</div><h2>영양수액주사</h2><GeneralPriceTable items={injectionPrices} /><p className="table-note">비타민 칵테일은 추가 혼합 약제에 따라 비용이 추가됩니다.</p></article>
+          <article className="price-card"><div className="eyebrow">주사 치료</div><h2>영양수액주사</h2><GeneralPriceTable items={injectionPrices} /><p className="table-note">비타민 칵테일은 베이스 30,000원에 선택한 약제 비용이 추가됩니다.</p></article>
           <article className="price-card"><div className="eyebrow">피부 치료</div><h2>점·사마귀 제거</h2><GeneralPriceTable items={lesionRemovalPrices} /><p className="table-note">1개 제거 비용은 크기에 따라 달라지며, 첫 1개는 최소 20,000원입니다.</p></article>
           <article className="price-card"><div className="eyebrow">제증명</div><h2>서류 발급</h2><GeneralPriceTable items={documentPrices} /></article>
         </div>
