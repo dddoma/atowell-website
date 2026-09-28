@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/clinic/wegovy", 0.9],
     ["/medical/obesity", 0.8],
     ["/medical/dermatology", 0.8],
+    ["/medical/dermatology/milia", 0.8],
     ["/medical/dermatology/seborrheic-dermatitis", 0.8],
     ["/price", 0.9],
     ["/location", 0.9],
@@ -19,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return routes.map(([path, priority]) => ({
     url: `${base}${path}`,
-    lastModified: new Date("2026-09-24"),
+    lastModified: new Date(path === "/medical/dermatology/milia" || path === "/medical/dermatology" ? "2026-09-29" : "2026-09-24"),
     changeFrequency: path.includes("/medical/") ? "weekly" : "monthly",
     priority,
   }));

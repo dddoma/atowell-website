@@ -172,6 +172,20 @@ td:last-child, th:last-child { text-align: right; }
 .article > h1 { margin-top: 0; }
 .article h2 { margin-top: 62px; font-size: 31px; }
 .article p, .article li { font-size: 17px; }
+.milia-article > h2 { margin-bottom: 16px; }
+.milia-answer { padding: 26px 28px; border-left: 4px solid var(--accent); }
+.milia-answer strong { color: var(--accent-dark); }
+.milia-answer p { margin: 7px 0 0; }
+.milia-comparison { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.milia-comparison > div { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+.milia-comparison h3 { margin: 0 0 8px; font-size: 18px; }
+.milia-comparison p { margin: 0; color: var(--muted); font-size: 15px; }
+.milia-visit { margin-top: 64px; padding: 28px; border-radius: 18px; background: var(--sage); }
+.milia-visit h2 { margin-top: 0; }
+.milia-visit p { margin-bottom: 12px; }
+.milia-visit .actions { margin-top: 22px; }
+.milia-sources li { margin-bottom: 5px; }
+.milia-sources a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
 .faq { border-top: 1px solid var(--line); }
 .faq article { padding-block: 23px; border-bottom: 1px solid var(--line); }
 .faq h3 { margin: 0 0 7px; font-size: 18px; }
@@ -238,6 +252,8 @@ td:last-child, th:last-child { text-align: right; }
   .service-list article { grid-template-columns: 42px 1fr; gap: 8px; }
   .topic-list article { grid-template-columns: 1fr; gap: 12px; }
   .topic-list h2 { font-size: 20px; }
+  .milia-comparison { grid-template-columns: 1fr; }
+  .milia-answer, .milia-visit { padding: 22px 20px; }
   .price-card { padding: 22px 16px; }
   .reservation-card { padding: 24px 20px; }
   .reservation-links { display: grid; }
