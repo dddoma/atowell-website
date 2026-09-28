@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 };
 
 const topics = [
+  ["눈 밑에 하얀 좁쌀이 생겼어요. 비립종일까요?", "비립종과 비슷한 병변, 자가 제거 주의점과 진료에서 확인하는 방법", "/medical/dermatology/milia"],
   ["얼굴 지루성피부염, 어떻게 관리하나요?", "세안·보습·피부장벽 관리와 여드름과의 차이", "/medical/dermatology/seborrheic-dermatitis"],
 ] as const;
 
