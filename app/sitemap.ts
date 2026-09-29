@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { medicalArticles } from "@/data/medicalArticles";
+import { obesityArticles } from "@/data/obesityArticles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://atowell.kr";
@@ -26,11 +27,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/medical/dermatology/milia": medicalArticles.milia.modifiedAt,
     "/medical/dermatology/seborrheic-dermatitis": medicalArticles.seborrheicDermatitis.modifiedAt,
   };
-
-  return routes.map(([path, priority]) => ({
+  const entries: MetadataRoute.Sitemap = routes.map(([path, priority]) => ({
     url: `${base}${path}`,
     lastModified: new Date(medicalUpdateDates[path] ?? "2026-09-24"),
     changeFrequency: path.includes("/medical/") ? "weekly" : "monthly",
     priority,
   }));
+  for (const article of obesityArticles) {
+    if (article.review.status !== "published") continue;
+    entries.push({ url: `${base}/medical/obesity/${article.slug}`, lastModified: new Date(article.review.modifiedAt), changeFrequency: "monthly", priority: 0.8 });
+  }
+  return entries;
 }
