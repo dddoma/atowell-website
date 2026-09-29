@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { medicalArticles } from "@/data/medicalArticles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://atowell.kr";
@@ -18,9 +19,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/location", 0.9],
   ] as const;
 
+  const medicalUpdateDates: Record<string, string> = {
+    "/medical/dermatology": "2026-09-29",
+    "/medical/dermatology/milia": medicalArticles.milia.modifiedAt,
+    "/medical/dermatology/seborrheic-dermatitis": medicalArticles.seborrheicDermatitis.modifiedAt,
+  };
+
   return routes.map(([path, priority]) => ({
     url: `${base}${path}`,
-    lastModified: new Date(path === "/medical/dermatology/milia" || path === "/medical/dermatology" ? "2026-09-29" : "2026-09-24"),
+    lastModified: new Date(medicalUpdateDates[path] ?? "2026-09-24"),
     changeFrequency: path.includes("/medical/") ? "weekly" : "monthly",
     priority,
   }));
