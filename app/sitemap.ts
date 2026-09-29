@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { medicalArticles } from "@/data/medicalArticles";
 import { obesityArticles } from "@/data/obesityPublication";
+import { skinTreatmentArticles } from "@/data/skinTreatmentArticles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://atowell.kr";
@@ -26,5 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (article.review.status !== "published") continue;
     entries.push({ url: `${base}/medical/obesity/${article.slug}`, lastModified: new Date(article.review.modifiedAt), changeFrequency: "monthly", priority: 0.8 });
   }
+  let skinLastModified = "";
+  for (const article of skinTreatmentArticles) {
+    if (article.review.status !== "published") continue;
+    entries.push({ url: `${base}/medical/skin-treatments/${article.slug}`, lastModified: new Date(article.review.modifiedAt), changeFrequency: "monthly", priority: 0.8 });
+    if (article.review.modifiedAt > skinLastModified) skinLastModified = article.review.modifiedAt;
+  }
+  if (skinLastModified) entries.push({ url: `${base}/medical/skin-treatments`, lastModified: new Date(skinLastModified), changeFrequency: "monthly", priority: 0.8 });
   return entries;
 }
