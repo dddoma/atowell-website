@@ -33,7 +33,8 @@ button, summary { font: inherit; }
 .header-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 18px; letter-spacing: -.02em; }
 .brand small { display: block; margin-top: -3px; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .16em; }
-.brand-symbol { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: white; background: var(--accent); font-family: Georgia, serif; font-size: 19px; }
+.clinic-logo { display: block; object-fit: contain; filter: saturate(.7); }
+.brand-symbol { flex: 0 0 auto; width: 38px; height: 38px; }
 .desktop-nav { display: flex; align-items: center; gap: 25px; font-size: 14px; font-weight: 700; }
 .desktop-nav > a, .nav-dropdown > summary { padding-block: 8px; color: #33423b; cursor: pointer; transition: color .2s ease; }
 .desktop-nav > a:hover, .nav-dropdown > summary:hover { color: var(--accent); }
@@ -112,7 +113,7 @@ a.care-card:hover { transform: translateY(-5px); border-color: #b7c9bd; box-shad
 .aesthetic-hero { background: linear-gradient(145deg, #f5f0e9, white); }
 .obesity-hero { background: linear-gradient(145deg, #edf3f4, white); }
 .profile-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 9%; align-items: center; }
-.profile-mark { display: grid; place-items: center; aspect-ratio: 1; max-width: 380px; border-radius: 50%; color: white; background: linear-gradient(145deg, #b8cbbf, var(--accent)); font-family: Georgia, serif; font-size: clamp(90px, 15vw, 170px); }
+.profile-mark { width: 100%; max-width: 300px; height: auto; margin-inline: auto; }
 .clean-list { list-style: none; padding: 0; }
 .credentials { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 25px; }
 .credentials li { padding: 7px 12px; border-radius: 999px; color: var(--accent-dark); background: var(--sage); font-size: 13px; font-weight: 700; }
@@ -230,7 +231,7 @@ td:last-child, th:last-child { text-align: right; }
   .care-card h3 { margin-top: 35px; }
   .split-section, .profile-grid, .visit-grid { grid-template-columns: 1fr; gap: 45px; }
   .reservation-grid { grid-template-columns: 1fr; }
-  .profile-mark { width: min(70vw, 340px); }
+  .profile-mark { width: min(58vw, 260px); }
   .price-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
 }
@@ -238,7 +239,7 @@ td:last-child, th:last-child { text-align: right; }
 @media (max-width: 680px) {
   .wrap { padding-inline: 20px; }
   .header-inner { height: 68px; }
-  .brand-symbol { width: 31px; height: 31px; }
+  .brand-symbol { width: 34px; height: 34px; }
   .hero { min-height: auto; }
   .hero-content { padding-block: 70px 76px; }
   .hero h1, .page-hero h1, .article > h1 { font-size: 40px; }

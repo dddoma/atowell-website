@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "병원·의료진 소개",
@@ -19,7 +20,7 @@ export default function Page() {
       </section>
       <section className="section">
         <div className="wrap profile-grid">
-          <div className="profile-mark" aria-hidden="true">A</div>
+          <Image src="/icon.svg" alt="아토웰의원 로고" width={300} height={300} className="clinic-logo profile-mark" unoptimized />
           <div>
             <div className="eyebrow">의료진</div>
             <h2>권병현 원장</h2>
