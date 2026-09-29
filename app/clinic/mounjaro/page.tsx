@@ -29,7 +29,7 @@ export default function Page() {
       <div className="kicker">비만치료 · 약물치료</div>
       <h1>경주 마운자로<br />처방 상담·가격 안내</h1>
       <p className="lead">아토웰의원에서는 마운자로(티르제파타이드) 비만치료 상담을 시행합니다. 처방 여부와 적절한 용량은 진료 후 결정됩니다.</p>
-      <h2>체중감량하고 유지하는 방법</h2>
+      <h2>체중 감량.유지</h2>
       <Link className="quick-card" href="/medical/obesity/mounjaro-guide">
         <span className="quick-icon" aria-hidden="true">5</span>
         <span><strong>마운자로로 체중을 줄이고 유지하는 방법</strong><small>식사 루틴부터 유지 전략까지 · 진료실에서 함께 보고 집에서 다시 읽는 상담자료</small></span>
