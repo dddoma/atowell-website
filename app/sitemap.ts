@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/clinic/mounjaro", 0.9],
     ["/clinic/wegovy", 0.9],
     ["/medical/obesity", 0.8],
+    ["/medical/obesity/mounjaro-guide", 0.8],
     ["/medical/dermatology", 0.8],
     ["/medical/dermatology/milia", 0.8],
     ["/medical/dermatology/seborrheic-dermatitis", 0.8],
@@ -20,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ] as const;
 
   const medicalUpdateDates: Record<string, string> = {
+    "/medical/obesity/mounjaro-guide": "2026-09-29",
     "/medical/dermatology": "2026-09-29",
     "/medical/dermatology/milia": medicalArticles.milia.modifiedAt,
     "/medical/dermatology/seborrheic-dermatitis": medicalArticles.seborrheicDermatitis.modifiedAt,
