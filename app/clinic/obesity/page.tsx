@@ -31,7 +31,30 @@ export default function Page() {
           <div className="section-heading"><div><div className="eyebrow">진료 과정</div><h2>평가부터 유지까지</h2></div><p>약을 먼저 정하기보다 치료가 필요한 이유와 목표를 함께 확인합니다.</p></div>
           <div className="service-list">
             {steps.map(([title, text], index) => (
-              <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{text}</p></div></article>
+              <article key={title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                  {title === "목표 함께 정하기" && (
+                    <div style={{ marginTop: 16 }}>
+                      <p>진료실에서 함께 보거나, 집에서도 직접 BMI와 체중 변화를 살펴볼 수 있습니다.</p>
+                      <div className="actions" style={{ marginTop: 16 }}>
+                        <a
+                          className="button secondary"
+                          href="https://bmi-slider-x20.ddomadoc.chatgpt.site/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="BMI 슬라이더로 살펴보기 (새 탭에서 열림)"
+                          style={{ maxWidth: "100%", textAlign: "center" }}
+                        >
+                          BMI 슬라이더로 살펴보기 ↗
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </article>
             ))}
           </div>
         </div>
