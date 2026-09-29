@@ -23,7 +23,7 @@ export default function Page() {
           <div className="kicker">피부질환</div>
           <h1>일상에서 자주 만나는<br />피부 문제를 살핍니다</h1>
           <p className="lead">겉으로 비슷해 보여도 원인과 치료가 다를 수 있습니다. 증상이 생긴 과정과 피부 상태를 함께 확인합니다.</p>
-          <div className="actions"><Link className="button primary" href="/location">진료시간 확인</Link><Link className="button secondary" href="/medical/dermatology">피부 의료정보</Link></div>
+          <div className="actions"><Link className="button primary" href="/location">진료시간 확인</Link><Link className="button secondary" href="/medical/dermatology">피부질환 의료정보</Link></div>
         </div>
       </section>
       <section className="section">

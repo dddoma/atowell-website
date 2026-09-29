@@ -21,7 +21,7 @@ export default function Page() {
           <div className="kicker">피부미용</div>
           <h1>피부 상태와 필요에 맞춘<br />차분한 상담</h1>
           <p className="lead">피부 고민과 원하는 변화를 듣고, 현재 상태에서 적절한 관리와 시술 여부를 함께 살핍니다.</p>
-          <div className="actions"><a className="button primary" href="tel:054-776-0294">시술 문의</a><Link className="button secondary" href="/location">진료시간 확인</Link></div>
+          <div className="actions"><a className="button primary" href="tel:054-776-0294">시술 문의</a><Link className="button secondary" href="/location">진료시간 확인</Link><Link className="button secondary" href="/medical/skin-treatments">피부치료 의료정보</Link></div>
         </div>
       </section>
       <section className="section">
