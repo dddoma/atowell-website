@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { skinTreatmentArticles, canReadSkinTreatment } from "@/data/skinTreatmentArticles";
+import { skinTreatmentArticles, canReadSkinTreatment } from "@/data/skinTreatmentPublication";
 
 const careLinks = [
   ["피부질환", "/clinic/dermatology"],

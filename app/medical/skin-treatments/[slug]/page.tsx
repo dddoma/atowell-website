@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { clinic } from "@/data/clinic";
-import { skinTreatmentArticles, skinTreatmentSources, canReadSkinTreatment, getSkinTreatmentArticle, getSkinSourceKeys, type SkinTreatmentArticle, type SkinSourceKey } from "@/data/skinTreatmentArticles";
+import { skinTreatmentArticles, skinTreatmentSources, canReadSkinTreatment, getSkinTreatmentArticle, getSkinSourceKeys, type SkinTreatmentArticle, type SkinSourceKey } from "@/data/skinTreatmentPublication";
 import styles from "../../obesity/obesity.module.css";
 
 type PageProps = { params: Promise<{ slug: string }> };

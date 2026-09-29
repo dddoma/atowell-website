@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { medicalArticles } from "@/data/medicalArticles";
 import { obesityArticles } from "@/data/obesityPublication";
-import { skinTreatmentArticles } from "@/data/skinTreatmentArticles";
+import { skinTreatmentArticles } from "@/data/skinTreatmentPublication";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://atowell.kr";

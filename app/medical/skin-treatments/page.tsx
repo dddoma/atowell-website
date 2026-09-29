@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { skinTreatmentArticles, canReadSkinTreatment, isSkinTreatmentPublished } from "@/data/skinTreatmentArticles";
+import { skinTreatmentArticles, canReadSkinTreatment, isSkinTreatmentPublished } from "@/data/skinTreatmentPublication";
 import styles from "../obesity/obesity.module.css";
 
 const readable = skinTreatmentArticles.filter(canReadSkinTreatment);
