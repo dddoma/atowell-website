@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const careLinks = [
   ["피부질환", "/clinic/dermatology"],
@@ -16,7 +17,7 @@ export function Header() {
     <header className="site-header">
       <div className="wrap header-inner">
         <Link href="/" className="brand" aria-label="아토웰의원 홈">
-          <span className="brand-symbol">A</span>
+          <Image src="/icon.svg" alt="" width={38} height={38} className="clinic-logo brand-symbol" loading="eager" unoptimized />
           <span>
             아토웰의원
             <small>ATOWELL CLINIC</small>
