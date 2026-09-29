@@ -1,0 +1,50 @@
+.guide { scroll-margin-top: 90px; }
+.toolbar, .modes, .tools, .controls { display: flex; align-items: center; gap: 10px; }
+.toolbar, .controls { justify-content: space-between; flex-wrap: wrap; }
+.guide button { cursor: pointer; min-height: 44px; padding: 9px 17px; border: 1px solid #b7c9bd; border-radius: 24px; background: white; color: #183f31; }
+.guide button[aria-pressed="true"], .controls button { background: #183f31; color: white; }
+.guide button:disabled { opacity: .35; cursor: default; }
+.guide button:focus-visible, .steps a:focus-visible { outline: 3px solid #b1763c; outline-offset: 4px; }
+.help { color: #657069; font-size: 14px; margin-bottom: 0; }
+.status { font-size: 14px; color: #2c5a47; margin: 0; min-height: 24px; }
+.steps { display: flex; gap: 8px; margin: 18px 0 24px; flex-wrap: wrap; }
+.steps a { display: flex; align-items: center; gap: 8px; padding: 9px 13px; background: #f5f8f5; border: 1px solid #dfe6e1; border-radius: 12px; font-size: 14px; }
+.steps a[aria-current] { background: #e7efe9; border-color: #2c5a47; font-weight: bold; }
+.steps span { font-weight: bold; color: #2c5a47; }
+.heading { font-size: clamp(26px, 4vw, 44px); line-height: 1.3; letter-spacing: -.04em; margin: 30px 0; }
+.slides .heading { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); }
+.pages { display: grid; gap: 30px; }
+.page { scroll-margin-top: 100px; padding: clamp(24px, 4vw, 48px); border: 1px solid #dfe6e1; border-radius: 24px; background: #f7f8f3; }
+.page[hidden] { display: none; }
+.eyebrow { color: #2c5a47; font-weight: bold; font-size: 12px; letter-spacing: .08em; }
+.page h2 { font-size: clamp(28px, 3.6vw, 46px); line-height: 1.22; letter-spacing: -.04em; margin: 16px 0; max-width: 820px; }
+.lead { font-size: clamp(18px, 2vw, 23px); color: #52645a; margin: 0 0 28px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.cards article { background: white; border: 1px solid #dfe6e1; border-top: 5px solid #afc9b9; border-radius: 15px; padding: 23px; }
+.cards article:nth-child(2) { border-top-color: #d7c29c; }
+.cards article:nth-child(3) { border-top-color: #b8cdd3; }
+.cards span { font-size: 13px; color: #52645a; font-weight: bold; }
+.cards h3 { font-size: clamp(23px, 2.5vw, 30px); line-height: 1.3; margin: 20px 0 14px; letter-spacing: -.03em; }
+.cards p { font-size: 18px; line-height: 1.75; margin: 0; }
+.note { margin: 24px 0 0; background: #e7efe9; border-radius: 12px; padding: 17px 21px; font-size: 18px; font-weight: 600; }
+.extra { font-size: 16px; color: #52645a; margin-bottom: 0; }
+.controls { margin-top: 20px; }
+.controls span { color: #52645a; font-size: 14px; }
+@media (max-width: 760px) {
+  .cards { grid-template-columns: 1fr; }
+  .page { border-radius: 16px; padding: 24px 18px; }
+  .cards article { padding: 20px; }
+  .cards h3 { margin: 8px 0 10px; }
+  .steps a { font-size: 12px; padding: 8px; }
+  .toolbar { gap: 12px; }
+  .guide button { padding: 9px 12px; }
+  .controls span { max-width: 130px; text-align: center; }
+}
+@media print {
+  .toolbar, .help, .status, .steps, .controls { display: none; }
+  .page, .page[hidden] { display: block !important; break-before: page; break-inside: avoid; border: 0; padding: 15px; }
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cards p, .note { font-size: 13px; }
+  .page h2 { font-size: 28px; }
+  .cards h3 { font-size: 19px; }
+}
