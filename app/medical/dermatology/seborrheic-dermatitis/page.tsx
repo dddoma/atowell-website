@@ -1,17 +1,38 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MedicalArticleFooter } from "@/components/MedicalArticleFooter";
+import { medicalArticles } from "@/data/medicalArticles";
+
+const path = "/medical/dermatology/seborrheic-dermatitis";
+const articleInfo = medicalArticles.seborrheicDermatitis;
+const title = "얼굴 지루성피부염 | 세안·보습·피부장벽 관리";
+const description = "얼굴 지루성피부염의 붉음, 각질, 가려움과 피부장벽 관리법을 아토웰의원 진료실 설명 방식으로 정리했습니다.";
 
 export const metadata: Metadata = {
-  title: "얼굴 지루성피부염 | 세안·보습·피부장벽 관리",
-  description: "얼굴 지루성피부염의 붉음, 각질, 가려움과 피부장벽 관리법을 아토웰의원 진료실 설명 방식으로 정리했습니다.",
-  alternates: { canonical: "/medical/dermatology/seborrheic-dermatitis" },
+  title,
+  description,
+  alternates: { canonical: path },
+  openGraph: { title, description, url: path, type: "article", publishedTime: articleInfo.publishedAt, modifiedTime: articleInfo.modifiedAt },
 };
 
 const avoid = ["각질 제거제·스크럽", "마사지·필링·팩", "여드름을 말리는 강한 제품", "여러 기능성 화장품을 한꺼번에 사용", "과도한 세안·뜨거운 물·세게 문지르기"];
 
 export default function Page() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: title,
+    description,
+    url: `https://atowell.kr${path}`,
+    inLanguage: "ko-KR",
+    datePublished: articleInfo.publishedAt,
+    dateModified: articleInfo.modifiedAt,
+    reviewedBy: { "@type": "Person", name: articleInfo.reviewerName, jobTitle: "원장", url: "https://atowell.kr/about" },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
       <section className="page-hero care-hero">
         <div className="wrap article">
           <div className="kicker">SKIN GUIDE</div>
@@ -61,7 +82,7 @@ export default function Page() {
         <h2>언제 다시 진료를 받아야 하나요?</h2>
         <p>보습과 자극 회피를 해도 계속 악화되거나, 진물·통증·심한 부종이 생기거나, 눈 주변 증상이 심해지는 경우에는 다른 피부질환이나 감염 여부를 확인하기 위해 진료가 필요합니다.</p>
 
-        <p className="meta">이 글은 일반적인 환자 교육을 위한 의료정보이며 개인의 진단이나 처방을 대신하지 않습니다. 증상과 피부 상태에 따라 치료 방법은 달라질 수 있습니다.</p>
+        <MedicalArticleFooter info={articleInfo} />
         <div className="actions">
           <Link className="button secondary" href="/medical/dermatology">피부질환 의료정보로 돌아가기</Link>
           <Link className="button primary" href="/location#reservation">진료 예약 안내</Link>

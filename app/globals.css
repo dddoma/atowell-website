@@ -191,6 +191,9 @@ td:last-child, th:last-child { text-align: right; }
 .faq h3 { margin: 0 0 7px; font-size: 18px; }
 .faq p { margin: 0; color: var(--muted); }
 .meta { margin-top: 54px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.article .medical-article-meta p { margin: 6px 0; font-size: 14px; line-height: 1.8; }
+.medical-article-dates { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.medical-article-dates > span { white-space: nowrap; }
 .library-page { max-width: 900px; }
 .library-page > h1 { margin: 0 0 22px; font-size: clamp(40px, 6vw, 64px); letter-spacing: -.05em; }
 .topic-list { margin-top: 56px; border-top: 1px solid var(--line); }

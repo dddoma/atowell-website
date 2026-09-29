@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { clinic } from "@/data/clinic";
+import { MedicalArticleFooter } from "@/components/MedicalArticleFooter";
+import { medicalArticles } from "@/data/medicalArticles";
 
 const path = "/medical/dermatology/milia";
-const publishedAt = "2026-09-29";
+const articleInfo = medicalArticles.milia;
 const title = "눈 밑에 하얀 좁쌀이 생겼어요. 비립종일까요?";
 const description = "눈 밑·눈꺼풀의 하얀 좁쌀 같은 돌기가 비립종인지, 여드름·한관종과 어떻게 다른지, 집에서 짜도 되는지와 제거 후 관리를 설명합니다.";
 
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: path },
-  openGraph: { title, description, url: path, type: "article", publishedTime: publishedAt },
+  openGraph: { title, description, url: path, type: "article", publishedTime: articleInfo.publishedAt, modifiedTime: articleInfo.modifiedAt },
 };
 
 export default function Page() {
@@ -31,8 +33,9 @@ export default function Page() {
         description,
         url: `https://atowell.kr${path}`,
         inLanguage: "ko-KR",
-        datePublished: publishedAt,
-        dateModified: publishedAt,
+        datePublished: articleInfo.publishedAt,
+        dateModified: articleInfo.modifiedAt,
+        reviewedBy: { "@type": "Person", name: articleInfo.reviewerName, jobTitle: "원장", url: "https://atowell.kr/about" },
         about: { "@type": "MedicalCondition", name: "비립종", alternateName: "Milia" },
         publisher: {
           "@type": "MedicalClinic",
@@ -115,8 +118,8 @@ export default function Page() {
         <section className="milia-sources" aria-labelledby="milia-sources-title">
           <h2 id="milia-sources-title">참고 자료</h2>
           <ul>{sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.name}</a></li>)}</ul>
-          <p className="meta">최초 게시·최종 수정: 2026년 9월 29일. 이 글은 일반적인 의료정보로, 개인의 진단이나 처방을 대신하지 않습니다. 의학적 검토자 정보는 원장 검토 후 표시합니다.</p>
         </section>
+        <MedicalArticleFooter info={articleInfo} />
         <div className="actions"><Link className="text-link" href="/medical/dermatology">← 피부질환 의료정보 목록</Link></div>
       </article>
     </>
