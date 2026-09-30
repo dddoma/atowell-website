@@ -1,5 +1,7 @@
 export type DermatologyArticle = {
   slug: string;
+  draft?: boolean;
+  publication?: { publishedAt: string; modifiedAt: string; reviewedAt: string };
   title: string;
   description: string;
   answer: string;
@@ -21,7 +23,7 @@ export const dermatologyPublication = {
   reviewedAt: "2026-09-30",
 } as const;
 
-export const dermatologyArticles: DermatologyArticle[] = [
+const publishedArticles: DermatologyArticle[] = [
   {
     slug: "acne",
     title: "여드름은 언제 치료해야 하나요?",
@@ -122,3 +124,281 @@ export const dermatologyArticles: DermatologyArticle[] = [
     related: [{ title: "티눈·사마귀 제거: 치료 전후 알아둘 점", href: "/medical/skin-treatments/corns-warts" }, { title: "무좀과 습진은 어떻게 다른가요?", href: "/medical/dermatology/athletes-foot-eczema" }],
   },
 ];
+
+const newlyReviewedArticles: DermatologyArticle[] = [
+  {
+    "slug": "dermatitis-eczema",
+    "draft": false,
+    "publication": { "publishedAt": "2026-10-01", "modifiedAt": "2026-10-01", "reviewedAt": "2026-10-01" },
+    "title": "피부염·습진, 왜 반복되고 어떻게 관리하나요?",
+    "description": "피부염·습진의 흔한 원인, 보습과 연고 사용법, 다시 진료가 필요한 증상을 안내합니다.",
+    "answer": "피부염·습진은 가려움과 붉음, 각질 등이 나타나는 피부 염증입니다. 원인이 다양하므로 반복되는 자극을 찾고, 보습과 필요한 염증 치료를 함께 하는 것이 기본입니다.",
+    "sections": [
+      {
+        "id": "cause",
+        "title": "습진은 한 가지 원인으로 생기는 병이 아닙니다",
+        "paragraphs": [
+          "세제·물·화장품 등에 의한 접촉피부염, 아토피피부염 등 여러 유형이 있습니다. 모든 습진이 알레르기 때문에 생기는 것은 아니며, 습진 자체가 다른 사람에게 옮는 병은 아닙니다.",
+          "시작 시점과 부위, 새로 쓴 제품, 손을 자주 씻는 작업, 사용한 연고를 알려주세요. 반복되거나 치료에 반응하지 않으면 진단을 다시 살피고 필요한 검사를 결정합니다."
+        ],
+        "sources": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "care",
+        "title": "생활에서는 자극을 줄이고 보습하세요",
+        "paragraphs": [
+          "씻은 뒤 부드럽게 물기를 닦고 보습제를 바르세요. 향이나 특정 제품 사용 후 따갑고 악화하면 사용을 중단하고 상담합니다.",
+          "물·세제 작업에는 장갑을 사용하되 안에 땀이 차면 쉬고 말립니다. 가렵다고 세게 문지르거나 뜨거운 물로 씻는 것은 피하세요."
+        ],
+        "sources": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "id": "treatment",
+        "title": "연고는 부위와 염증 정도에 맞춰 사용합니다",
+        "paragraphs": [
+          "보습만으로 염증이 충분히 가라앉지 않으면 스테로이드 등 바르는 치료가 필요할 수 있습니다. 약의 강도·횟수·기간은 얼굴인지 손발인지, 나이와 증상에 따라 달라집니다.",
+          "처방된 방법으로 사용하고, 다른 부위에 남은 연고를 임의로 오래 바르지 마세요. 호전되지 않거나 다시 악화하면 사용법과 진단을 확인합니다."
+        ],
+        "sources": [
+          2
+        ]
+      },
+      {
+        "id": "visit",
+        "title": "아프고 붓거나 빠르게 악화하면 진료를 받으세요",
+        "paragraphs": [
+          "고름·열감·통증이 생기거나 갑자기 넓어지고 발열이 동반되면 감염 여부를 신속히 확인해야 합니다. 반복되는 증상이 수면이나 일상을 방해해도 진료가 필요합니다."
+        ],
+        "sources": [
+          3
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "보습제만 바르면 되나요?",
+        "answer": "가벼운 건조에는 도움이 되지만 붉음·가려움이 지속되면 염증 치료가 함께 필요할 수 있습니다.",
+        "sources": [
+          2
+        ]
+      }
+    ],
+    "references": [
+      {
+        "title": "NHS — Contact dermatitis",
+        "url": "https://www.nhs.uk/conditions/contact-dermatitis/"
+      },
+      {
+        "title": "NHS — Contact dermatitis: Treatment",
+        "url": "https://www.nhs.uk/conditions/contact-dermatitis/treatment/"
+      },
+      {
+        "title": "NHS — Atopic eczema",
+        "url": "https://www.nhs.uk/conditions/atopic-eczema/"
+      }
+    ],
+    "related": [
+      {
+        "title": "얼굴 지루성피부염 관리",
+        "href": "/medical/dermatology/seborrheic-dermatitis"
+      },
+      {
+        "title": "무좀과 습진의 차이",
+        "href": "/medical/dermatology/athletes-foot-eczema"
+      }
+    ]
+  },
+  {
+    "slug": "folliculitis",
+    "draft": false,
+    "publication": { "publishedAt": "2026-10-01", "modifiedAt": "2026-10-01", "reviewedAt": "2026-10-01" },
+    "title": "여드름처럼 보이는 모낭염, 어떻게 관리하나요?",
+    "description": "모낭염의 원인과 여드름과의 구분, 면도·마찰 관리와 진료가 필요한 경우를 안내합니다.",
+    "answer": "모낭염은 털이 나오는 모낭에 염증이 생긴 상태입니다. 여드름처럼 붉거나 고름이 찬 뾰루지로 보이지만, 세균·효모균·면도 자극 등 원인에 따라 치료가 달라집니다.",
+    "sections": [
+      {
+        "id": "cause",
+        "title": "뾰루지 모양만으로 원인을 단정하지 않습니다",
+        "paragraphs": [
+          "털 주변에 붉은 돌기나 고름이 생기고 가렵거나 아플 수 있습니다. 면도·제모, 땀과 마찰, 꽉 끼는 옷이 관련될 수 있습니다.",
+          "여드름과 비슷해 진찰로 구분하며, 반복되거나 잘 낫지 않으면 고름의 배양검사 등 원인 확인을 고려합니다."
+        ],
+        "sources": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "treatment",
+        "title": "모든 모낭염에 항생제가 필요한 것은 아닙니다",
+        "paragraphs": [
+          "자극을 줄이는 것으로 호전되는 경우도 있습니다. 세균성은 필요한 경우 항생제를, 효모균과 관련된 경우는 항진균 치료를 고려합니다.",
+          "남은 항생제나 스테로이드 연고를 반복 사용하지 마세요. 잘 낫지 않으면 약을 더하기 전에 원인을 다시 확인해야 합니다."
+        ],
+        "sources": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "care",
+        "title": "짜지 말고 면도와 마찰을 줄이세요",
+        "paragraphs": [
+          "염증이 있는 동안 면도·왁싱·털 뽑기를 쉬고, 운동 후에는 젖은 옷을 갈아입으세요. 피부를 부드럽게 씻고 통풍이 잘되는 옷을 입습니다.",
+          "고름을 손으로 짜거나 바늘로 터뜨리지 마세요. 면도를 재개할 때는 피부 자극을 줄이는 방법을 상담하세요."
+        ],
+        "sources": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "visit",
+        "title": "깊게 붓고 아프거나 열이 나면 빨리 확인하세요",
+        "paragraphs": [
+          "붉음과 통증이 빠르게 퍼지거나 발열·오한이 동반되면 신속히 진료받으세요. 큰 종기처럼 깊게 붓거나 반복되는 경우, 면역이 저하된 경우에도 확인이 필요합니다."
+        ],
+        "sources": [
+          2,
+          3
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "여드름약을 그대로 발라도 되나요?",
+        "answer": "겉모양이 비슷해도 원인이 다를 수 있습니다. 사용 중인 약을 알려주고 진단에 맞게 치료를 조정하세요.",
+        "sources": [
+          1,
+          2
+        ]
+      }
+    ],
+    "references": [
+      {
+        "title": "AAD — Acne-like breakouts could be folliculitis",
+        "url": "https://www.aad.org/public/diseases/a-z/folliculitis"
+      },
+      {
+        "title": "DermNet — Folliculitis",
+        "url": "https://dermnetnz.org/topics/folliculitis"
+      },
+      {
+        "title": "Mayo Clinic — Folliculitis: Symptoms and causes",
+        "url": "https://www.mayoclinic.org/diseases-conditions/folliculitis/symptoms-causes/syc-20361634"
+      }
+    ],
+    "related": [
+      {
+        "title": "여드름은 언제 치료해야 하나요?",
+        "href": "/medical/dermatology/acne"
+      }
+    ]
+  },
+  {
+    "slug": "nail-fungus",
+    "draft": false,
+    "publication": { "publishedAt": "2026-10-01", "modifiedAt": "2026-10-01", "reviewedAt": "2026-10-01" },
+    "title": "손발톱무좀, 왜 치료가 오래 걸리나요?",
+    "description": "손발톱무좀의 진단 확인, 바르는 약과 먹는 약의 선택, 치료 경과와 재감염 예방을 안내합니다.",
+    "answer": "곰팡이를 치료해도 이미 변한 손발톱이 바로 정상으로 돌아오지는 않습니다. 건강한 손발톱이 자라 나오는 시간이 필요하므로, 약을 쓰는 기간과 외관이 회복되는 기간은 다를 수 있습니다.",
+    "sections": [
+      {
+        "id": "diagnosis",
+        "title": "두껍고 누렇다고 모두 무좀은 아닙니다",
+        "paragraphs": [
+          "손발톱이 두꺼워지고 부스러지거나 들뜨는 변화는 곰팡이 감염 외에도 외상·건선 등에서 생길 수 있습니다. 특히 먹는 치료를 시작하기 전에는 손발톱 검체로 감염 여부를 확인하는 것이 중요합니다."
+        ],
+        "sources": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "treatment",
+        "title": "범위와 건강상태에 따라 치료를 고릅니다",
+        "paragraphs": [
+          "일부 가벼운 경우에는 손발톱용 항진균 외용제를 사용하며, 넓거나 여러 손발톱에 생긴 경우에는 먹는 약을 고려합니다. 일반 피부 무좀 크림과 손발톱용 약은 다릅니다.",
+          "먹는 약을 정할 때는 간질환 등 기저질환, 복용약과의 상호작용, 임신·수유 여부를 확인합니다. 약에 따라 치료 전·중 혈액검사가 필요할 수 있습니다."
+        ],
+        "sources": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "course",
+        "title": "새로 자라는 부분을 보며 경과를 확인합니다",
+        "paragraphs": [
+          "호전은 손발톱 뿌리 쪽에서 건강한 부분이 자라나는 모습으로 확인합니다. 손발톱, 특히 발톱은 자라는 속도가 느려 외관 회복에 수개월 이상 걸릴 수 있습니다.",
+          "겉모양만 보고 약을 임의로 중단하거나 계속 연장하지 마세요. 정해진 시점에 반응을 확인하고 치료 종료 여부를 상담합니다."
+        ],
+        "sources": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "care",
+        "title": "발의 무좀도 함께 관리하세요",
+        "paragraphs": [
+          "발가락 사이 무좀을 방치하지 말고 발을 깨끗하고 건조하게 유지하세요. 양말은 갈아 신고 공용 샤워실에서는 개인 슬리퍼를 사용합니다.",
+          "손발톱깎이·수건·신발을 함께 쓰지 마세요. 손발톱을 과도하게 깎거나 파내지 않습니다."
+        ],
+        "sources": [
+          1
+        ]
+      },
+      {
+        "id": "visit",
+        "title": "당뇨병이 있거나 아프고 붓는다면 일찍 상담하세요",
+        "paragraphs": [
+          "당뇨병·면역저하가 있거나 손발톱 주변에 통증·부종이 생기면 진료받으세요. 치료가 듣지 않거나 다른 손발톱으로 퍼져도 다시 확인해야 합니다."
+        ],
+        "sources": [
+          1
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "먹는 약을 끝냈는데 발톱은 아직 두꺼워요.",
+        "answer": "손상된 부분이 자라서 교체되기까지 시간이 걸립니다. 다만 감염이 남았는지는 별도 판단이 필요하므로 새로 자라는 부분과 검사·진찰 결과로 확인합니다.",
+        "sources": [
+          2
+        ]
+      }
+    ],
+    "references": [
+      {
+        "title": "NHS — Fungal nail infection",
+        "url": "https://www.nhs.uk/conditions/fungal-nail-infection/"
+      },
+      {
+        "title": "AAD — Nail fungus: Diagnosis and treatment",
+        "url": "https://www.aad.org/public/diseases/a-z/nail-fungus-treatment"
+      }
+    ],
+    "related": [
+      {
+        "title": "무좀과 습진의 차이",
+        "href": "/medical/dermatology/athletes-foot-eczema"
+      }
+    ]
+  }
+];
+
+// Unreviewed articles are accessible only in Preview or local development.
+export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles];
+
+export function getDermatologyPublication(article: DermatologyArticle) {
+  return { ...dermatologyPublication, ...article.publication };
+}

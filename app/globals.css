@@ -274,3 +274,6 @@ td:last-child, th:last-child { text-align: right; }
 .faq-category-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 24px 0 32px; }
 .faq-category-grid .quick-card { min-width: 0; }
 @media (max-width: 720px) { .faq-category-grid { grid-template-columns: 1fr; } }
+
+.condition-guide-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; }
+.condition-guide-links a { padding: 6px 0; text-underline-offset: 4px; }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { dermatologyDraftsVisible } from "@/data/dermatologyArticles";
 
 export const metadata: Metadata = {
   title: "경주 피부질환 진료",
@@ -8,11 +9,76 @@ export const metadata: Metadata = {
 };
 
 const conditions = [
-  ["피부염·습진", "가려움, 붉음, 각질 등 증상과 악화요인을 함께 살핍니다."],
-  ["여드름·모낭염", "염증 정도와 피부 상태에 맞춰 치료와 관리 방법을 안내합니다."],
-  ["두드러기", "발생 시점과 반복 양상, 동반 증상을 확인해 접근합니다."],
-  ["무좀·손발톱무좀", "비슷해 보이는 다른 질환과 구분하고 치료 방향을 설명합니다."],
-  ["사마귀·티눈", "병변의 성격과 위치, 생활 불편을 고려해 치료 방법을 상담합니다."],
+  {
+    "title": "피부염·습진",
+    "text": "가려움, 붉음, 각질 등 증상과 악화요인을 함께 살핍니다.",
+    "links": [
+      {
+        "title": "피부염·습진 관리",
+        "href": "/medical/dermatology/dermatitis-eczema",
+        "draft": false
+      },
+      {
+        "title": "지루성피부염",
+        "href": "/medical/dermatology/seborrheic-dermatitis",
+        "draft": false
+      }
+    ]
+  },
+  {
+    "title": "여드름·모낭염",
+    "text": "염증 정도와 피부 상태에 맞춰 치료와 관리 방법을 안내합니다.",
+    "links": [
+      {
+        "title": "여드름 치료 시점",
+        "href": "/medical/dermatology/acne",
+        "draft": false
+      },
+      {
+        "title": "모낭염 관리",
+        "href": "/medical/dermatology/folliculitis",
+        "draft": false
+      }
+    ]
+  },
+  {
+    "title": "두드러기",
+    "text": "발생 시점과 반복 양상, 동반 증상을 확인해 접근합니다.",
+    "links": [
+      {
+        "title": "두드러기 의료정보",
+        "href": "/medical/dermatology/urticaria",
+        "draft": false
+      }
+    ]
+  },
+  {
+    "title": "무좀·손발톱무좀",
+    "text": "비슷해 보이는 다른 질환과 구분하고 치료 방향을 설명합니다.",
+    "links": [
+      {
+        "title": "무좀과 습진의 차이",
+        "href": "/medical/dermatology/athletes-foot-eczema",
+        "draft": false
+      },
+      {
+        "title": "손발톱무좀 치료",
+        "href": "/medical/dermatology/nail-fungus",
+        "draft": false
+      }
+    ]
+  },
+  {
+    "title": "사마귀·티눈",
+    "text": "병변의 성격과 위치, 생활 불편을 고려해 치료 방법을 상담합니다.",
+    "links": [
+      {
+        "title": "사마귀와 티눈 구분",
+        "href": "/medical/dermatology/warts-corns",
+        "draft": false
+      }
+    ]
+  }
 ];
 
 export default function Page() {
@@ -30,8 +96,8 @@ export default function Page() {
         <div className="wrap">
           <div className="section-heading"><div><div className="eyebrow">주요 진료</div><h2>흔한 피부질환</h2></div><p>아래 항목 외의 피부 문제도 진료 후 필요한 방향을 안내합니다.</p></div>
           <div className="service-list">
-            {conditions.map(([title, text], index) => (
-              <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{text}</p></div></article>
+            {conditions.map(({title, text, links}, index) => (
+              <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{text}</p><div className="condition-guide-links">{links.filter((link) => !link.draft || dermatologyDraftsVisible).map((link) => <Link className="text-link" key={link.href} href={link.href}>{link.title} →</Link>)}</div></div></article>
             ))}
           </div>
         </div>
