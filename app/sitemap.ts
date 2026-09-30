@@ -1,3 +1,4 @@
+import { dermatologyArticles, dermatologyPublication } from "@/data/dermatologyArticles";
 import type { MetadataRoute } from "next";
 import { medicalArticles } from "@/data/medicalArticles";
 import { obesityArticles } from "@/data/obesityPublication";
@@ -15,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const medicalUpdateDates: Record<string, string> = {
     "/clinic/dermatology": "2026-09-29", "/clinic/aesthetic": "2026-09-29", "/clinic/obesity": "2026-09-29",
     "/medical/obesity": "2026-09-29", "/medical/obesity/mounjaro-guide": "2026-09-29",
-    "/medical/dermatology": "2026-09-29",
+    "/medical/dermatology": dermatologyPublication.modifiedAt,
     "/medical/dermatology/milia": medicalArticles.milia.modifiedAt,
     "/medical/dermatology/seborrheic-dermatitis": medicalArticles.seborrheicDermatitis.modifiedAt,
   };
@@ -34,5 +35,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (article.review.modifiedAt > skinLastModified) skinLastModified = article.review.modifiedAt;
   }
   if (skinLastModified) entries.push({ url: `${base}/medical/skin-treatments`, lastModified: new Date(skinLastModified), changeFrequency: "monthly", priority: 0.8 });
+  for (const article of dermatologyArticles) {
+    entries.push({ url: `${base}/medical/dermatology/${article.slug}`, lastModified: new Date(dermatologyPublication.modifiedAt), changeFrequency: "monthly", priority: 0.8 });
+  }
   return entries;
 }
