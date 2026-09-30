@@ -1,0 +1,26 @@
+.hero h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.35; word-break: keep-all; overflow-wrap: anywhere; }
+.breadcrumb { margin-bottom: 28px; font-size: 14px; color: var(--muted); }
+.breadcrumb a, .contents a, .related a, .sources a { text-decoration: underline; text-underline-offset: 3px; }
+.body { overflow-wrap: anywhere; }
+.contents { padding: 22px 24px; background: var(--soft); border-radius: 14px; }
+.contents ul { margin-bottom: 0; padding-left: 22px; }
+.contents li { margin-block: 7px; }
+.section { scroll-margin-top: 110px; }
+.section h2 { line-height: 1.45; word-break: keep-all; }
+.section li { margin-bottom: 10px; }
+.body .sources { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+.alert { margin-bottom: 28px; padding: 24px; background: #fff4ed; border: 1px solid #dcbca7; border-left: 4px solid #a04724; border-radius: 12px; }
+.alert h2 { margin: 0 0 12px; font-size: 24px; color: #863716; }
+.alert p { margin: 0; }
+.tableScroll { overflow-x: auto; margin: 20px 0; border: 1px solid var(--line); border-radius: 12px; }
+.tableScroll table { table-layout: fixed; min-width: 520px; }
+.tableScroll th, .tableScroll td { padding: 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.7; }
+.tableScroll thead { background: var(--soft); }
+.tableScroll th:first-child { width: 22%; }
+.caption { padding: 12px; text-align: left; color: var(--muted); font-size: 13px; }
+.references li { scroll-margin-top: 110px; }
+@media (max-width: 600px) {
+  .contents, .alert { padding: 18px; }
+  .section h2 { font-size: 26px; }
+  .body p, .body li { font-size: 16px; }
+}
