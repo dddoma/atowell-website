@@ -1,4 +1,6 @@
-export const mounjaroFaqPublished = false;
+// Physician review and publication approved by 권병현 on 2026-09-30.
+export const mounjaroFaqReview = { reviewerName: "권병현", reviewedAt: "2026-09-30", publishedAt: "2026-09-30", modifiedAt: "2026-09-30" };
+export const mounjaroFaqPublished = true;
 export const canReadMounjaroFaq = () => mounjaroFaqPublished || process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
 export const faqSources = [
   { name: "식품의약품안전처 · 마운자로 국내 허가사항", url: "https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=202301983" },

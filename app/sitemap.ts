@@ -4,6 +4,8 @@ import { medicalArticles } from "@/data/medicalArticles";
 import { obesityArticles } from "@/data/obesityPublication";
 import { skinTreatmentArticles } from "@/data/skinTreatmentPublication";
 
+import { mounjaroFaqCategories, mounjaroFaqPublished, mounjaroFaqReview } from "@/data/mounjaroFaq";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://atowell.kr";
   const routes = [
@@ -37,6 +39,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (skinLastModified) entries.push({ url: `${base}/medical/skin-treatments`, lastModified: new Date(skinLastModified), changeFrequency: "monthly", priority: 0.8 });
   for (const article of dermatologyArticles) {
     entries.push({ url: `${base}/medical/dermatology/${article.slug}`, lastModified: new Date(dermatologyPublication.modifiedAt), changeFrequency: "monthly", priority: 0.8 });
+  }
+  if (mounjaroFaqPublished) for (const category of mounjaroFaqCategories) {
+    entries.push({ url: `${base}/medical/obesity/mounjaro-faq/${category.slug}`, lastModified: new Date(mounjaroFaqReview.modifiedAt), changeFrequency: "monthly", priority: 0.8 });
   }
   return entries;
 }
