@@ -38,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
   if (skinLastModified) entries.push({ url: `${base}/medical/skin-treatments`, lastModified: new Date(skinLastModified), changeFrequency: "monthly", priority: 0.8 });
   for (const article of dermatologyArticles) {
+    if (article.draft) continue;
     entries.push({ url: `${base}/medical/dermatology/${article.slug}`, lastModified: new Date(dermatologyPublication.modifiedAt), changeFrequency: "monthly", priority: 0.8 });
   }
   if (mounjaroFaqPublished) for (const category of mounjaroFaqCategories) {

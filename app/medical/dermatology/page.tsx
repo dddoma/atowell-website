@@ -22,7 +22,7 @@ export default function Page() {
       <p className="lead">진료실에서 자주 받는 질문을 환자가 이해하기 쉬운 의료정보로 정리합니다.</p>
       <div className="topic-list">
         {topics.map(([title, text, href]) => <article key={title}><span>의료정보</span><div><h2><Link href={href}>{title}</Link></h2><p>{text}</p><Link className="text-link" href={href}>읽어보기 →</Link></div></article>)}
-        {dermatologyArticles.map(({ slug, title, description }) => <article key={slug}><span>의료정보</span><div><h2><Link href={`/medical/dermatology/${slug}`}>{title}</Link></h2><p>{description}</p><Link className="text-link" href={`/medical/dermatology/${slug}`}>읽어보기 →</Link></div></article>)}
+        {dermatologyArticles.map(({ slug, title, description, draft }) => <article key={slug}><span>{draft ? "검토용 초안" : "의료정보"}</span><div><h2><Link href={`/medical/dermatology/${slug}`}>{title}</Link></h2><p>{description}</p><Link className="text-link" href={`/medical/dermatology/${slug}`}>읽어보기 →</Link></div></article>)}
       </div>
     </div>
   );
