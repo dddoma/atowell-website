@@ -1,4 +1,4 @@
-import { dermatologyArticles, dermatologyPublication } from "@/data/dermatologyArticles";
+import { dermatologyArticles, getDermatologyPublication } from "@/data/dermatologyArticles";
 import type { MetadataRoute } from "next";
 import { medicalArticles } from "@/data/medicalArticles";
 import { obesityArticles } from "@/data/obesityPublication";
@@ -16,9 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/medical/dermatology/seborrheic-dermatitis", 0.8], ["/price", 0.9], ["/location", 0.9],
   ] as const;
   const medicalUpdateDates: Record<string, string> = {
-    "/clinic/dermatology": "2026-09-29", "/clinic/aesthetic": "2026-09-29", "/clinic/obesity": "2026-09-29",
+    "/clinic/dermatology": "2026-10-01", "/clinic/aesthetic": "2026-09-29", "/clinic/obesity": "2026-09-29",
     "/medical/obesity": "2026-09-29", "/medical/obesity/mounjaro-guide": "2026-09-29",
-    "/medical/dermatology": dermatologyPublication.modifiedAt,
+    "/medical/dermatology": "2026-10-01",
     "/medical/dermatology/milia": medicalArticles.milia.modifiedAt,
     "/medical/dermatology/seborrheic-dermatitis": medicalArticles.seborrheicDermatitis.modifiedAt,
   };
@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (skinLastModified) entries.push({ url: `${base}/medical/skin-treatments`, lastModified: new Date(skinLastModified), changeFrequency: "monthly", priority: 0.8 });
   for (const article of dermatologyArticles) {
     if (article.draft) continue;
-    entries.push({ url: `${base}/medical/dermatology/${article.slug}`, lastModified: new Date(dermatologyPublication.modifiedAt), changeFrequency: "monthly", priority: 0.8 });
+    entries.push({ url: `${base}/medical/dermatology/${article.slug}`, lastModified: new Date(getDermatologyPublication(article).modifiedAt), changeFrequency: "monthly", priority: 0.8 });
   }
   if (mounjaroFaqPublished) for (const category of mounjaroFaqCategories) {
     entries.push({ url: `${base}/medical/obesity/mounjaro-faq/${category.slug}`, lastModified: new Date(mounjaroFaqReview.modifiedAt), changeFrequency: "monthly", priority: 0.8 });

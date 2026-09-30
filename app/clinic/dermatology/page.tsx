@@ -16,7 +16,7 @@ const conditions = [
       {
         "title": "피부염·습진 관리",
         "href": "/medical/dermatology/dermatitis-eczema",
-        "draft": true
+        "draft": false
       },
       {
         "title": "지루성피부염",
@@ -37,7 +37,7 @@ const conditions = [
       {
         "title": "모낭염 관리",
         "href": "/medical/dermatology/folliculitis",
-        "draft": true
+        "draft": false
       }
     ]
   },
@@ -64,7 +64,7 @@ const conditions = [
       {
         "title": "손발톱무좀 치료",
         "href": "/medical/dermatology/nail-fungus",
-        "draft": true
+        "draft": false
       }
     ]
   },

@@ -1,6 +1,7 @@
 export type DermatologyArticle = {
   slug: string;
   draft?: boolean;
+  publication?: { publishedAt: string; modifiedAt: string; reviewedAt: string };
   title: string;
   description: string;
   answer: string;
@@ -124,10 +125,11 @@ const publishedArticles: DermatologyArticle[] = [
   },
 ];
 
-const draftArticles: DermatologyArticle[] = [
+const newlyReviewedArticles: DermatologyArticle[] = [
   {
     "slug": "dermatitis-eczema",
-    "draft": true,
+    "draft": false,
+    "publication": { "publishedAt": "2026-10-01", "modifiedAt": "2026-10-01", "reviewedAt": "2026-10-01" },
     "title": "피부염·습진, 왜 반복되고 어떻게 관리하나요?",
     "description": "피부염·습진의 흔한 원인, 보습과 연고 사용법, 다시 진료가 필요한 증상을 안내합니다.",
     "answer": "피부염·습진은 가려움과 붉음, 각질 등이 나타나는 피부 염증입니다. 원인이 다양하므로 반복되는 자극을 찾고, 보습과 필요한 염증 치료를 함께 하는 것이 기본입니다.",
@@ -215,7 +217,8 @@ const draftArticles: DermatologyArticle[] = [
   },
   {
     "slug": "folliculitis",
-    "draft": true,
+    "draft": false,
+    "publication": { "publishedAt": "2026-10-01", "modifiedAt": "2026-10-01", "reviewedAt": "2026-10-01" },
     "title": "여드름처럼 보이는 모낭염, 어떻게 관리하나요?",
     "description": "모낭염의 원인과 여드름과의 구분, 면도·마찰 관리와 진료가 필요한 경우를 안내합니다.",
     "answer": "모낭염은 털이 나오는 모낭에 염증이 생긴 상태입니다. 여드름처럼 붉거나 고름이 찬 뾰루지로 보이지만, 세균·효모균·면도 자극 등 원인에 따라 치료가 달라집니다.",
@@ -301,7 +304,8 @@ const draftArticles: DermatologyArticle[] = [
   },
   {
     "slug": "nail-fungus",
-    "draft": true,
+    "draft": false,
+    "publication": { "publishedAt": "2026-10-01", "modifiedAt": "2026-10-01", "reviewedAt": "2026-10-01" },
     "title": "손발톱무좀, 왜 치료가 오래 걸리나요?",
     "description": "손발톱무좀의 진단 확인, 바르는 약과 먹는 약의 선택, 치료 경과와 재감염 예방을 안내합니다.",
     "answer": "곰팡이를 치료해도 이미 변한 손발톱이 바로 정상으로 돌아오지는 않습니다. 건강한 손발톱이 자라 나오는 시간이 필요하므로, 약을 쓰는 기간과 외관이 회복되는 기간은 다를 수 있습니다.",
@@ -393,4 +397,8 @@ const draftArticles: DermatologyArticle[] = [
 
 // Unreviewed articles are accessible only in Preview or local development.
 export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
-export const dermatologyArticles = [...publishedArticles, ...(dermatologyDraftsVisible ? draftArticles : [])];
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles];
+
+export function getDermatologyPublication(article: DermatologyArticle) {
+  return { ...dermatologyPublication, ...article.publication };
+}

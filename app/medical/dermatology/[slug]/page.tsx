@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { dermatologyArticles, dermatologyPublication } from "@/data/dermatologyArticles";
+import { dermatologyArticles, getDermatologyPublication } from "@/data/dermatologyArticles";
 import styles from "./article.module.css";
 
 export const dynamicParams = false;
@@ -11,17 +11,19 @@ export function generateStaticParams() {
 
 type Props = { params: Promise<{ slug: string }> };
 const basePath = "/medical/dermatology";
+const formatDate = (date: string) => { const [year, month, day] = date.split("-"); return `${year}년 ${Number(month)}월 ${Number(day)}일`; };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = dermatologyArticles.find((item) => item.slug === slug);
   if (!article) return {};
+  const publication = getDermatologyPublication(article);
   const url = `${basePath}/${slug}`;
   return {
     title: article.title,
     description: article.description,
     alternates: { canonical: url },
-    openGraph: { title: article.title, description: article.description, url, type: "article", publishedTime: article.draft ? undefined : dermatologyPublication.publishedAt, modifiedTime: dermatologyPublication.modifiedAt },
+    openGraph: { title: article.title, description: article.description, url, type: "article", publishedTime: article.draft ? undefined : publication.publishedAt, modifiedTime: publication.modifiedAt },
     ...((article.draft || process.env.VERCEL_ENV === "preview") ? { robots: { index: false, follow: false } } : {}),
   };
 }
@@ -34,6 +36,7 @@ export default async function Page({ params }: Props) {
   const { slug } = await params;
   const article = dermatologyArticles.find((item) => item.slug === slug);
   if (!article) notFound();
+  const publication = getDermatologyPublication(article);
   const url = `https://atowell.kr${basePath}/${slug}`;
   const schema = {
     "@context": "https://schema.org",
@@ -41,12 +44,12 @@ export default async function Page({ params }: Props) {
       {
         "@type": "MedicalWebPage", "@id": url, url,
         name: article.title, description: article.description, inLanguage: "ko-KR",
-        datePublished: article.draft ? undefined : dermatologyPublication.publishedAt,
-        dateModified: dermatologyPublication.modifiedAt,
+        datePublished: article.draft ? undefined : publication.publishedAt,
+        dateModified: publication.modifiedAt,
         publisher: { "@type": "MedicalClinic", name: "아토웰의원", url: "https://atowell.kr" },
         citation: article.references.map(({ url: referenceUrl }) => referenceUrl),
-        lastReviewed: article.draft ? undefined : dermatologyPublication.reviewedAt,
-        reviewedBy: article.draft ? undefined : { "@type": "Person", name: dermatologyPublication.reviewerName, jobTitle: "원장", url: "https://atowell.kr/about" },
+        lastReviewed: article.draft ? undefined : publication.reviewedAt,
+        reviewedBy: article.draft ? undefined : { "@type": "Person", name: publication.reviewerName, jobTitle: "원장", url: "https://atowell.kr/about" },
       },
       {
         "@type": "BreadcrumbList",
@@ -83,10 +86,10 @@ export default async function Page({ params }: Props) {
       <section className={styles.section}><h2>함께 읽어보세요</h2><ul className={styles.related}>{article.related.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul></section>
       <section className={styles.section} aria-labelledby="references-heading"><h2 id="references-heading">참고문헌·근거자료</h2><ol className={`milia-sources ${styles.references}`}>{article.references.map((reference, index) => <li id={`reference-${index + 1}`} key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{reference.title}</a></li>)}</ol></section>
       <footer className="meta medical-article-meta" aria-label="게시 및 작성 정보">
-        {article.draft ? <p>최초 작성·최종 수정: 2026년 9월 30일 · 게시 전</p> : <p className="medical-article-dates"><span>최초 게시: <time dateTime={dermatologyPublication.publishedAt}>2026년 9월 30일</time></span><span>최종 수정: <time dateTime={dermatologyPublication.modifiedAt}>2026년 9월 30일</time></span></p>}
-        <p>작성: AI 보조 작성 · 근거자료 확인: <time dateTime={dermatologyPublication.sourceCheckedAt}>2026년 9월 30일</time></p>
-        {!article.draft && <><p>이 글은 아토웰의원 {dermatologyPublication.reviewerName} 원장이 의학적으로 검토했습니다.</p>
-        <p>최근 의학적 검토: <time dateTime={dermatologyPublication.reviewedAt}>2026년 9월 30일</time></p>
+        {article.draft ? <p>최초 작성·최종 수정: 2026년 9월 30일 · 게시 전</p> : <p className="medical-article-dates"><span>최초 게시: <time dateTime={publication.publishedAt}>{formatDate(publication.publishedAt)}</time></span><span>최종 수정: <time dateTime={publication.modifiedAt}>{formatDate(publication.modifiedAt)}</time></span></p>}
+        <p>작성: AI 보조 작성 · 근거자료 확인: <time dateTime={publication.sourceCheckedAt}>{formatDate(publication.sourceCheckedAt)}</time></p>
+        {!article.draft && <><p>이 글은 아토웰의원 {publication.reviewerName} 원장이 의학적으로 검토했습니다.</p>
+        <p>최근 의학적 검토: <time dateTime={publication.reviewedAt}>{formatDate(publication.reviewedAt)}</time></p>
         </>}
         {article.draft && <p>의학적 검토: 대기 중</p>}
         <p>이 글은 일반적인 의료정보로, 개인의 진단이나 처방을 대신하지 않습니다.</p>
