@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canReadMounjaroFaq, mounjaroFaqCategories } from "@/data/mounjaroFaq";
 import { mounjaroPrices, nonCoveredVisitFee, priceUpdatedAt } from "@/data/clinic";
 
 export const metadata: Metadata = {
@@ -40,7 +41,13 @@ export default function Page() {
         <table><thead><tr><th>용량</th><th>수량</th><th>가격</th></tr></thead><tbody>{mounjaroPrices.map((item) => <tr key={item.dose}><td>{item.dose}</td><td>{item.quantity}</td><td>{item.price.toLocaleString()}원</td></tr>)}</tbody></table>
       </div>
       <p className="notice">비급여 진료비 {nonCoveredVisitFee.toLocaleString()}원 별도 · 가격 최종 업데이트 {priceUpdatedAt}</p>
-      <h2>자주 묻는 질문</h2>
+      <h2 id="faq">자주 묻는 질문</h2>
+      {canReadMounjaroFaq() && <nav aria-label="마운자로 질문 카테고리">
+        <p>진료실에서 자주 나누는 54개 질문을 6개 주제로 정리했습니다.</p>
+        <div className="faq-category-grid">{mounjaroFaqCategories.map((category, index) => <Link className="quick-card" key={category.slug} href={`/medical/obesity/mounjaro-faq/${category.slug}`}>
+          <span className="quick-icon" aria-hidden="true">{index + 1}</span><span><strong>{category.title}</strong><small>질문 9개 · 답변 읽기</small></span><span className="quick-arrow" aria-hidden="true">→</span>
+        </Link>)}</div>
+      </nav>}
       <div className="faq">{faq.map(([question, answer]) => <article key={question}><h3>{question}</h3><p>{answer}</p></article>)}</div>
       <div className="actions"><Link className="button secondary" href="/clinic/obesity">비만치료 안내</Link><Link className="button primary" href="/location">진료시간 확인</Link></div>
       <div className="meta">가격 최종 업데이트 {priceUpdatedAt}<br />이 페이지는 일반적인 정보 제공을 위한 것이며 개인의 진단·치료를 대신하지 않습니다.</div>
