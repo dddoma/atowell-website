@@ -45,7 +45,8 @@ export default async function Page({ params }: Props) {
         dateModified: dermatologyPublication.modifiedAt,
         publisher: { "@type": "MedicalClinic", name: "아토웰의원", url: "https://atowell.kr" },
         citation: article.references.map(({ url: referenceUrl }) => referenceUrl),
-        // No reviewedBy / lastReviewed: publication permission is not medical review.
+        lastReviewed: dermatologyPublication.reviewedAt,
+        reviewedBy: { "@type": "Person", name: dermatologyPublication.reviewerName, jobTitle: "원장", url: "https://atowell.kr/about" },
       },
       {
         "@type": "BreadcrumbList",
@@ -83,7 +84,8 @@ export default async function Page({ params }: Props) {
       <footer className="meta medical-article-meta" aria-label="게시 및 작성 정보">
         <p className="medical-article-dates"><span>최초 게시: <time dateTime={dermatologyPublication.publishedAt}>2026년 9월 30일</time></span><span>최종 수정: <time dateTime={dermatologyPublication.modifiedAt}>2026년 9월 30일</time></span></p>
         <p>작성: AI 보조 작성 · 근거자료 확인: <time dateTime={dermatologyPublication.sourceCheckedAt}>2026년 9월 30일</time></p>
-        <p>의학적 검토: 의료진의 개별 본문 검토는 아직 완료되지 않았습니다.</p>
+        <p>이 글은 아토웰의원 {dermatologyPublication.reviewerName} 원장이 의학적으로 검토했습니다.</p>
+        <p>최근 의학적 검토: <time dateTime={dermatologyPublication.reviewedAt}>2026년 9월 30일</time></p>
         <p>이 글은 일반적인 의료정보로, 개인의 진단이나 처방을 대신하지 않습니다.</p>
       </footer>
       <div className="actions"><Link className="button secondary" href={basePath}>피부질환 의료정보로 돌아가기</Link><Link className="button primary" href="/location#reservation">진료 예약 안내</Link></div>

@@ -11,12 +11,14 @@ export type DermatologyArticle = {
 };
 
 // Publication authorization is separate from physician medical review.
-// The owner explicitly requested publication without a further review on 2026-09-30.
+// The owner confirmed review of all published articles on 2026-09-30.
 export const dermatologyPublication = {
   publishedAt: "2026-09-30",
   modifiedAt: "2026-09-30",
   sourceCheckedAt: "2026-09-30",
-  medicalReviewCompleted: false,
+  medicalReviewCompleted: true,
+  reviewerName: "권병현",
+  reviewedAt: "2026-09-30",
 } as const;
 
 export const dermatologyArticles: DermatologyArticle[] = [

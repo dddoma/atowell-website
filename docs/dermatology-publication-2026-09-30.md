@@ -25,3 +25,7 @@
 
 ## 기술 검증
 Next.js production build, TypeScript 및 ESLint 확인. 네 정적 상세 경로, 기존 두 글 경로, 목록 연결, 고유 canonical/Open Graph, MedicalWebPage/BreadcrumbList, sitemap을 점검한다. 모바일/데스크톱 렌더링 후 Vercel Preview 빌드를 거쳐 운영 브랜치로 병합한다.
+
+## 게시 후 의학적 검토 완료 — 2026-09-30
+
+원장이 “모두 검토했습니다. 검토 완료 표시안된 페이지를 찾아서 검토한 것으로 바꿔 주세요”라고 확인했다. 위 네 글의 본문 수정 없이 검토 완료 상태, 검토자 권병현, 최근 의학적 검토일 2026-09-30을 표시하고 JSON-LD의 reviewedBy / lastReviewed에도 동일하게 반영한다. 앞선 미검토 공개 기록은 당시 이력으로 보존한다.
