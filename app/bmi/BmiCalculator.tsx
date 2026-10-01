@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, Copy, Flag, Ruler, Scale, Sparkles } from 'lucide-react';
 import { Slider } from './Slider';
 import styles from './bmi.module.css';
+import { scrollRailToItem } from './scrollRail';
 
 const cx = (...names: string[]) => names.map((name) => styles[name]).join(' ');
 import { BMI_BANDS, BMI_COLUMNS, BMI_GRADIENT, BMI_THRESHOLDS, bmiPosition, getBmiStatus } from '@/lib/bmi';
@@ -20,36 +21,38 @@ declare global { interface Document { readonly modelContext?: BmiToolContext } }
 
 function ValueRail({ values, value, unit, label, onChange }: { values: number[]; value: number; unit: string; label: string; onChange: (value: number) => void }) {
   const refs = useRef<Record<number, HTMLButtonElement | null>>({});
+  const railRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    refs.current[value]?.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
+    scrollRailToItem(railRef.current, refs.current[value]);
   }, [value]);
   const select = (next: number) => {
     onChange(next);
-    requestAnimationFrame(() => refs.current[next]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }));
+    requestAnimationFrame(() => scrollRailToItem(railRef.current, refs.current[next], 'smooth'));
   };
-  return <div className={cx('number-rail')} aria-label={`${label} 정수 값 선택`}>
+  return <div ref={railRef} className={cx('number-rail')} aria-label={`${label} 정수 값 선택`}>
     {values.map((item) => <button key={item} ref={(node) => { refs.current[item] = node; }} type="button" className={cx('number-chip', ...(item === value ? ['is-active'] : []))} aria-pressed={item === value} aria-label={`${label} ${item}${unit}`} onClick={() => select(item)}>{item}</button>)}
   </div>;
 }
 
 function BmiQuickSelect({ height, targetBmi, onWeightChange }: { height: number; targetBmi: number; onWeightChange: (value: number) => void }) {
   const refs = useRef<Record<number, HTMLButtonElement | null>>({});
+  const railRef = useRef<HTMLDivElement>(null);
   const activeBmi = Math.round(targetBmi);
   const heightSquared = (height / 100) ** 2;
   const minBmi = Math.max(15, Math.ceil(WEIGHT_MIN / heightSquared));
   const maxBmi = Math.min(40, Math.floor(WEIGHT_MAX / heightSquared));
   const bmiValues = Array.from({ length: maxBmi - minBmi + 1 }, (_, i) => minBmi + i);
   useEffect(() => {
-    refs.current[activeBmi]?.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
+    scrollRailToItem(railRef.current, refs.current[activeBmi]);
   }, [activeBmi, height]);
   const selectBmi = (bmi: number) => {
     const calculatedWeight = Math.round(bmi * heightSquared);
     onWeightChange(Math.min(WEIGHT_MAX, Math.max(WEIGHT_MIN, calculatedWeight)));
-    requestAnimationFrame(() => refs.current[bmi]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }));
+    requestAnimationFrame(() => scrollRailToItem(railRef.current, refs.current[bmi], 'smooth'));
   };
   return <div className={cx('bmi-quick-select')}>
     <div className={cx('bmi-rail-heading')}><p className={cx('rail-label')}>BMI로 바로 선택</p><span>선택하면 목표 체중이 바뀝니다</span></div>
-    <div className={cx('number-rail', 'bmi-rail')} aria-label="목표 BMI 정수 값 선택">
+    <div ref={railRef} className={cx('number-rail', 'bmi-rail')} aria-label="목표 BMI 정수 값 선택">
       {bmiValues.map((item) => <button key={item} ref={(node) => { refs.current[item] = node; }} type="button" className={cx('number-chip', 'bmi-chip', ...(item === activeBmi ? ['is-active'] : []))} aria-pressed={item === activeBmi} aria-label={`목표 BMI ${item}`} onClick={() => selectBmi(item)}>{item}</button>)}
     </div>
   </div>;

@@ -20,13 +20,14 @@
 - 원본과 같은 Base UI 1.7.0, Lucide 1.31.0 사용
 - 슬라이더의 접근성 이름과 키보드 포커스 표시 보완
 - 복사 권한이 거부된 경우 오류 안내 및 타이머 정리 추가
+- 키 변경 시 화면 아래의 목표 BMI 숫자를 `scrollIntoView`로 찾아가던 동작을 수정. 각 숫자 목록 내부에서만 가로 위치를 조절하여 페이지의 세로 스크롤을 유지
 
 ## 검증
 - `npm ci`
 - `npm run lint`
 - `npx tsc --noEmit`
 - `npm run build`
-- Node 22.18+ 또는 24에서 `node --test tests/bmi.test.mjs`
+- Node 22.18+ 또는 24에서 `node --test tests/*.test.mjs`
 - 브라우저 검토: `/clinic/obesity`의 기존 버튼으로 새 탭 열기, `/bmi`의 슬라이더·버튼·정수 선택·복사, 320/390/768/1440px 가로 넘침, 홈 이동 후 뒤로가기
 
 운영 반영은 미리보기 확인과 별도 승인 후 진행합니다.
