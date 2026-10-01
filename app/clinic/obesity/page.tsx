@@ -42,7 +42,7 @@ export default function Page() {
                       <div className="actions" style={{ marginTop: 16 }}>
                         <a
                           className="button secondary"
-                          href="https://bmi-slider-x20.ddomadoc.chatgpt.site/"
+                          href="/bmi"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="BMI 슬라이더로 살펴보기 (새 탭에서 열림)"
