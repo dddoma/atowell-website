@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { scrollRailToItem } from '../app/bmi/scrollRail.ts';
+import { scrollRailToItem } from '../app/tools/bmi/scrollRail.ts';
 
 function fixture({ itemLeft = 360, itemTop = 1200, scrollLeft = 200 } = {}) {
   const calls = [];
@@ -48,7 +48,7 @@ test('does nothing for unavailable rail or a BMI shortcut outside the range', ()
 });
 
 test('all input and BMI chip effects use rail-scoped scrolling', () => {
-  const source = readFileSync(new URL('../app/bmi/BmiCalculator.tsx', import.meta.url), 'utf8');
+  const source = readFileSync(new URL('../app/tools/bmi/BmiCalculator.tsx', import.meta.url), 'utf8');
   assert.doesNotMatch(source, /scrollIntoView/);
   assert.equal((source.match(/scrollRailToItem\(railRef\.current/g) || []).length, 4);
   assert.equal((source.match(/ref=\{railRef\}/g) || []).length, 2);
