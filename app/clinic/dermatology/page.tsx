@@ -4,7 +4,7 @@ import { dermatologyDraftsVisible } from "@/data/dermatologyArticles";
 
 export const metadata: Metadata = {
   title: "경주 피부질환 진료",
-  description: "경주 황성동 아토웰의원의 피부염, 여드름, 두드러기, 무좀, 사마귀 등 흔한 피부질환 진료 안내.",
+  description: "경주 황성동 아토웰의원의 피부염, 여드름, 두드러기, 무좀, 사마귀, 대상포진·단순포진·수두 등 흔한 피부질환 진료 안내.",
   alternates: { canonical: "/clinic/dermatology" },
 };
 
@@ -78,6 +78,15 @@ const conditions = [
         "draft": false
       }
     ]
+  },
+  {
+    title: "대상포진·단순포진·수두",
+    text: "물집과 통증의 양상, 전염 가능성을 확인하고 치료 시점과 생활 주의사항을 안내합니다.",
+    links: [
+      { title: "대상포진 치료 시점", href: "/medical/dermatology/shingles", draft: true },
+      { title: "단순포진 관리", href: "/medical/dermatology/herpes-simplex", draft: true },
+      { title: "수두 증상과 전염 예방", href: "/medical/dermatology/chickenpox", draft: true },
+    ],
   }
 ];
 
