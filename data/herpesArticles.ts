@@ -18,7 +18,7 @@ export const herpesArticles: DermatologyArticle[] = [
     ],
     faq: [
       { question: "한 번 앓으면 다시 걸리지 않나요?", answer: "재발할 수 있습니다. 반복되는 물집이 모두 대상포진인 것은 아니므로 필요하면 진단을 다시 확인합니다.", sources: [2, 3] },
-      { question: "지금 아픈데 백신을 맞으면 치료되나요?", answer: "백신은 예방을 위한 것으로 현재 대상포진을 치료하지 않습니다. 급성기가 지난 뒤 나이, 면역상태와 접종력에 맞춰 접종을 상담하세요. 수두 백신과 대상포진 백신은 목적과 대상이 다릅니다.", sources: [5] },
+      { id: "vaccination", question: "지금 아픈데 백신을 맞으면 치료되나요?", answer: "백신은 예방을 위한 것으로 현재 대상포진을 치료하지 않습니다. 급성기가 지난 뒤 나이, 면역상태와 접종력에 맞춰 접종을 상담하세요. 수두 백신과 대상포진 백신은 목적과 대상이 다릅니다.", sources: [5], links: [{ title: "대상포진 예방접종 비용 확인하기 (1회·2회)", href: "/price#vaccinations" }] },
     ],
     references: [
       { title: "CDC — Shingles Symptoms and Complications", url: "https://www.cdc.gov/shingles/signs-symptoms/index.html" },

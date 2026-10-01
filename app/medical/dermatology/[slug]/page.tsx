@@ -82,7 +82,7 @@ export default async function Page({ params }: Props) {
         {section.bullets && <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>}
         <Sources numbers={section.sources} />
       </section>)}
-      <section className={styles.section}><h2>자주 묻는 질문</h2><div className="faq">{article.faq.map((faq) => <article key={faq.question}><h3>{faq.question}</h3><p>{faq.answer}</p><Sources numbers={faq.sources} /></article>)}</div></section>
+      <section className={styles.section}><h2>자주 묻는 질문</h2><div className="faq">{article.faq.map((faq) => <article key={faq.question} id={faq.id} className={styles.faqItem}><h3>{faq.question}</h3><p>{faq.answer}</p><Sources numbers={faq.sources} />{faq.links && <ul className={styles.related}>{faq.links.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul>}</article>)}</div></section>
       <section className={styles.section}><h2>함께 읽어보세요</h2><ul className={styles.related}>{article.related.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul></section>
       <section className={styles.section} aria-labelledby="references-heading"><h2 id="references-heading">참고문헌·근거자료</h2><ol className={`milia-sources ${styles.references}`}>{article.references.map((reference, index) => <li id={`reference-${index + 1}`} key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{reference.title}</a></li>)}</ol></section>
       <footer className="meta medical-article-meta" aria-label="게시 및 작성 정보">

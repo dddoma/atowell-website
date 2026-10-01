@@ -10,7 +10,7 @@ export type DermatologyArticle = {
   answer: string;
   alert?: { title: string; text: string; sources?: number[] };
   sections: { id: string; title: string; paragraphs?: string[]; bullets?: string[]; sources: number[]; table?: { headers: string[]; rows: string[][] } }[];
-  faq: { question: string; answer: string; sources: number[] }[];
+  faq: { id?: string; question: string; answer: string; sources: number[]; links?: { title: string; href: string }[] }[];
   references: { title: string; url: string }[];
   related: { title: string; href: string }[];
 };

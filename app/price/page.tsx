@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   aestheticPrices,
   documentPrices,
@@ -61,7 +62,7 @@ export default function Page() {
         </div>
         <div className="wrap"><p className="notice price-notice">비급여 진료비는 약품비와 별도입니다. 실제 비용은 진료 내용에 따라 달라질 수 있습니다.</p></div>
         <div className="wrap price-grid price-section">
-          <article className="price-card"><div className="eyebrow">예방의학</div><h2>예방접종</h2><GeneralPriceTable items={vaccinationPrices} /></article>
+          <article className="price-card" id="vaccinations"><div className="eyebrow">예방의학</div><h2>예방접종</h2><GeneralPriceTable items={vaccinationPrices} /><p className="table-note"><Link href="/medical/dermatology/shingles#vaccination">대상포진 증상과 예방접종 안내 읽기 →</Link></p></article>
         </div>
         <div className="wrap price-grid price-section">
           <article className="price-card"><div className="eyebrow">피부미용</div><h2>피부미용 시술</h2><GeneralPriceTable items={aestheticPrices} /></article>
