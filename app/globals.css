@@ -277,3 +277,5 @@ td:last-child, th:last-child { text-align: right; }
 
 .condition-guide-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; }
 .condition-guide-links a { padding: 6px 0; text-underline-offset: 4px; }
+
+.price-card[id] { scroll-margin-top: 100px; }
