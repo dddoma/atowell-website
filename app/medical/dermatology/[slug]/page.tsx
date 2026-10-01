@@ -73,7 +73,7 @@ export default async function Page({ params }: Props) {
       </div>
     </section>
     <article className={`wrap section article ${styles.body}`}>
-      {article.alert && <aside className={styles.alert} aria-labelledby="urgent-heading"><h2 id="urgent-heading">{article.alert.title}</h2><p>{article.alert.text}</p><Sources numbers={[2]} /></aside>}
+      {article.alert && <aside className={styles.alert} aria-labelledby="urgent-heading"><h2 id="urgent-heading">{article.alert.title}</h2><p>{article.alert.text}</p><Sources numbers={article.alert.sources ?? [2]} /></aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
       {article.sections.map((section) => <section key={section.id} id={section.id} className={styles.section}>
         <h2>{section.title}</h2>
@@ -86,7 +86,7 @@ export default async function Page({ params }: Props) {
       <section className={styles.section}><h2>함께 읽어보세요</h2><ul className={styles.related}>{article.related.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul></section>
       <section className={styles.section} aria-labelledby="references-heading"><h2 id="references-heading">참고문헌·근거자료</h2><ol className={`milia-sources ${styles.references}`}>{article.references.map((reference, index) => <li id={`reference-${index + 1}`} key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{reference.title}</a></li>)}</ol></section>
       <footer className="meta medical-article-meta" aria-label="게시 및 작성 정보">
-        {article.draft ? <p>최초 작성·최종 수정: 2026년 9월 30일 · 게시 전</p> : <p className="medical-article-dates"><span>최초 게시: <time dateTime={publication.publishedAt}>{formatDate(publication.publishedAt)}</time></span><span>최종 수정: <time dateTime={publication.modifiedAt}>{formatDate(publication.modifiedAt)}</time></span></p>}
+        {article.draft ? <p>최초 작성: {formatDate(article.draftDates?.createdAt ?? publication.modifiedAt)} · 최종 수정: {formatDate(publication.modifiedAt)} · 게시 전</p> : <p className="medical-article-dates"><span>최초 게시: <time dateTime={publication.publishedAt}>{formatDate(publication.publishedAt)}</time></span><span>최종 수정: <time dateTime={publication.modifiedAt}>{formatDate(publication.modifiedAt)}</time></span></p>}
         <p>작성: AI 보조 작성 · 근거자료 확인: <time dateTime={publication.sourceCheckedAt}>{formatDate(publication.sourceCheckedAt)}</time></p>
         {!article.draft && <><p>이 글은 아토웰의원 {publication.reviewerName} 원장이 의학적으로 검토했습니다.</p>
         <p>최근 의학적 검토: <time dateTime={publication.reviewedAt}>{formatDate(publication.reviewedAt)}</time></p>

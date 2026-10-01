@@ -1,11 +1,14 @@
+import { herpesArticles } from "./herpesArticles";
+
 export type DermatologyArticle = {
   slug: string;
   draft?: boolean;
-  publication?: { publishedAt: string; modifiedAt: string; reviewedAt: string };
+  draftDates?: { createdAt: string; modifiedAt: string; sourceCheckedAt: string };
+  publication?: { publishedAt: string; modifiedAt: string; reviewedAt: string; sourceCheckedAt?: string };
   title: string;
   description: string;
   answer: string;
-  alert?: { title: string; text: string };
+  alert?: { title: string; text: string; sources?: number[] };
   sections: { id: string; title: string; paragraphs?: string[]; bullets?: string[]; sources: number[]; table?: { headers: string[]; rows: string[][] } }[];
   faq: { question: string; answer: string; sources: number[] }[];
   references: { title: string; url: string }[];
@@ -397,8 +400,17 @@ const newlyReviewedArticles: DermatologyArticle[] = [
 
 // Unreviewed articles are accessible only in Preview or local development.
 export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
-export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles];
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles]
+  .filter((article) => !article.draft || dermatologyDraftsVisible);
 
 export function getDermatologyPublication(article: DermatologyArticle) {
-  return { ...dermatologyPublication, ...article.publication };
+  return {
+    ...dermatologyPublication,
+    ...article.publication,
+    ...(article.draft ? {
+      publishedAt: "", reviewedAt: "", reviewerName: "", medicalReviewCompleted: false,
+      modifiedAt: article.draftDates?.modifiedAt ?? dermatologyPublication.modifiedAt,
+      sourceCheckedAt: article.draftDates?.sourceCheckedAt ?? dermatologyPublication.sourceCheckedAt,
+    } : {}),
+  };
 }

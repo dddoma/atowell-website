@@ -4,7 +4,7 @@ import { dermatologyArticles } from "@/data/dermatologyArticles";
 
 export const metadata: Metadata = {
   title: "피부질환 의료정보",
-  description: "비립종, 지루성피부염, 여드름, 두드러기, 무좀·습진, 사마귀·티눈의 환자용 의료정보.",
+  description: "비립종, 지루성피부염, 여드름, 두드러기, 무좀·습진, 사마귀·티눈, 대상포진·단순포진·수두의 환자용 의료정보.",
   alternates: { canonical: "/medical/dermatology" },
 };
 
