@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     description: "경주 황성동 피부질환·피부미용·비만치료",
   },
   robots: { index: true, follow: true },
+  verification: {
+    other: { "naver-site-verification": "9c78cc6393948a0c0439dd832afd77ee97b834bb" },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
