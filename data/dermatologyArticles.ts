@@ -4,7 +4,7 @@ export type DermatologyArticle = {
   slug: string;
   draft?: boolean;
   draftDates?: { createdAt: string; modifiedAt: string; sourceCheckedAt: string };
-  publication?: { publishedAt: string; modifiedAt: string; reviewedAt: string };
+  publication?: { publishedAt: string; modifiedAt: string; reviewedAt: string; sourceCheckedAt?: string };
   title: string;
   description: string;
   answer: string;

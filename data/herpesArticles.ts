@@ -1,11 +1,11 @@
 import type { DermatologyArticle } from "./dermatologyArticles";
 
-const draftDates = { createdAt: "2026-10-01", modifiedAt: "2026-10-01", sourceCheckedAt: "2026-10-01" };
+const publication = { publishedAt: "2026-10-01", modifiedAt: "2026-10-01", reviewedAt: "2026-10-01", sourceCheckedAt: "2026-10-01" };
 
-// These patient-education drafts await the owner's medical review and publication approval.
+// The owner reviewed these articles and approved production publication on 2026-10-01.
 export const herpesArticles: DermatologyArticle[] = [
   {
-    slug: "shingles", draft: true, draftDates,
+    slug: "shingles", draft: false, publication,
     title: "대상포진, 한쪽 피부의 통증과 물집이 생겼다면",
     description: "대상포진의 증상, 항바이러스 치료 시점, 눈 주변 응급 신호와 전염 예방을 안내합니다.",
     answer: "한쪽 피부가 따갑고 아픈 뒤 물집이 모여 생겼다면 대상포진을 의심할 수 있습니다. 가능한 한 빨리 진료받고, 눈 주변 증상이나 면역저하가 있다면 당일 평가가 필요합니다.",
@@ -30,7 +30,7 @@ export const herpesArticles: DermatologyArticle[] = [
     related: [{ title: "단순포진, 입술이나 피부에 반복되는 물집", href: "/medical/dermatology/herpes-simplex" }, { title: "수두, 전신의 가려운 물집과 발열이 생겼다면", href: "/medical/dermatology/chickenpox" }, { title: "피부질환 진료 안내", href: "/clinic/dermatology" }],
   },
   {
-    slug: "herpes-simplex", draft: true, draftDates,
+    slug: "herpes-simplex", draft: false, publication,
     title: "단순포진, 입술이나 피부에 반복되는 물집",
     description: "입술·생식기 단순포진의 증상, 재발 치료, 눈 주변 경고 신호와 전파를 줄이는 생활수칙을 안내합니다.",
     answer: "따끔거림 뒤 작은 물집이 모여 생기거나 비슷한 부위에 반복된다면 단순포진을 생각할 수 있습니다. 처음 생긴 증상, 눈 주변 병변, 넓게 퍼지는 물집은 진료로 확인하는 것이 중요합니다.",
@@ -57,7 +57,7 @@ export const herpesArticles: DermatologyArticle[] = [
     related: [{ title: "대상포진, 한쪽 피부의 통증과 물집이 생겼다면", href: "/medical/dermatology/shingles" }, { title: "수두, 전신의 가려운 물집과 발열이 생겼다면", href: "/medical/dermatology/chickenpox" }, { title: "피부질환 진료 안내", href: "/clinic/dermatology" }],
   },
   {
-    slug: "chickenpox", draft: true, draftDates,
+    slug: "chickenpox", draft: false, publication,
     title: "수두, 전신의 가려운 물집과 발열이 생겼다면",
     description: "수두의 증상과 치료, 전염 기간, 고위험군의 진료 시점과 예방접종 상담을 안내합니다.",
     answer: "수두는 가려운 물집이 몸 여러 곳에 나타나는 전염성 질환입니다. 성인·임신부·면역저하자에서는 더 심해질 수 있으므로 증상이 의심되면 신속히 상담하고, 방문 전 의료기관에 수두 가능성을 알려주세요.",

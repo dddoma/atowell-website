@@ -15,12 +15,11 @@ function publicationSource(environment) {
     .replaceAll('process.env.NODE_ENV', '"production"');
 }
 
-test('three complete unreviewed drafts have valid source citations and related links', () => {
+test('three complete reviewed articles have valid source citations and related links', () => {
   assert.deepEqual(herpesArticles.map(article => article.slug), slugs);
   for (const article of herpesArticles) {
-    assert.equal(article.draft, true);
-    assert.equal(article.publication, undefined);
-    assert.equal(article.draftDates.sourceCheckedAt, '2026-10-01');
+    assert.equal(article.draft, false);
+    assert.equal(article.publication.sourceCheckedAt, '2026-10-01');
     assert.ok(article.sections.length >= 4);
     assert.equal(new Set(article.sections.map(section => section.id)).size, article.sections.length);
     for (const block of [...article.sections, ...article.faq, article.alert]) {
@@ -32,28 +31,28 @@ test('three complete unreviewed drafts have valid source citations and related l
   }
 });
 
-test('preview includes drafts with no inherited physician review; production excludes only drafts', async () => {
+test('preview and production include the approved articles with accurate review dates', async () => {
   const preview = await load(publicationSource('preview'));
   const production = await load(publicationSource('production'));
-  assert.equal(preview.dermatologyArticles.length, production.dermatologyArticles.length + 3);
+  assert.equal(preview.dermatologyArticles.length, production.dermatologyArticles.length);
   assert.deepEqual(production.dermatologyArticles.map(article => article.slug), preview.dermatologyArticles.filter(article => !article.draft).map(article => article.slug));
   for (const slug of slugs) {
     const draft = preview.dermatologyArticles.find(article => article.slug === slug);
     assert.ok(draft);
-    assert.ok(!production.dermatologyArticles.some(article => article.slug === slug));
+    assert.ok(production.dermatologyArticles.some(article => article.slug === slug));
     const publication = preview.getDermatologyPublication(draft);
-    assert.equal(publication.medicalReviewCompleted, false);
-    assert.equal(publication.reviewedAt, '');
-    assert.equal(publication.reviewerName, '');
-    assert.equal(publication.publishedAt, '');
+    assert.equal(publication.medicalReviewCompleted, true);
+    assert.equal(publication.reviewedAt, '2026-10-01');
+    assert.equal(publication.reviewerName, '권병현');
+    assert.equal(publication.publishedAt, '2026-10-01');
     assert.equal(publication.modifiedAt, '2026-10-01');
   }
 });
 
-test('sixth clinic entry links each draft and schema/sitemap retain draft protections', () => {
+test('sixth clinic entry links each published article and schema/sitemap retain draft protections', () => {
   const clinic = source('../app/clinic/dermatology/page.tsx');
   assert.ok(clinic.indexOf('대상포진·단순포진·수두",\n    text:') > clinic.indexOf('"title": "사마귀·티눈"'));
-  for (const slug of slugs) assert.ok(clinic.includes(`href: "/medical/dermatology/${slug}", draft: true`));
+  for (const slug of slugs) assert.ok(clinic.includes(`href: "/medical/dermatology/${slug}", draft: false`));
   assert.match(clinic, /!link.draft \|\| dermatologyDraftsVisible/);
   const page = source('../app/medical/dermatology/[slug]/page.tsx');
   for (const field of ['datePublished', 'lastReviewed', 'reviewedBy']) assert.ok(page.includes(`${field}: article.draft ? undefined`));

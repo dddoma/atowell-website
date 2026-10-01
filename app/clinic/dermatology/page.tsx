@@ -83,9 +83,9 @@ const conditions = [
     title: "대상포진·단순포진·수두",
     text: "물집과 통증의 양상, 전염 가능성을 확인하고 치료 시점과 생활 주의사항을 안내합니다.",
     links: [
-      { title: "대상포진 치료 시점", href: "/medical/dermatology/shingles", draft: true },
-      { title: "단순포진 관리", href: "/medical/dermatology/herpes-simplex", draft: true },
-      { title: "수두 증상과 전염 예방", href: "/medical/dermatology/chickenpox", draft: true },
+      { title: "대상포진 치료 시점", href: "/medical/dermatology/shingles", draft: false },
+      { title: "단순포진 관리", href: "/medical/dermatology/herpes-simplex", draft: false },
+      { title: "수두 증상과 전염 예방", href: "/medical/dermatology/chickenpox", draft: false },
     ],
   }
 ];
