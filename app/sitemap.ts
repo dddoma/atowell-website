@@ -16,7 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/medical/dermatology/seborrheic-dermatitis", 0.8], ["/price", 0.9], ["/location", 0.9],
   ] as const;
   const medicalUpdateDates: Record<string, string> = {
-    "/clinic/dermatology": "2026-10-02", "/clinic/aesthetic": "2026-09-29", "/clinic/obesity": "2026-09-29",
+    "": "2026-10-02", "/about": "2026-10-02", "/price": "2026-10-02",
+    "/clinic/dermatology": "2026-10-02", "/clinic/aesthetic": "2026-10-02", "/clinic/obesity": "2026-10-02",
     "/medical/obesity": "2026-09-29", "/medical/obesity/mounjaro-guide": "2026-09-29",
     "/medical/dermatology": "2026-10-02",
     "/medical/dermatology/milia": medicalArticles.milia.modifiedAt,

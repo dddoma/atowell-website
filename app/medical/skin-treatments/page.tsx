@@ -21,7 +21,7 @@ export default function Page() {
       <h1>피부치료 의료정보</h1>
       <p className="lead">피부 시술과 치료 전후에 자주 묻는 질문을 준비하고 있습니다. 원장 검토를 마친 글부터 차례로 공개합니다.</p>
       <div className="notice" style={{ marginTop: 32 }}><strong>준비 중</strong><p>현재 공개된 피부치료 의료정보는 없습니다. 진료 안내와 피부질환 의료정보는 아래에서 확인하실 수 있습니다.</p></div>
-      <div className="actions"><Link className="button secondary" href="/clinic/aesthetic">피부미용 진료 안내</Link><Link className="button secondary" href="/medical/dermatology">피부질환 의료정보</Link></div>
+      <div className="actions"><Link className="button secondary" href="/clinic/aesthetic">피부치료 진료 안내</Link><Link className="button secondary" href="/medical/dermatology">피부질환 의료정보</Link></div>
     </div>
   );
   return (
@@ -37,7 +37,7 @@ export default function Page() {
           return available ? <Link className={styles.card} key={article.slug} href={`/medical/skin-treatments/${article.slug}`}>{card}</Link> : <article className={styles.card} key={article.slug}>{card}</article>;
         })}
       </div>
-      <p className={styles.guide}>이 자료는 일반적인 치료정보입니다. 실제 시술의 종류와 가능 여부는 진찰 후 확인합니다. <Link href="/clinic/aesthetic">피부미용 진료 안내 →</Link></p>
+      <p className={styles.guide}>이 자료는 일반적인 치료정보입니다. 실제 시술의 종류와 가능 여부는 진찰 후 확인합니다. <Link href="/clinic/aesthetic">피부치료 진료 안내 →</Link></p>
       <Link className={styles.back} href="/medical/dermatology">피부질환 의료정보도 살펴보기 →</Link>
     </div>
   );

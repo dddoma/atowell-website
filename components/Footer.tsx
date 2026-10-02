@@ -12,8 +12,8 @@ export function Footer() {
         <div>
           <strong>진료</strong>
           <Link href="/clinic/dermatology">피부질환</Link>
-          <Link href="/clinic/aesthetic">피부미용</Link>
-          <Link href="/clinic/obesity">비만치료</Link>
+          <Link href="/clinic/aesthetic">피부치료</Link>
+          <Link href="/clinic/obesity">비만·체중관리</Link>
         </div>
         <div>
           <strong>이용안내</strong>

@@ -15,7 +15,7 @@ export default function Page() {
         <div className="wrap narrow">
           <div className="kicker">ABOUT ATOWELL</div>
           <h1>환자가 이해하고 선택할 수 있는 진료</h1>
-          <p className="lead">아토웰의원은 피부질환·피부미용·비만치료를 중심으로 일상 가까이에서 필요한 진료를 제공합니다.</p>
+          <p className="lead">아토웰의원은 피부질환, 피부치료, 비만·체중관리를 중심으로 일상 가까이에서 필요한 진료를 제공합니다.</p>
         </div>
       </section>
       <section className="section">
@@ -37,7 +37,7 @@ export default function Page() {
         <div className="wrap split-section">
           <div><div className="eyebrow">진료 방향</div><h2>가까이에서<br />오래 돕는 의원</h2></div>
           <div className="statement">
-            <p>흔한 피부 문제부터 피부 상태에 맞춘 미용 상담, 체중과 건강을 함께 살피는 비만치료까지 환자의 생활과 연결된 진료를 제공합니다.</p>
+            <p>흔한 피부 문제부터 피부 상태에 맞춘 시술 상담, 체중과 건강을 함께 살피는 비만·체중관리까지 환자의 생활과 연결된 진료를 제공합니다.</p>
             <p>앞으로 의료정보와 진료 후 안내를 축적해, 홈페이지도 진료의 연장선으로 발전시켜 가겠습니다.</p>
             <Link className="button primary" href="/location">진료시간·오시는 길</Link>
           </div>

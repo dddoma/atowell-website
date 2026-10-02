@@ -4,8 +4,8 @@ import { skinTreatmentArticles, canReadSkinTreatment } from "@/data/skinTreatmen
 
 const careLinks = [
   ["피부질환", "/clinic/dermatology"],
-  ["피부미용", "/clinic/aesthetic"],
-  ["비만치료", "/clinic/obesity"],
+  ["피부치료", "/clinic/aesthetic"],
+  ["비만·체중관리", "/clinic/obesity"],
 ] as const;
 
 // The new menu stays out of Production while every skin-treatment article is a draft.
