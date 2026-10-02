@@ -14,7 +14,7 @@
 .alert p { margin: 0; }
 .tableScroll { overflow-x: auto; margin: 20px 0; border: 1px solid var(--line); border-radius: 12px; }
 .tableScroll table { table-layout: fixed; min-width: 520px; }
-.tableScroll th, .tableScroll td { padding: 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.7; }
+.tableScroll th, .tableScroll td { padding: 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.7; white-space: normal; overflow-wrap: anywhere; }
 .tableScroll thead { background: var(--soft); }
 .tableScroll th:first-child { width: 22%; }
 .caption { padding: 12px; text-align: left; color: var(--muted); font-size: 13px; }
