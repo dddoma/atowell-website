@@ -1,10 +1,11 @@
 import { herpesArticles } from "./herpesArticles";
+import { dermatitisArticles } from "./dermatitisArticles";
 
 export type DermatologyArticle = {
   slug: string;
   draft?: boolean;
   draftDates?: { createdAt: string; modifiedAt: string; sourceCheckedAt: string };
-  publication?: { publishedAt: string; modifiedAt: string; reviewedAt: string; sourceCheckedAt?: string };
+  publication?: { publishedAt: string; modifiedAt: string; reviewedAt?: string; sourceCheckedAt?: string; medicalReviewCompleted?: boolean; reviewerName?: string };
   title: string;
   description: string;
   answer: string;
@@ -398,19 +399,23 @@ const newlyReviewedArticles: DermatologyArticle[] = [
   }
 ];
 
-// Unreviewed articles are accessible only in Preview or local development.
+// Unpublished drafts are accessible only in Preview or local development.
+// Explicitly authorized publications may still be awaiting medical review.
 export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
-export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles]
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles]
   .filter((article) => !article.draft || dermatologyDraftsVisible);
 
 export function getDermatologyPublication(article: DermatologyArticle) {
+  const medicalReviewCompleted = !article.draft && (article.publication?.medicalReviewCompleted ?? dermatologyPublication.medicalReviewCompleted);
   return {
     ...dermatologyPublication,
     ...article.publication,
     ...(article.draft ? {
-      publishedAt: "", reviewedAt: "", reviewerName: "", medicalReviewCompleted: false,
+      publishedAt: "",
       modifiedAt: article.draftDates?.modifiedAt ?? dermatologyPublication.modifiedAt,
       sourceCheckedAt: article.draftDates?.sourceCheckedAt ?? dermatologyPublication.sourceCheckedAt,
     } : {}),
+    medicalReviewCompleted,
+    ...(!medicalReviewCompleted ? { reviewedAt: "", reviewerName: "" } : {}),
   };
 }

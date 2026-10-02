@@ -22,6 +22,16 @@ const conditions = [
         "title": "지루성피부염",
         "href": "/medical/dermatology/seborrheic-dermatitis",
         "draft": false
+      },
+      {
+        "title": "접촉성피부염",
+        "href": "/medical/dermatology/contact-dermatitis",
+        "draft": false
+      },
+      {
+        "title": "아토피피부염",
+        "href": "/medical/dermatology/atopic-dermatitis",
+        "draft": false
       }
     ]
   },

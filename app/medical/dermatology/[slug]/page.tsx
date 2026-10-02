@@ -48,8 +48,8 @@ export default async function Page({ params }: Props) {
         dateModified: publication.modifiedAt,
         publisher: { "@type": "MedicalClinic", name: "아토웰의원", url: "https://atowell.kr" },
         citation: article.references.map(({ url: referenceUrl }) => referenceUrl),
-        lastReviewed: article.draft ? undefined : publication.reviewedAt,
-        reviewedBy: article.draft ? undefined : { "@type": "Person", name: publication.reviewerName, jobTitle: "원장", url: "https://atowell.kr/about" },
+        lastReviewed: article.draft ? undefined : publication.medicalReviewCompleted ? publication.reviewedAt : undefined,
+        reviewedBy: article.draft ? undefined : publication.medicalReviewCompleted ? { "@type": "Person", name: publication.reviewerName, jobTitle: "원장", url: "https://atowell.kr/about" } : undefined,
       },
       {
         "@type": "BreadcrumbList",
@@ -68,6 +68,7 @@ export default async function Page({ params }: Props) {
         <nav aria-label="현재 위치" className={styles.breadcrumb}><Link href="/">홈</Link><span> / </span><Link href={basePath}>피부질환 의료정보</Link></nav>
         <div className="kicker">SKIN GUIDE</div>
         {article.draft && <p role="status">검토용 초안 · 원장 의학적 검토 대기 · 아직 게시되지 않은 자료입니다.</p>}
+        {!article.draft && !publication.medicalReviewCompleted && <p role="status">의학적 검토 대기 · 일반 의료정보</p>}
         <h1>{article.title}</h1>
         <p className="lead">{article.answer}</p>
       </div>
@@ -88,10 +89,10 @@ export default async function Page({ params }: Props) {
       <footer className="meta medical-article-meta" aria-label="게시 및 작성 정보">
         {article.draft ? <p>최초 작성: {formatDate(article.draftDates?.createdAt ?? publication.modifiedAt)} · 최종 수정: {formatDate(publication.modifiedAt)} · 게시 전</p> : <p className="medical-article-dates"><span>최초 게시: <time dateTime={publication.publishedAt}>{formatDate(publication.publishedAt)}</time></span><span>최종 수정: <time dateTime={publication.modifiedAt}>{formatDate(publication.modifiedAt)}</time></span></p>}
         <p>작성: AI 보조 작성 · 근거자료 확인: <time dateTime={publication.sourceCheckedAt}>{formatDate(publication.sourceCheckedAt)}</time></p>
-        {!article.draft && <><p>이 글은 아토웰의원 {publication.reviewerName} 원장이 의학적으로 검토했습니다.</p>
+        {publication.medicalReviewCompleted && <><p>이 글은 아토웰의원 {publication.reviewerName} 원장이 의학적으로 검토했습니다.</p>
         <p>최근 의학적 검토: <time dateTime={publication.reviewedAt}>{formatDate(publication.reviewedAt)}</time></p>
         </>}
-        {article.draft && <p>의학적 검토: 대기 중</p>}
+        {!publication.medicalReviewCompleted && <p>의학적 검토: 대기 중</p>}
         <p>이 글은 일반적인 의료정보로, 개인의 진단이나 처방을 대신하지 않습니다.</p>
       </footer>
       <div className="actions"><Link className="button secondary" href={basePath}>피부질환 의료정보로 돌아가기</Link><Link className="button primary" href="/location#reservation">진료 예약 안내</Link></div>
