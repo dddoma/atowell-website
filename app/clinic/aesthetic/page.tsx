@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { aestheticTreatments } from "@/data/aestheticTreatments";
+import styles from "./aesthetic.module.css";
 
 export const metadata: Metadata = {
   title: "경주 피부미용 상담",
@@ -22,6 +24,24 @@ export default function Page() {
           <h1>피부 상태와 필요에 맞춘<br />차분한 상담</h1>
           <p className="lead">피부 고민과 원하는 변화를 듣고, 현재 상태에서 적절한 관리와 시술 여부를 함께 살핍니다.</p>
           <div className="actions"><a className="button primary" href="tel:054-776-0294">시술 문의</a><Link className="button secondary" href="/location">진료시간 확인</Link><Link className="button secondary" href="/medical/skin-treatments">피부치료 의료정보</Link></div>
+        </div>
+      </section>
+      <section className="section section-tint" aria-labelledby="treatments-title">
+        <div className="wrap">
+          <div className="section-heading">
+            <div><div className="eyebrow">진료 안내</div><h2 id="treatments-title">주요 피부치료</h2></div>
+            <p>아토웰의원에서 상담할 수 있는 주요 피부치료입니다. 치료별 자세한 설명은 의료정보에서 확인하실 수 있습니다.</p>
+          </div>
+          <div className={styles.treatments}>
+            {aestheticTreatments.map((treatment, index) => (
+              <Link className={styles.card} key={treatment.slug} href={`/medical/skin-treatments/${treatment.slug}`} aria-label={`${treatment.title} 의료정보 보기`}>
+                <span className="card-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{treatment.title}</h3>
+                <p>{treatment.description}</p>
+                <span className={`text-link ${styles.link}`}>의료정보 보기 <span aria-hidden="true">→</span></span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
       <section className="section">
