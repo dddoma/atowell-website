@@ -74,6 +74,7 @@ a.care-card:hover { transform: translateY(-5px); border-color: #b7c9bd; box-shad
 .card-number { color: #8fa397; font-size: 12px; font-weight: 800; letter-spacing: .12em; }
 .care-card h3 { margin: 58px 0 13px; font-size: 27px; letter-spacing: -.035em; }
 .care-card p { margin: 0; color: var(--muted); font-size: 16px; }
+.care-card .care-subtitle { margin: 0 0 10px; color: var(--accent); font-size: 15px; font-weight: 700; }
 .care-card .text-link { margin-top: auto; }
 .static-card { min-height: 300px; }
 .text-link { position: relative; z-index: 1; display: inline-flex; gap: 8px; align-items: center; color: var(--accent-dark); font-size: 14px; font-weight: 800; }

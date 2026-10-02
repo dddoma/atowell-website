@@ -11,13 +11,14 @@ const careAreas = [
   },
   {
     number: "02",
-    title: "피부미용",
+    title: "피부치료",
+    subtitle: "피부 병변 제거와 레이저·주사 시술",
     description: "피부 상태와 환자의 필요를 먼저 살피고, 적절한 관리와 시술 여부를 상담합니다.",
     href: "/clinic/aesthetic",
   },
   {
     number: "03",
-    title: "비만치료",
+    title: "비만·체중관리",
     description: "체중과 건강상태를 평가하고 생활관리와 필요한 경우 약물치료를 함께 계획합니다.",
     href: "/clinic/obesity",
   },
@@ -40,7 +41,7 @@ export default function Home() {
           <div className="kicker">ATOWELL CLINIC · GYEONGJU</div>
           <h1>일상 가까이에서<br />피부와 건강을 돌봅니다</h1>
           <p className="lead">
-            경주 황성동 아토웰의원은 피부질환·피부미용·비만치료를 세 축으로,
+            경주 황성동 아토웰의원은 피부질환, 피부치료, 비만·체중관리를 세 축으로,
             환자의 현재 상태와 필요를 살펴 진료합니다.
           </p>
           <div className="actions">
@@ -64,6 +65,7 @@ export default function Home() {
               <Link className="care-card" href={area.href} key={area.title}>
                 <span className="card-number">{area.number}</span>
                 <h3>{area.title}</h3>
+                {area.subtitle && <p className="care-subtitle">{area.subtitle}</p>}
                 <p>{area.description}</p>
                 <span className="text-link">자세히 보기 <span aria-hidden="true">→</span></span>
               </Link>

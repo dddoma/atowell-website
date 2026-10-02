@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return <div className="wrap" style={{ paddingBlock: 32 }}>
-    <nav aria-label="현재 위치" style={{ fontSize: 14, marginBottom: 20 }}><Link href="/clinic/obesity">비만치료</Link> / <Link href="/clinic/mounjaro">마운자로 처방상담</Link> / 상담자료</nav>
+    <nav aria-label="현재 위치" style={{ fontSize: 14, marginBottom: 20 }}><Link href="/clinic/obesity">비만·체중관리</Link> / <Link href="/clinic/mounjaro">마운자로 처방상담</Link> / 상담자료</nav>
     <Guide />
     <details style={{ marginTop: 32 }}>
       <summary>참고자료 및 작성 정보</summary>

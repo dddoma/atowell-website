@@ -4,8 +4,8 @@ import { aestheticTreatments } from "@/data/aestheticTreatments";
 import styles from "./aesthetic.module.css";
 
 export const metadata: Metadata = {
-  title: "경주 피부미용 상담",
-  description: "경주 황성동 아토웰의원의 피부 상태와 필요를 고려한 피부미용 상담 및 시술 안내.",
+  title: "경주 피부치료 상담",
+  description: "경주 황성동 아토웰의원의 피부 병변 제거와 레이저·주사 시술을 위한 피부치료 상담 안내.",
   alternates: { canonical: "/clinic/aesthetic" },
 };
 
@@ -20,7 +20,8 @@ export default function Page() {
     <>
       <section className="page-hero aesthetic-hero">
         <div className="wrap narrow">
-          <div className="kicker">피부미용</div>
+          <div className="kicker">피부치료</div>
+          <p className={styles.subtitle}>피부 병변 제거와 레이저·주사 시술</p>
           <h1>피부 상태와 필요에 맞춘<br />차분한 상담</h1>
           <p className="lead">피부 고민과 원하는 변화를 듣고, 현재 상태에서 적절한 관리와 시술 여부를 함께 살핍니다.</p>
           <div className="actions"><a className="button primary" href="tel:054-776-0294">시술 문의</a><Link className="button secondary" href="/location">진료시간 확인</Link></div>

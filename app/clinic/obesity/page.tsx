@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "경주 비만치료·체중관리 상담",
-  description: "경주 황성동 아토웰의원의 체중과 건강상태 평가, 생활관리와 필요한 경우 약물치료를 포함한 비만 진료 안내.",
+  title: "경주 비만·체중관리 상담",
+  description: "경주 황성동 아토웰의원의 체중과 건강상태 평가, 생활관리와 필요한 경우 약물치료를 포함한 비만·체중관리 진료 안내.",
   alternates: { canonical: "/clinic/obesity" },
 };
 
@@ -20,7 +20,7 @@ export default function Page() {
     <>
       <section className="page-hero obesity-hero">
         <div className="wrap narrow">
-          <div className="kicker">비만치료</div>
+          <div className="kicker">비만·체중관리</div>
           <h1>체중만이 아니라<br />건강과 생활을 함께 봅니다</h1>
           <p className="lead">현재 체중과 건강상태를 평가하고, 생활관리와 필요한 경우 약물치료를 포함해 지속 가능한 방향을 찾습니다.</p>
           <div className="actions"><Link className="button primary" href="/location">진료시간 확인</Link><Link className="button secondary" href="/price">비급여 가격</Link><Link className="button secondary" href="/medical/obesity">비만·체중관리 의료정보</Link></div>

@@ -1,3 +1,10 @@
+.subtitle {
+  margin: -6px 0 24px;
+  color: var(--accent);
+  font-size: 17px;
+  font-weight: 600;
+}
+
 .treatments {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

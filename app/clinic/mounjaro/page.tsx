@@ -27,7 +27,7 @@ export default function Page() {
   return (
     <div className="wrap section article">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <div className="kicker">비만치료 · 약물치료</div>
+      <div className="kicker">비만·체중관리 · 약물치료</div>
       <h1>경주 마운자로<br />처방 상담·가격 안내</h1>
       <p className="lead">아토웰의원에서는 마운자로(티르제파타이드) 비만치료 상담을 시행합니다. 처방 여부와 적절한 용량은 진료 후 결정됩니다.</p>
       <h2>체중 감량·유지</h2>
@@ -49,7 +49,7 @@ export default function Page() {
         </Link>)}</div>
       </nav>}
       <div className="faq">{faq.map(([question, answer]) => <article key={question}><h3>{question}</h3><p>{answer}</p></article>)}</div>
-      <div className="actions"><Link className="button secondary" href="/clinic/obesity">비만치료 안내</Link><Link className="button primary" href="/location">진료시간 확인</Link></div>
+      <div className="actions"><Link className="button secondary" href="/clinic/obesity">비만·체중관리 안내</Link><Link className="button primary" href="/location">진료시간 확인</Link></div>
       <div className="meta">가격 최종 업데이트 {priceUpdatedAt}<br />이 페이지는 일반적인 정보 제공을 위한 것이며 개인의 진단·치료를 대신하지 않습니다.</div>
     </div>
   );
