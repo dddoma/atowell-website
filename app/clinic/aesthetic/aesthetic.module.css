@@ -43,6 +43,10 @@
   margin-top: auto;
 }
 
+.allTreatments {
+  margin: 26px 0 0;
+}
+
 @media (max-width: 920px) {
   .treatments { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

@@ -35,7 +35,16 @@ test('the service section follows the introduction and precedes the unchanged co
   for (const text of ['피부 상태부터 확인합니다', '기대효과와 한계를 설명합니다', '필요한 선택지를 제안합니다', '방문 전 안내']) assert.ok(page.includes(text));
   assert.match(page, /href="tel:054-776-0294">시술 문의/);
   assert.match(page, /href="\/location">진료시간 확인/);
-  assert.match(page, /href="\/medical\/skin-treatments">피부치료 의료정보/);
+});
+
+test('the medical information overview link appears once below the cards, not in the hero', () => {
+  const page = source('../app/clinic/aesthetic/page.tsx');
+  const hero = page.slice(page.indexOf('className="page-hero aesthetic-hero"'), page.indexOf('aria-labelledby="treatments-title"'));
+  assert.doesNotMatch(hero, /\/medical\/skin-treatments/);
+  assert.equal((page.match(/href="\/medical\/skin-treatments"/g) || []).length, 1);
+  assert.match(page, /href="\/medical\/skin-treatments">피부치료 의료정보 전체 보기/);
+  assert.ok(page.indexOf('className={styles.allTreatments}') > page.indexOf('aestheticTreatments.map'));
+  assert.ok(page.indexOf('className={styles.allTreatments}') < page.indexOf('>상담 원칙<'));
 });
 
 test('the new card styles are responsive and expose a keyboard focus indicator', () => {
