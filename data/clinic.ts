@@ -23,8 +23,8 @@ export const reservationLinks = {
 };
 
 export const mounjaroPrices = [
-  { dose: "2.5mg", quantity: "4펜", price: 310000 },
-  { dose: "5mg", quantity: "4펜", price: 410000 },
+  { dose: "2.5mg", quantity: "4펜", price: 295000 },
+  { dose: "5mg", quantity: "4펜", price: 385000 },
   { dose: "7.5mg", quantity: "4펜", price: 570000 },
   { dose: "10mg", quantity: "4펜", price: 570000 },
   { dose: "12.5mg", quantity: "4펜", price: 720000 },
@@ -95,4 +95,4 @@ export const documentPrices = [
 ];
 
 export const nonCoveredVisitFee = 15000;
-export const priceUpdatedAt = "2026-09-22";
+export const priceUpdatedAt = "2026-10-03";
