@@ -5,6 +5,7 @@ import { Check, Copy, Flag, Ruler, Scale, Sparkles } from 'lucide-react';
 import { Slider } from './Slider';
 import styles from './bmi.module.css';
 import { scrollRailToItem } from './scrollRail';
+import { clinic } from '@/data/clinic';
 
 const cx = (...names: string[]) => names.map((name) => styles[name]).join(' ');
 import { BMI_BANDS, BMI_COLUMNS, BMI_GRADIENT, BMI_THRESHOLDS, bmiPosition, getBmiStatus } from '@/lib/bmi';
@@ -95,7 +96,7 @@ export default function BmiCalculator() {
   const [height, setHeight] = useState(170);
   const [currentWeight, setCurrentWeight] = useState(65);
   const [targetWeight, setTargetWeight] = useState(58);
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<'bmi' | 'consultation' | null>(null);
   const [copyError, setCopyError] = useState(false);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => () => { if (copyTimer.current) clearTimeout(copyTimer.current); }, []);
@@ -107,15 +108,36 @@ export default function BmiCalculator() {
   const healthyMax = BMI_THRESHOLDS[1] * ((height / 100) ** 2);
 
   const resultText = `BMI 체크 결과\n키: ${height}cm\n현재 체중: ${currentWeight}kg\n목표 체중: ${targetWeight}kg\n현재 BMI: ${bmi.toFixed(1)} (${status.label})\n목표 BMI: ${targetBmi.toFixed(1)}\n${change >= 0 ? '감량 목표' : '증량 목표'}: ${Math.abs(change).toFixed(1)}kg\n정상 체중 범위: ${healthyMin.toFixed(1)}kg 이상 ${healthyMax.toFixed(1)}kg 미만`;
-  const copyResult = async () => {
+  const consultationText = `[BMI·목표체중 안내]
+
+BMI Slider
+https://atowell.kr/tools/bmi
+
+체중관리 상담자료
+https://atowell.kr/medical/obesity/mounjaro-guide
+
+키: ${height}cm
+현재 체중: ${currentWeight}kg
+현재 BMI: ${bmi.toFixed(1)} (${status.label})
+
+정상 체중 범위: ${healthyMin.toFixed(1)}kg 이상 ~ ${healthyMax.toFixed(1)}kg 미만
+
+목표 체중: ${targetWeight}kg
+목표 BMI: ${targetBmi.toFixed(1)}
+${change >= 0 ? '감량 목표' : '증량 목표'}: ${Math.abs(change).toFixed(1)}kg
+
+${clinic.name}
+${clinic.phone}`;
+  const copyResult = async (type: 'bmi' | 'consultation') => {
+    if (copyTimer.current) clearTimeout(copyTimer.current);
+    setCopied(null);
+    setCopyError(false);
     try {
-      await navigator.clipboard.writeText(resultText);
-      setCopyError(false);
-      setCopied(true);
-      if (copyTimer.current) clearTimeout(copyTimer.current);
-      copyTimer.current = setTimeout(() => setCopied(false), 1800);
+      await navigator.clipboard.writeText(type === 'bmi' ? resultText : consultationText);
+      setCopied(type);
+      copyTimer.current = setTimeout(() => setCopied(null), 1800);
     } catch {
-      setCopied(false);
+      setCopied(null);
       setCopyError(true);
     }
   };
@@ -162,7 +184,8 @@ export default function BmiCalculator() {
           <div className={cx('goal-weight')}><span>{change >= 0 ? '감량을 원하는 체중' : '증량을 원하는 체중'}</span><strong>{Math.abs(change).toFixed(1)}<small>kg</small></strong></div>
           <div className={cx('goal-bmi')}><span>목표 BMI</span><strong>{targetBmi.toFixed(1)}</strong><small>{getBmiStatus(targetBmi).label}</small></div>
         </div>
-        <button type="button" className={cx('copy-button')} onClick={copyResult}>{copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}{copied ? '복사했어요' : '결과 전체 복사'}</button>
+        <button type="button" className={cx('copy-button')} onClick={() => copyResult('bmi')} aria-live="polite">{copied === 'bmi' ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}{copied === 'bmi' ? 'BMI 결과를 복사했어요' : 'BMI 결과 복사'}</button>
+        <button type="button" className={cx('copy-button')} onClick={() => copyResult('consultation')} aria-live="polite">{copied === 'consultation' ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}{copied === 'consultation' ? '상담 결과를 복사했어요' : '상담 결과 복사'}</button>
         {copyError && <p role="status" className={cx('copy-error')}>복사 권한을 확인하거나 결과를 직접 선택해 복사해 주세요.</p>}
         <p className={cx('notice')}>BMI는 참고용 지표이며 개인의 건강 상태를 모두 반영하지는 않습니다.</p>
       </aside>
