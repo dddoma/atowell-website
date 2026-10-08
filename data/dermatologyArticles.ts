@@ -1,6 +1,7 @@
 import { herpesArticles } from "./herpesArticles";
 import { dermatitisArticles } from "./dermatitisArticles";
 import { handProtectionArticle } from "./handProtectionArticle";
+import { atopicCareArticle } from "./atopicCareArticle";
 
 export type DermatologyArticle = {
   slug: string;
@@ -403,7 +404,7 @@ const newlyReviewedArticles: DermatologyArticle[] = [
 // Unpublished drafts are accessible only in Preview or local development.
 // Explicitly authorized publications may still be awaiting medical review.
 export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
-export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle]
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle]
   .filter((article) => !article.draft || dermatologyDraftsVisible);
 
 export function getDermatologyPublication(article: DermatologyArticle) {

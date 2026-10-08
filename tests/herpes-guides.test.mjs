@@ -3,11 +3,12 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import ts from 'typescript';
 
-const source = path => readFileSync(new URL(path, import.meta.url), 'utf8');
+const source = path => readFileSync(new URL(path, import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 const load = async text => import(`data:text/javascript;base64,${Buffer.from(ts.transpileModule(text, { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText).toString('base64')}`);
 const { herpesArticles } = await load(source('../data/herpesArticles.ts'));
 const { dermatitisArticles } = await load(source('../data/dermatitisArticles.ts'));
 const { handProtectionArticle } = await load(source('../data/handProtectionArticle.ts'));
+const { atopicCareArticle } = await load(source('../data/atopicCareArticle.ts'));
 const slugs = ['shingles', 'herpes-simplex', 'chickenpox'];
 
 function publicationSource(environment) {
@@ -15,6 +16,7 @@ function publicationSource(environment) {
     .replace('import { herpesArticles } from "./herpesArticles";', `const herpesArticles = ${JSON.stringify(herpesArticles)};`)
     .replace('import { dermatitisArticles } from "./dermatitisArticles";', `const dermatitisArticles = ${JSON.stringify(dermatitisArticles)};`)
     .replace('import { handProtectionArticle } from "./handProtectionArticle";', `const handProtectionArticle = ${JSON.stringify(handProtectionArticle)};`)
+    .replace('import { atopicCareArticle } from "./atopicCareArticle";', `const atopicCareArticle = ${JSON.stringify(atopicCareArticle)};`)
     .replaceAll('process.env.VERCEL_ENV', JSON.stringify(environment))
     .replaceAll('process.env.NODE_ENV', '"production"');
 }

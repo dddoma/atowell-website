@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Check, Copy } from "lucide-react";
 import styles from "./PatientGuideActions.module.css";
 
-export default function PatientGuideActions({ href, copyText }: { href: string; copyText: string }) {
+export default function PatientGuideActions({ href, copyText, viewLabel = "손 보호 방법 바로 보기" }: { href: string; copyText: string; viewLabel?: string }) {
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState(false);
   const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -31,7 +31,7 @@ export default function PatientGuideActions({ href, copyText }: { href: string; 
 
   return <div className={styles.container}>
     <div className={styles.actions}>
-      <Link className={`button primary ${styles.viewButton}`} href={href}>손 보호 방법 바로 보기 <ArrowRight size={16} aria-hidden="true" /></Link>
+      <Link className={`button primary ${styles.viewButton}`} href={href}>{viewLabel} <ArrowRight size={16} aria-hidden="true" /></Link>
       <button className={`button secondary ${styles.copyButton}`} type="button" onClick={copyMessage} aria-describedby={helpId}>
         {copied ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
         {copied ? "복사 완료" : "링크 복사"}

@@ -7,12 +7,14 @@ const source = path => readFileSync(new URL(path, import.meta.url), 'utf8');
 const load = async text => import(`data:text/javascript;base64,${Buffer.from(ts.transpileModule(text, { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText).toString('base64')}`);
 const { dermatitisArticles } = await load(source('../data/dermatitisArticles.ts'));
 const { handProtectionArticle } = await load(source('../data/handProtectionArticle.ts'));
+const { atopicCareArticle } = await load(source('../data/atopicCareArticle.ts'));
 const { herpesArticles } = await load(source('../data/herpesArticles.ts'));
 const slugs = ['contact-dermatitis', 'atopic-dermatitis'];
 const publicationSource = environment => source('../data/dermatologyArticles.ts')
   .replace('import { herpesArticles } from "./herpesArticles";', `const herpesArticles = ${JSON.stringify(herpesArticles)};`)
   .replace('import { dermatitisArticles } from "./dermatitisArticles";', `const dermatitisArticles = ${JSON.stringify(dermatitisArticles)};`)
   .replace('import { handProtectionArticle } from "./handProtectionArticle";', `const handProtectionArticle = ${JSON.stringify(handProtectionArticle)};`)
+  .replace('import { atopicCareArticle } from "./atopicCareArticle";', `const atopicCareArticle = ${JSON.stringify(atopicCareArticle)};`)
   .replaceAll('process.env.VERCEL_ENV', JSON.stringify(environment))
   .replaceAll('process.env.NODE_ENV', '"production"');
 
@@ -42,7 +44,7 @@ test('published guides stay public while explicitly awaiting physician review', 
       assert.ok(article);
       const publication = getDermatologyPublication(article);
       assert.equal(publication.publishedAt, '2026-10-02');
-      assert.equal(publication.modifiedAt, '2026-10-02');
+      assert.equal(publication.modifiedAt, slug === 'atopic-dermatitis' ? '2026-10-08' : '2026-10-02');
       assert.equal(publication.sourceCheckedAt, '2026-10-02');
       assert.equal(publication.medicalReviewCompleted, false);
       assert.equal(publication.reviewedAt, '');

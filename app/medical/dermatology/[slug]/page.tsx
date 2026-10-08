@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dermatologyArticles, getDermatologyPublication } from "@/data/dermatologyArticles";
 import { handProtectionMessage, handProtectionPath } from "@/data/handProtectionMessage";
+import { atopicCareMessage, atopicCarePath } from "@/data/atopicCareMessage";
 import PatientGuideActions from "@/components/PatientGuideActions";
 import styles from "./article.module.css";
 
@@ -82,6 +83,12 @@ export default async function Page({ params }: Props) {
         <h2 id="hand-guide-intro">손이 자주 가렵고 갈라지나요?</h2>
         <p>손 씻기부터 보습·장갑 사용까지, 일상에서 손을 보호하는 방법을 정리했습니다.</p>
         <PatientGuideActions href={handProtectionPath} copyText={handProtectionMessage} />
+      </aside>}
+      {slug === "atopic-dermatitis" && <aside id="atopic-care" className={styles.guideIntro} aria-labelledby="atopic-guide-intro">
+        <span className={styles.guideLabel}>매일 실천하는 아토피 관리</span>
+        <h2 id="atopic-guide-intro">가려움·염증·보습, 이렇게 관리하세요</h2>
+        <p>처방받은 항히스타민제의 역할, 스테로이드 연고 사용법, 피부 장벽을 위한 보습을 한눈에 확인하세요.</p>
+        <PatientGuideActions href={atopicCarePath} copyText={atopicCareMessage} viewLabel="아토피 관리 안내문 바로 보기" />
       </aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
       {article.sections.map((section) => <section key={section.id} id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>

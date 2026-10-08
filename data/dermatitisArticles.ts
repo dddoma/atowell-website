@@ -194,7 +194,7 @@ export const dermatitisArticles: DermatologyArticle[] = [
     "draft": false,
     "publication": {
       "publishedAt": "2026-10-02",
-      "modifiedAt": "2026-10-02",
+      "modifiedAt": "2026-10-08",
       "sourceCheckedAt": "2026-10-02",
       "medicalReviewCompleted": false
     },
