@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dermatologyArticles, getDermatologyPublication } from "@/data/dermatologyArticles";
+import { handProtectionMessage, handProtectionPath } from "@/data/handProtectionMessage";
+import PatientGuideActions from "@/components/PatientGuideActions";
 import styles from "./article.module.css";
 
 export const dynamicParams = false;
@@ -38,7 +40,6 @@ export default async function Page({ params }: Props) {
   if (!article) notFound();
   const publication = getDermatologyPublication(article);
   const url = `https://atowell.kr${basePath}/${slug}`;
-  const featuredGuide = article.sections.find((section) => section.guide);
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -76,11 +77,11 @@ export default async function Page({ params }: Props) {
     </section>
     <article className={`wrap section article ${styles.body}`}>
       {article.alert && <aside className={styles.alert} aria-labelledby="urgent-heading"><h2 id="urgent-heading">{article.alert.title}</h2><p>{article.alert.text}</p><Sources numbers={article.alert.sources ?? [2]} /></aside>}
-      {featuredGuide && <aside className={styles.guideIntro} aria-labelledby="hand-guide-intro">
+      {slug === "dermatitis-eczema" && <aside id="hand-protection" className={styles.guideIntro} aria-labelledby="hand-guide-intro">
         <span className={styles.guideLabel}>생활 속 손 관리</span>
         <h2 id="hand-guide-intro">손이 자주 가렵고 갈라지나요?</h2>
         <p>손 씻기부터 보습·장갑 사용까지, 일상에서 손을 보호하는 방법을 정리했습니다.</p>
-        <a className="button primary" href={`#${featuredGuide.id}`}>손 보호 방법 바로 보기 <span aria-hidden="true">↓</span></a>
+        <PatientGuideActions href={handProtectionPath} copyText={handProtectionMessage} />
       </aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
       {article.sections.map((section) => <section key={section.id} id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>
@@ -102,7 +103,7 @@ export default async function Page({ params }: Props) {
         </>}
         <Sources numbers={section.sources} />
       </section>)}
-      <section className={styles.section}><h2>자주 묻는 질문</h2><div className="faq">{article.faq.map((faq) => <article key={faq.question} id={faq.id} className={styles.faqItem}><h3>{faq.question}</h3><p>{faq.answer}</p><Sources numbers={faq.sources} />{faq.links && <ul className={styles.related}>{faq.links.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul>}</article>)}</div></section>
+      {article.faq.length > 0 && <section className={styles.section}><h2>자주 묻는 질문</h2><div className="faq">{article.faq.map((faq) => <article key={faq.question} id={faq.id} className={styles.faqItem}><h3>{faq.question}</h3><p>{faq.answer}</p><Sources numbers={faq.sources} />{faq.links && <ul className={styles.related}>{faq.links.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul>}</article>)}</div></section>}
       <section className={styles.section}><h2>함께 읽어보세요</h2><ul className={styles.related}>{article.related.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul></section>
       <section className={styles.section} aria-labelledby="references-heading"><h2 id="references-heading">참고문헌·근거자료</h2><ol className={`milia-sources ${styles.references}`}>{article.references.map((reference, index) => <li id={`reference-${index + 1}`} key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{reference.title}</a></li>)}</ol></section>
       <footer className="meta medical-article-meta" aria-label="게시 및 작성 정보">

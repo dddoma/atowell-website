@@ -1,0 +1,13 @@
+.actions { display: flex; align-items: stretch; flex-wrap: wrap; gap: 10px; }
+.viewButton, .copyButton { gap: 8px; }
+.copyButton { cursor: pointer; color: var(--accent-dark); border-color: #9cb5a4; font-family: inherit; }
+.actions svg { flex-shrink: 0; }
+.container .hint { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.fallback { margin-top: 16px; }
+.fallback label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 700; }
+.fallback textarea { display: block; width: 100%; padding: 14px; border: 1px solid var(--accent); border-radius: 10px; background: white; color: var(--ink); font: inherit; font-size: 14px; line-height: 1.7; resize: vertical; }
+.actions a:focus-visible, .actions button:focus-visible, .fallback textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 600px) {
+  .actions { gap: 8px; }
+  .viewButton, .copyButton { gap: 5px; padding-inline: 12px; font-size: 13px; }
+}
