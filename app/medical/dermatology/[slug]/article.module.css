@@ -26,3 +26,37 @@
 }
 
 .faqItem { scroll-margin-top: 100px; }
+
+.guideIntro { margin-bottom: 28px; padding: 26px 28px; background: var(--sage); border: 1px solid #c6d8cb; border-left: 5px solid var(--accent); border-radius: 16px; }
+.guideLabel { display: inline-block; color: var(--accent); font-size: 13px; font-weight: 800; }
+.guideIntro h2 { margin: 10px 0; color: var(--accent-dark); font-size: 26px; line-height: 1.4; }
+.guideIntro p { margin: 0 0 18px; }
+.handGuide { margin-top: 44px; padding: 30px; background: #f4f8f4; border: 1px solid #c6d8cb; border-top: 5px solid var(--accent); border-radius: 18px; }
+.handGuide h2 { margin: 12px 0 16px; color: var(--accent-dark); }
+.guidePrinciples { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 22px 0; list-style: none; }
+.guidePrinciples li { margin: 0; padding: 8px 12px; border-radius: 8px; background: #e2ede4; color: var(--accent-dark); font-size: 15px; font-weight: 700; }
+.guideSteps { margin: 28px 0; padding: 0; list-style: none; }
+.guideSteps > li { margin: 0; padding: 24px 0; border-top: 1px solid #d3e0d6; }
+.guideSteps h3 { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 16px; font-size: 21px; line-height: 1.5; color: var(--accent-dark); }
+.stepNumber { display: grid; place-items: center; flex: 0 0 30px; height: 30px; border-radius: 50%; background: var(--accent); color: white; font-size: 15px; }
+.guideSteps ul { margin: 0; padding-left: 24px; }
+.guideSteps ul li:last-child { margin-bottom: 0; }
+.guideSubheading { margin: 0 0 18px; font-size: 23px; }
+.guideSituations { margin: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: white; }
+.guideSituations > div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 18px; padding: 20px; border-bottom: 1px solid var(--line); }
+.guideSituations > div:last-child { border-bottom: 0; }
+.guideSituations dt { font-weight: 700; color: var(--accent-dark); }
+.guideSituations dd { margin: 0; }
+.guideAftercare { margin: 28px 0 20px; padding: 20px; border-radius: 12px; background: var(--sage); }
+.guideAftercare h3 { margin: 0 0 10px; font-size: 20px; }
+.guideAftercare p { margin: 0; }
+.guideVisit a { text-decoration: underline; text-underline-offset: 3px; color: var(--accent-dark); }
+.guideIntro a:focus-visible, .handGuide a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+@media (max-width: 600px) {
+  .guideIntro { padding: 22px 18px; }
+  .guideIntro h2 { font-size: 23px; }
+  .handGuide { padding: 24px 18px; }
+  .guideSteps h3 { font-size: 20px; gap: 10px; }
+  .guidePrinciples li { font-size: 14px; }
+  .guideSituations > div { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 18px; }
+}

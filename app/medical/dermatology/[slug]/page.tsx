@@ -38,6 +38,7 @@ export default async function Page({ params }: Props) {
   if (!article) notFound();
   const publication = getDermatologyPublication(article);
   const url = `https://atowell.kr${basePath}/${slug}`;
+  const featuredGuide = article.sections.find((section) => section.guide);
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -75,12 +76,30 @@ export default async function Page({ params }: Props) {
     </section>
     <article className={`wrap section article ${styles.body}`}>
       {article.alert && <aside className={styles.alert} aria-labelledby="urgent-heading"><h2 id="urgent-heading">{article.alert.title}</h2><p>{article.alert.text}</p><Sources numbers={article.alert.sources ?? [2]} /></aside>}
+      {featuredGuide && <aside className={styles.guideIntro} aria-labelledby="hand-guide-intro">
+        <span className={styles.guideLabel}>생활 속 손 관리</span>
+        <h2 id="hand-guide-intro">손이 자주 가렵고 갈라지나요?</h2>
+        <p>손 씻기부터 보습·장갑 사용까지, 일상에서 손을 보호하는 방법을 정리했습니다.</p>
+        <a className="button primary" href={`#${featuredGuide.id}`}>손 보호 방법 바로 보기 <span aria-hidden="true">↓</span></a>
+      </aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
-      {article.sections.map((section) => <section key={section.id} id={section.id} className={styles.section}>
+      {article.sections.map((section) => <section key={section.id} id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>
+        {section.guide && <span className={styles.guideLabel}>손의 자극성피부염 · 환자 안내</span>}
         <h2>{section.title}</h2>
         {section.table && <div className={styles.tableScroll} role="region" aria-label={section.title} tabIndex={0}><table><caption className={styles.caption}>{section.title} — 진단을 돕는 참고 정보</caption><thead><tr>{section.table.headers.map((header) => <th scope="col" key={header}>{header}</th>)}</tr></thead><tbody>{section.table.rows.map(([label, ...cells]) => <tr key={label}><th scope="row">{label}</th>{cells.map((cell) => <td key={cell}>{cell}</td>)}</tr>)}</tbody></table></div>}
         {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         {section.bullets && <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>}
+        {section.guide && <>
+          <ul className={styles.guidePrinciples} aria-label="기억할 세 가지">{section.guide.summary.map((item) => <li key={item}>{item}</li>)}</ul>
+          <ol className={styles.guideSteps}>{section.guide.steps.map((step, index) => <li key={step.title}>
+            <h3><span className={styles.stepNumber} aria-hidden="true">{index + 1}</span>{step.title}</h3>
+            <ul>{step.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+          </li>)}</ol>
+          <h3 className={styles.guideSubheading}>일상에서는 이렇게 해보세요</h3>
+          <dl className={styles.guideSituations}>{section.guide.situations.map((situation) => <div key={situation.title}><dt>{situation.title}</dt><dd>{situation.advice}</dd></div>)}</dl>
+          <div className={styles.guideAftercare}><h3>좋아진 뒤에도 손 보호를 계속하세요</h3><p>{section.guide.aftercare}</p></div>
+          <p className={styles.guideVisit}>고름·심한 통증·열감·부기, 빠르게 번지는 붉어짐이나 발열이 있으면 빠른 진료가 필요합니다. 관리를 해도 낫지 않거나 자주 재발할 때도 다시 상담해 주세요. <a href="#visit">진료가 필요한 증상 보기 →</a></p>
+        </>}
         <Sources numbers={section.sources} />
       </section>)}
       <section className={styles.section}><h2>자주 묻는 질문</h2><div className="faq">{article.faq.map((faq) => <article key={faq.question} id={faq.id} className={styles.faqItem}><h3>{faq.question}</h3><p>{faq.answer}</p><Sources numbers={faq.sources} />{faq.links && <ul className={styles.related}>{faq.links.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul>}</article>)}</div></section>
