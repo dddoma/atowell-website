@@ -1,3 +1,5 @@
+import PatientMessageCopy from "@/components/PatientMessageCopy";
+import { seborrheicDermatitisMessage } from "@/data/patientGuideMessages";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MedicalArticleFooter } from "@/components/MedicalArticleFooter";
@@ -86,6 +88,7 @@ export default function Page() {
         <div className="actions">
           <Link className="button secondary" href="/medical/dermatology">피부질환 의료정보로 돌아가기</Link>
           <Link className="button primary" href="/location#reservation">진료 예약 안내</Link>
+          <PatientMessageCopy message={seborrheicDermatitisMessage} />
         </div>
       </main>
     </>
