@@ -1,3 +1,5 @@
+import PatientMessageCopy from "@/components/PatientMessageCopy";
+import { shinglesAftercareMessage } from "@/data/patientGuideMessages";
 import ShinglesGuideCopy from "@/components/ShinglesGuideCopy";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -96,7 +98,7 @@ export default async function Page({ params }: Props) {
         <span className={styles.guideLabel}>진료 후 집에서 읽는 안내</span>
         <h2 id="shingles-guide-intro">대상포진, 진료 후 집에서는 이렇게 관리하세요</h2>
         <p>항바이러스제·진통제 복용, 물집 관리, 가족에게 전염을 줄이는 방법과 재진이 필요한 증상을 확인하세요.</p>
-        <PatientGuideActions href="/medical/dermatology/shingles-aftercare" copyText="https://atowell.kr/medical/dermatology/shingles-aftercare" viewLabel="대상포진 진료 후 안내문 보기" />
+        <PatientGuideActions href="/medical/dermatology/shingles-aftercare" copyText={shinglesAftercareMessage} viewLabel="대상포진 진료 후 안내문 보기" />
       </aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
       {article.sections.map((section) => <section key={section.id} id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>
@@ -130,7 +132,7 @@ export default async function Page({ params }: Props) {
         {!publication.medicalReviewCompleted && <p>의학적 검토: 대기 중</p>}
         <p>이 글은 일반적인 의료정보로, 개인의 진단이나 처방을 대신하지 않습니다.</p>
       </footer>
-      <div className="actions"><Link className="button secondary" href={basePath}>피부질환 의료정보로 돌아가기</Link><Link className="button primary" href="/location#reservation">진료 예약 안내</Link></div>
+      <div className="actions"><Link className="button secondary" href={basePath}>피부질환 의료정보로 돌아가기</Link><Link className="button primary" href="/location#reservation">진료 예약 안내</Link>{slug === "hand-protection" && <PatientMessageCopy message={handProtectionMessage} />}</div>
     </article>
   </>;
 }
