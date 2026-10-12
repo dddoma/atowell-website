@@ -2,9 +2,12 @@ import type { DermatologyArticle } from "./dermatologyArticles";
 
 export const shinglesAftercareArticle: DermatologyArticle = {
   "slug": "shingles-aftercare",
-  "draft": true,
-  "draftDates": {
-    "createdAt": "2026-10-12",
+  "draft": false,
+  "publication": {
+    "publishedAt": "2026-10-12",
+    "reviewedAt": "2026-10-12",
+    "medicalReviewCompleted": true,
+    "reviewerName": "권병현",
     "modifiedAt": "2026-10-12",
     "sourceCheckedAt": "2026-10-12"
   },
