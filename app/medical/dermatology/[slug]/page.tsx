@@ -1,3 +1,4 @@
+import ShinglesGuideCopy from "@/components/ShinglesGuideCopy";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -69,7 +70,8 @@ export default async function Page({ params }: Props) {
     <section className="page-hero care-hero">
       <div className={`wrap article ${styles.hero}`}>
         <nav aria-label="현재 위치" className={styles.breadcrumb}><Link href="/">홈</Link><span> / </span><Link href={basePath}>피부질환 의료정보</Link></nav>
-        <div className="kicker">SKIN GUIDE</div>
+        {slug === "shingles-aftercare" && <ShinglesGuideCopy />}
+        <div className="kicker">{slug === "shingles-aftercare" ? "진료 후 안내" : "SKIN GUIDE"}</div>
         {article.draft && <p role="status">검토용 초안 · 원장 의학적 검토 대기 · 아직 게시되지 않은 자료입니다.</p>}
         {!article.draft && !publication.medicalReviewCompleted && <p role="status">의학적 검토 대기 · 일반 의료정보</p>}
         <h1>{article.title}</h1>
@@ -89,6 +91,12 @@ export default async function Page({ params }: Props) {
         <h2 id="atopic-guide-intro">가려움·염증·보습, 이렇게 관리하세요</h2>
         <p>처방받은 항히스타민제의 역할, 스테로이드 연고 사용법, 피부 장벽을 위한 보습을 한눈에 확인하세요.</p>
         <PatientGuideActions href={atopicCarePath} copyText={atopicCareMessage} viewLabel="아토피 관리 안내문 바로 보기" />
+      </aside>}
+      {slug === "shingles" && dermatologyArticles.some((item) => item.slug === "shingles-aftercare") && <aside id="aftercare" className={styles.guideIntro} aria-labelledby="shingles-guide-intro">
+        <span className={styles.guideLabel}>진료 후 집에서 읽는 안내</span>
+        <h2 id="shingles-guide-intro">대상포진, 진료 후 집에서는 이렇게 관리하세요</h2>
+        <p>항바이러스제·진통제 복용, 물집 관리, 가족에게 전염을 줄이는 방법과 재진이 필요한 증상을 확인하세요.</p>
+        <PatientGuideActions href="/medical/dermatology/shingles-aftercare" copyText="https://atowell.kr/medical/dermatology/shingles-aftercare" viewLabel="대상포진 진료 후 안내문 보기" />
       </aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
       {article.sections.map((section) => <section key={section.id} id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>
