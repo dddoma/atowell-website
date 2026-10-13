@@ -19,8 +19,13 @@ const conditions = [
         "draft": false
       },
       {
-        "title": "지루성피부염",
+        "title": "지루성피부염_얼굴",
         "href": "/medical/dermatology/seborrheic-dermatitis",
+        "draft": false
+      },
+      {
+        "title": "지루성피부염_두피",
+        "href": "/medical/dermatology/seborrheic-dermatitis-scalp",
         "draft": false
       },
       {

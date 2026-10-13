@@ -29,3 +29,19 @@ https://atowell.kr/medical/dermatology/seborrheic-dermatitis
 
 ${clinic.name}
 ${clinic.phone}`;
+
+export const scalpSeborrheicMessage = `[두피 지루성피부염·진료 후 관리 안내]
+
+진료실에서 안내드린 두피 지루성피부염 관리 방법입니다. 아래 자료를 읽고 집에서 확인해 주세요.
+
+두피 지루성피부염 관리
+https://atowell.kr/medical/dermatology/seborrheic-dermatitis-scalp
+
+꼭 기억해 주세요.
+- 두피용 샴푸와 일반 샴푸는 안내받은 방법으로 사용하세요.
+- 충분히 말린 뒤 처방받은 액상 약을 두피에 소량 바르세요.
+- 약용 샴푸는 제품별 사용 횟수를, 바르는 약과 먹는 약은 처방된 횟수·기간을 지키세요.
+- 진물·고름·심한 통증이 생기거나 계속 악화되면 다시 진료받으세요.
+
+${clinic.name}
+${clinic.phone}`;

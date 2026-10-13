@@ -17,9 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ] as const;
   const medicalUpdateDates: Record<string, string> = {
     "": "2026-10-02", "/about": "2026-10-02", "/price": "2026-10-02",
-    "/clinic/dermatology": "2026-10-02", "/clinic/aesthetic": "2026-10-02", "/clinic/obesity": "2026-10-02",
+    "/clinic/dermatology": "2026-10-13", "/clinic/aesthetic": "2026-10-02", "/clinic/obesity": "2026-10-02",
     "/medical/obesity": "2026-09-29", "/medical/obesity/mounjaro-guide": "2026-09-29",
-    "/medical/dermatology": "2026-10-08",
+    "/medical/dermatology": "2026-10-13",
     "/medical/dermatology/milia": medicalArticles.milia.modifiedAt,
     "/medical/dermatology/seborrheic-dermatitis": medicalArticles.seborrheicDermatitis.modifiedAt,
   };
