@@ -43,6 +43,10 @@ export default async function Page({ params }: Props) {
   if (!article) notFound();
   const publication = getDermatologyPublication(article);
   const url = `https://atowell.kr${basePath}/${slug}`;
+  const patientMessage = slug === "hand-protection" ? handProtectionMessage
+    : slug === "atopic-dermatitis-care" ? atopicCareMessage
+    : slug === "shingles-aftercare" ? shinglesAftercareMessage
+    : undefined;
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -70,6 +74,7 @@ export default async function Page({ params }: Props) {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
     <section className="page-hero care-hero">
       <div className={`wrap article ${styles.hero}`}>
+        {patientMessage && <PatientMessageCopy message={patientMessage} />}
         <nav aria-label="현재 위치" className={styles.breadcrumb}><Link href="/">홈</Link><span> / </span><Link href={basePath}>피부질환 의료정보</Link></nav>
         <div className="kicker">{slug === "shingles-aftercare" ? "진료 후 안내" : "SKIN GUIDE"}</div>
         {article.draft && <p role="status">검토용 초안 · 원장 의학적 검토 대기 · 아직 게시되지 않은 자료입니다.</p>}
@@ -133,8 +138,6 @@ export default async function Page({ params }: Props) {
       <div className="actions">
         <Link className="button secondary" href={basePath}>피부질환 의료정보로 돌아가기</Link>
         <Link className="button primary" href="/location#reservation">진료 예약 안내</Link>
-        {slug === "hand-protection" && <PatientMessageCopy message={handProtectionMessage} />}
-        {slug === "shingles-aftercare" && <PatientMessageCopy message={shinglesAftercareMessage} />}
       </div>
     </article>
   </>;
