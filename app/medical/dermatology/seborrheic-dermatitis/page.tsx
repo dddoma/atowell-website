@@ -37,6 +37,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
       <section className="page-hero care-hero">
         <div className="wrap article">
+          <PatientMessageCopy message={seborrheicDermatitisMessage} />
           <div className="kicker">SKIN GUIDE</div>
           <h1>얼굴 지루성피부염,<br />피지를 없애기보다 피부장벽을 지켜주세요</h1>
           <p className="lead">여드름처럼 오돌토돌하고 붉어 보여도, 피부가 건조하고 자극받아 생기는 피부염은 관리 방향이 다릅니다. 덜 자극하고 충분히 보습하는 것이 치료의 기본입니다.</p>
@@ -88,7 +89,6 @@ export default function Page() {
         <div className="actions">
           <Link className="button secondary" href="/medical/dermatology">피부질환 의료정보로 돌아가기</Link>
           <Link className="button primary" href="/location#reservation">진료 예약 안내</Link>
-          <PatientMessageCopy message={seborrheicDermatitisMessage} />
         </div>
       </main>
     </>
