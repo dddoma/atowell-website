@@ -1,3 +1,4 @@
+import { athletesFootCareArticle } from "./athletesFootCareArticle";
 import { postherpeticNeuralgiaArticle } from "./postherpeticNeuralgiaArticle";
 import { folliculitisCareArticle } from "./folliculitisCareArticle";
 import { teenAcneGuideArticle } from "./teenAcneGuideArticle";
@@ -91,6 +92,7 @@ const publishedArticles: DermatologyArticle[] = [
   },
   {
     slug: "athletes-foot-eczema",
+    publication: { ...dermatologyPublication, modifiedAt: "2026-10-14" },
     title: "무좀과 습진은 어떻게 다른가요?",
     description: "발의 가려움·각질·물집을 만드는 무좀과 습진의 차이, 진균 검사와 바르는 약의 주의점을 안내합니다.",
     answer: "무좀은 곰팡이 감염이고, 습진은 자극·알레르기 등과 관련된 피부 염증입니다. 둘 다 가렵고 벗겨지거나 물집이 생길 수 있어 겉모양만으로 구분하기 어려우며, 필요하면 각질의 진균 검사를 합니다.",
@@ -412,7 +414,7 @@ const newlyReviewedArticles: DermatologyArticle[] = [
 // Unpublished drafts are accessible only in Preview or local development.
 // Explicitly authorized publications may still be awaiting medical review.
 export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
-export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle, isotretinoinGuideArticle, teenAcneGuideArticle, folliculitisCareArticle, postherpeticNeuralgiaArticle]
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle, isotretinoinGuideArticle, teenAcneGuideArticle, folliculitisCareArticle, postherpeticNeuralgiaArticle, athletesFootCareArticle]
   .filter((article) => !article.draft || dermatologyDraftsVisible);
 
 export function getDermatologyPublication(article: DermatologyArticle) {

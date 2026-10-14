@@ -124,3 +124,19 @@ https://atowell.kr/medical/dermatology/postherpetic-neuralgia-care
 
 ${clinic.name}
 ${clinic.phone}`;
+
+export const athletesFootCareMessage = `[발 무좀·진료 후 관리 안내]
+
+진료실에서 안내드린 발 무좀 관리 방법입니다. 아래 자료를 읽고 집에서 확인해 주세요.
+
+발 무좀 관리 안내문
+https://atowell.kr/medical/dermatology/athletes-foot-care
+
+꼭 기억해 주세요.
+- 처방받은 항진균제는 안내받은 방법과 기간대로 사용하세요.
+- 발가락 사이는 잘 말리고, 건조한 발바닥과 뒤꿈치는 보습하세요.
+- 각질을 억지로 벗기거나 습진 연고를 임의로 바르지 마세요.
+- 붉음·열감·붓기·통증이 퍼지거나 고름·발열이 생기면 빨리 진료받으세요.
+
+${clinic.name}
+${clinic.phone}`;
