@@ -7,13 +7,13 @@ const references = [
   { title: "영국피부과학회(BAD) — Pruritus (itching)", url: "https://www.bad.org.uk/pils/pruritus-itching" },
   { title: "영국 NHS — Antihistamines", url: "https://www.nhs.uk/medicines/antihistamines/" },
 ];
-const draft = {
-  draft: true,
-  draftDates: { createdAt: "2026-10-14", modifiedAt: "2026-10-14", sourceCheckedAt: "2026-10-14" },
+const reviewed = {
+  draft: false,
+  publication: { publishedAt: "2026-10-14", modifiedAt: "2026-10-14", sourceCheckedAt: "2026-10-14", reviewedAt: "2026-10-14", medicalReviewCompleted: true, reviewerName: "권병현" },
 };
 
 export const drySkinArticle: DermatologyArticle = {
-  ...draft,
+  ...reviewed,
   slug: "dry-skin-dermatitis",
   title: "건조피부염, 피부가 건조해서 가려운가요?",
   description: "어르신에게 흔한 건조피부염의 원인과 증상, 목욕·보습·약물치료 및 진료 후 집에서 읽는 안내문입니다.",
@@ -34,7 +34,7 @@ export const drySkinArticle: DermatologyArticle = {
 };
 
 export const drySkinCareArticle: DermatologyArticle = {
-  ...draft,
+  ...reviewed,
   slug: "dry-skin-care",
   title: "피부가 건조해서 가려워요",
   description: "건조피부염 진료 후 집에서 읽는 안내. 피부 기름막을 지키는 목욕, 씻은 직후 보습, 필요할 때 처방약 복용을 안내합니다.",
