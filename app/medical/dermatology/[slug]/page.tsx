@@ -1,5 +1,5 @@
 import PatientMessageCopy from "@/components/PatientMessageCopy";
-import { shinglesAftercareMessage, scalpSeborrheicMessage } from "@/data/patientGuideMessages";
+import { shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage } from "@/data/patientGuideMessages";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -47,6 +47,7 @@ export default async function Page({ params }: Props) {
     : slug === "atopic-dermatitis-care" ? atopicCareMessage
     : slug === "shingles-aftercare" ? shinglesAftercareMessage
     : slug === "seborrheic-dermatitis-scalp" ? scalpSeborrheicMessage
+    : slug === "dry-skin-care" ? drySkinCareMessage
     : undefined;
   const schema = {
     "@context": "https://schema.org",
@@ -77,7 +78,7 @@ export default async function Page({ params }: Props) {
       <div className={`wrap article ${styles.hero}`}>
         {patientMessage && <PatientMessageCopy message={patientMessage} />}
         <nav aria-label="현재 위치" className={styles.breadcrumb}><Link href="/">홈</Link><span> / </span><Link href={basePath}>피부질환 의료정보</Link></nav>
-        <div className="kicker">{(slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp") ? "진료 후 안내" : "SKIN GUIDE"}</div>
+        <div className="kicker">{(slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
         {article.draft && <p role="status">검토용 초안 · 원장 의학적 검토 대기 · 아직 게시되지 않은 자료입니다.</p>}
         {!article.draft && !publication.medicalReviewCompleted && <p role="status">의학적 검토 대기 · 일반 의료정보</p>}
         <h1>{article.title}</h1>
@@ -103,6 +104,12 @@ export default async function Page({ params }: Props) {
         <h2 id="shingles-guide-intro">대상포진, 진료 후 집에서는 이렇게 관리하세요</h2>
         <p>항바이러스제·진통제 복용, 물집 관리, 가족에게 전염을 줄이는 방법과 재진이 필요한 증상을 확인하세요.</p>
         <PatientGuideActions href="/medical/dermatology/shingles-aftercare" copyText={shinglesAftercareMessage} viewLabel="대상포진 진료 후 안내문 보기" />
+      </aside>}
+      {slug === "dry-skin-dermatitis" && <aside id="dry-skin-care" className={styles.guideIntro} aria-labelledby="dry-skin-guide-intro">
+        <span className={styles.guideLabel}>진료 후 집에서 읽는 안내</span>
+        <h2 id="dry-skin-guide-intro">목욕·보습·약 복용, 집에서는 이렇게 관리하세요</h2>
+        <p>피부의 기름막을 지키는 목욕부터 보습제 바르는 방법, 가려움 약 복용 시 주의사항까지 확인하세요.</p>
+        <PatientGuideActions href="/medical/dermatology/dry-skin-care" copyText={drySkinCareMessage} viewLabel="건조피부염 진료 후 안내문 보기" />
       </aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
       {article.sections.map((section) => <section key={section.id} id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>

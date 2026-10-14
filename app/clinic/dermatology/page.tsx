@@ -13,6 +13,7 @@ const conditions = [
     "title": "피부염·습진",
     "text": "가려움, 붉음, 각질 등 증상과 악화요인을 함께 살핍니다.",
     "links": [
+      { title: "건조피부염", href: "/medical/dermatology/dry-skin-dermatitis", draft: false },
       {
         "title": "피부염·습진 관리",
         "href": "/medical/dermatology/dermatitis-eczema",

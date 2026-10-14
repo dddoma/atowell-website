@@ -45,3 +45,18 @@ https://atowell.kr/medical/dermatology/seborrheic-dermatitis-scalp
 
 ${clinic.name}
 ${clinic.phone}`;
+
+export const drySkinCareMessage = `[건조피부염·진료 후 관리 안내]
+
+진료실에서 안내드린 건조한 피부 관리 방법입니다. 아래 안내문을 읽고 집에서 실천해 주세요.
+
+건조피부염 진료 후 안내문
+https://atowell.kr/medical/dermatology/dry-skin-care
+
+꼭 기억해 주세요.
+- 미지근한 물로 짧게 씻고 때를 밀지 마세요.
+- 씻은 뒤 바로 보습제를 바르고, 목욕하지 않는 날에도 꾸준히 바르세요.
+- 먹는 약은 처방대로 복용하고, 졸림이 생기면 넘어지지 않도록 주의하세요.
+
+${clinic.name}
+${clinic.phone}`;
