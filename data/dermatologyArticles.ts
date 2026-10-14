@@ -1,3 +1,4 @@
+import { isotretinoinGuideArticle } from "./isotretinoinGuideArticle";
 import { drySkinArticle, drySkinCareArticle } from "./drySkinArticles";
 import { scalpSeborrheicArticle } from "./scalpSeborrheicArticle";
 import { shinglesAftercareArticle } from "./shinglesAftercareArticle";
@@ -35,6 +36,7 @@ export const dermatologyPublication = {
 const publishedArticles: DermatologyArticle[] = [
   {
     slug: "acne",
+    publication: { publishedAt: "2026-09-30", modifiedAt: "2026-10-14" },
     title: "여드름은 언제 치료해야 하나요?",
     description: "여드름의 염증 정도와 흉터 위험에 따른 치료 시점, 치료 경과와 집에서 지킬 관리법을 안내합니다.",
     answer: "붉고 아픈 여드름이 반복되거나 흉터가 생기기 시작한다면 치료를 미루지 않는 것이 좋습니다. 개수가 적어도 깊은 염증이 있거나 일상에 부담을 준다면 진료를 받을 이유가 됩니다.",
@@ -407,7 +409,7 @@ const newlyReviewedArticles: DermatologyArticle[] = [
 // Unpublished drafts are accessible only in Preview or local development.
 // Explicitly authorized publications may still be awaiting medical review.
 export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
-export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle]
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle, isotretinoinGuideArticle]
   .filter((article) => !article.draft || dermatologyDraftsVisible);
 
 export function getDermatologyPublication(article: DermatologyArticle) {

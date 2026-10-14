@@ -60,3 +60,19 @@ https://atowell.kr/medical/dermatology/dry-skin-care
 
 ${clinic.name}
 ${clinic.phone}`;
+
+export const isotretinoinGuideMessage = `[이소트레티노인·복용 주의사항]
+
+진료실에서 안내드린 피지조절제 복용 주의사항입니다. 아래 안내문을 읽고 집에서 확인해 주세요.
+
+이소트레티노인 복용 안내문
+https://atowell.kr/medical/dermatology/isotretinoin-guide
+
+꼭 기억해 주세요.
+- 임신 가능한 여성은 복용 전 1개월부터 복용 중, 마지막 복용 후 1개월까지 피임하세요. 임신이 의심되면 즉시 복용을 중단하고 연락하세요.
+- 남녀 모두 약을 다른 사람에게 나눠 주지 말고, 복용 중과 마지막 복용 후 1개월 동안 헌혈하지 마세요.
+- 과음·폭음을 피하고, 가능하면 금주하세요. 안내받은 검사 일정을 지키세요.
+- 피부와 입술에 보습제·입술 보호제를 꾸준히 사용하세요.
+
+${clinic.name}
+${clinic.phone}`;
