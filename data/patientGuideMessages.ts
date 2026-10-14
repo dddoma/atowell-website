@@ -108,3 +108,19 @@ https://atowell.kr/medical/dermatology/folliculitis-care
 
 ${clinic.name}
 ${clinic.phone}`;
+
+export const postherpeticNeuralgiaMessage = `[대상포진 후 신경통·관리 안내]
+
+대상포진의 상처가 나은 뒤에도 남아 있는 통증의 관리 방법입니다. 아래 안내문을 읽고 집에서 확인해 주세요.
+
+대상포진 후 신경통 관리 안내문
+https://atowell.kr/medical/dermatology/postherpetic-neuralgia-care
+
+꼭 기억해 주세요.
+- 매일 복용하도록 처방받은 신경통 약은 정해진 시간에 드시고, 임의로 늘리거나 갑자기 끊지 마세요.
+- 졸림·어지럼과 넘어짐에 주의하세요.
+- 아픈 피부에 마찰과 뜨거운 찜질을 피하세요.
+- 통증 때문에 잠을 못 자거나 새 물집·심한 부작용이 생기면 병원에 알려 주세요.
+
+${clinic.name}
+${clinic.phone}`;

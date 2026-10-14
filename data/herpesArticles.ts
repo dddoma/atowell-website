@@ -5,7 +5,7 @@ const publication = { publishedAt: "2026-10-01", modifiedAt: "2026-10-01", revie
 // The owner reviewed these articles and approved production publication on 2026-10-01.
 export const herpesArticles: DermatologyArticle[] = [
   {
-    slug: "shingles", draft: false, publication,
+    slug: "shingles", draft: false, publication: { ...publication, modifiedAt: "2026-10-14" },
     title: "대상포진, 한쪽 피부의 통증과 물집이 생겼다면",
     description: "대상포진의 증상, 항바이러스 치료 시점, 눈 주변 응급 신호와 전염 예방을 안내합니다.",
     answer: "한쪽 피부가 따갑고 아픈 뒤 물집이 모여 생겼다면 대상포진을 의심할 수 있습니다. 가능한 한 빨리 진료받고, 눈 주변 증상이나 면역저하가 있다면 당일 평가가 필요합니다.",
