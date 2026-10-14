@@ -76,3 +76,19 @@ https://atowell.kr/medical/dermatology/isotretinoin-guide
 
 ${clinic.name}
 ${clinic.phone}`;
+
+export const teenAcneGuideMessage = `[청소년 여드름·관리 안내]
+
+진료실에서 안내드린 청소년 여드름 관리 방법입니다. 아래 안내문을 읽고 집에서 실천해 주세요.
+
+청소년 여드름 관리 안내문
+https://atowell.kr/medical/dermatology/teen-acne-care
+
+꼭 기억해 주세요.
+- 과하게 피지를 제거하지 말고, 순하게 세안한 뒤 보습제를 바르세요.
+- 면포성 여드름은 바르는 약을, 염증성 여드름은 필요에 따라 먹는 약을 함께 사용합니다.
+- 심한 염증이나 흉터가 생기면 피지조절제 등 치료를 상담하세요.
+- 손으로 짜지 말고, 처방받은 치료를 꾸준히 유지하세요.
+
+${clinic.name}
+${clinic.phone}`;

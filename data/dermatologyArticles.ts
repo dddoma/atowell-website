@@ -1,3 +1,4 @@
+import { teenAcneGuideArticle } from "./teenAcneGuideArticle";
 import { isotretinoinGuideArticle } from "./isotretinoinGuideArticle";
 import { drySkinArticle, drySkinCareArticle } from "./drySkinArticles";
 import { scalpSeborrheicArticle } from "./scalpSeborrheicArticle";
@@ -409,7 +410,7 @@ const newlyReviewedArticles: DermatologyArticle[] = [
 // Unpublished drafts are accessible only in Preview or local development.
 // Explicitly authorized publications may still be awaiting medical review.
 export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
-export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle, isotretinoinGuideArticle]
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle, isotretinoinGuideArticle, teenAcneGuideArticle]
   .filter((article) => !article.draft || dermatologyDraftsVisible);
 
 export function getDermatologyPublication(article: DermatologyArticle) {

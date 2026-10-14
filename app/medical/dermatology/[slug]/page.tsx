@@ -1,5 +1,6 @@
+import { Fragment } from "react";
 import PatientMessageCopy from "@/components/PatientMessageCopy";
-import { shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage } from "@/data/patientGuideMessages";
+import { shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage, teenAcneGuideMessage } from "@/data/patientGuideMessages";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -47,6 +48,7 @@ export default async function Page({ params }: Props) {
     : slug === "atopic-dermatitis-care" ? atopicCareMessage
     : slug === "shingles-aftercare" ? shinglesAftercareMessage
     : slug === "seborrheic-dermatitis-scalp" ? scalpSeborrheicMessage
+    : slug === "teen-acne-care" ? teenAcneGuideMessage
     : slug === "isotretinoin-guide" ? isotretinoinGuideMessage
     : slug === "dry-skin-care" ? drySkinCareMessage
     : undefined;
@@ -79,7 +81,7 @@ export default async function Page({ params }: Props) {
       <div className={`wrap article ${styles.hero}`}>
         {patientMessage && <PatientMessageCopy message={patientMessage} />}
         <nav aria-label="현재 위치" className={styles.breadcrumb}><Link href="/">홈</Link><span> / </span><Link href={basePath}>피부질환 의료정보</Link></nav>
-        <div className="kicker">{(slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide") ? "진료 후 안내" : "SKIN GUIDE"}</div>
+        <div className="kicker">{(slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide" || slug === "teen-acne-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
         {article.draft && <p role="status">검토용 초안 · 원장 의학적 검토 대기 · 아직 게시되지 않은 자료입니다.</p>}
         {!article.draft && !publication.medicalReviewCompleted && <p role="status">의학적 검토 대기 · 일반 의료정보</p>}
         <h1>{article.title}</h1>
@@ -119,7 +121,7 @@ export default async function Page({ params }: Props) {
         <PatientGuideActions href="/medical/dermatology/isotretinoin-guide" copyText={isotretinoinGuideMessage} viewLabel="이소트레티노인 복용 안내문 보기" />
       </aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
-      {article.sections.map((section) => <section key={section.id} id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>
+      {article.sections.map((section) => <Fragment key={section.id}><section id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>
         {section.guide && <span className={styles.guideLabel}>손의 자극성피부염 · 환자 안내</span>}
         <h2>{section.title}</h2>
         {section.table && <div className={styles.tableScroll} role="region" aria-label={section.title} tabIndex={0}><table><caption className={styles.caption}>{section.title} — 진단을 돕는 참고 정보</caption><thead><tr>{section.table.headers.map((header) => <th scope="col" key={header}>{header}</th>)}</tr></thead><tbody>{section.table.rows.map(([label, ...cells]) => <tr key={label}><th scope="row">{label}</th>{cells.map((cell) => <td key={cell}>{cell}</td>)}</tr>)}</tbody></table></div>}
@@ -137,7 +139,14 @@ export default async function Page({ params }: Props) {
           <p className={styles.guideVisit}>고름·심한 통증·열감·부기, 빠르게 번지는 붉어짐이나 발열이 있으면 빠른 진료가 필요합니다. 관리를 해도 낫지 않거나 자주 재발할 때도 다시 상담해 주세요. <a href="#visit">진료가 필요한 증상 보기 →</a></p>
         </>}
         <Sources numbers={section.sources} />
-      </section>)}
+      </section>
+      {slug === "acne" && section.id === "treatment" && <aside id="teen-acne-care" className={styles.guideIntro} aria-labelledby="teen-acne-guide-intro">
+        <span className={styles.guideLabel}>진료 후 집에서 읽는 안내</span>
+        <h2 id="teen-acne-guide-intro">청소년 여드름, 집에서는 이렇게 관리하세요</h2>
+        <p>순한 세안과 보습을 기본으로, 면포성·경한 염증성·심한 염증성 여드름에 따른 치료와 관리 방법을 확인하세요.</p>
+        <PatientGuideActions href="/medical/dermatology/teen-acne-care" copyText={teenAcneGuideMessage} viewLabel="청소년 여드름 관리 안내문 보기" />
+      </aside>}
+      </Fragment>)}
       {article.faq.length > 0 && <section className={styles.section}><h2>자주 묻는 질문</h2><div className="faq">{article.faq.map((faq) => <article key={faq.question} id={faq.id} className={styles.faqItem}><h3>{faq.question}</h3><p>{faq.answer}</p><Sources numbers={faq.sources} />{faq.links && <ul className={styles.related}>{faq.links.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul>}</article>)}</div></section>}
       <section className={styles.section}><h2>함께 읽어보세요</h2><ul className={styles.related}>{article.related.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul></section>
       <section className={styles.section} aria-labelledby="references-heading"><h2 id="references-heading">참고문헌·근거자료</h2><ol className={`milia-sources ${styles.references}`}>{article.references.map((reference, index) => <li id={`reference-${index + 1}`} key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{reference.title}</a></li>)}</ol></section>
