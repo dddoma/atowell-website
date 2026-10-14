@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 import styles from "./PatientMessageCopy.module.css";
 
-export default function PatientMessageCopy({ message }: { message: string }) {
+export default function PatientMessageCopy({ message, align = "right" }: { message: string; align?: "left" | "right" }) {
   const [status, setStatus] = useState<"idle" | "copied" | "error">("idle");
   const id = useId();
   async function copy() {
@@ -14,7 +14,7 @@ export default function PatientMessageCopy({ message }: { message: string }) {
       setStatus("error");
     }
   }
-  return <div className={styles.container}>
+  return <div className={`${styles.container} ${align === "left" ? styles.left : ""}`}>
     <button type="button" className="button secondary" onClick={copy} aria-describedby={id}>
       {status === "copied" ? "복사 완료" : "링크 복사"}
     </button>

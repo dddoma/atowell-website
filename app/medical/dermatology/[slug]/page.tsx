@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import PatientMessageCopy from "@/components/PatientMessageCopy";
-import { shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage, teenAcneGuideMessage } from "@/data/patientGuideMessages";
+import { shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage, teenAcneGuideMessage, folliculitisCareMessage } from "@/data/patientGuideMessages";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -48,6 +48,7 @@ export default async function Page({ params }: Props) {
     : slug === "atopic-dermatitis-care" ? atopicCareMessage
     : slug === "shingles-aftercare" ? shinglesAftercareMessage
     : slug === "seborrheic-dermatitis-scalp" ? scalpSeborrheicMessage
+    : slug === "folliculitis-care" ? folliculitisCareMessage
     : slug === "teen-acne-care" ? teenAcneGuideMessage
     : slug === "isotretinoin-guide" ? isotretinoinGuideMessage
     : slug === "dry-skin-care" ? drySkinCareMessage
@@ -79,9 +80,9 @@ export default async function Page({ params }: Props) {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
     <section className="page-hero care-hero">
       <div className={`wrap article ${styles.hero}`}>
-        {patientMessage && <PatientMessageCopy message={patientMessage} />}
+        {patientMessage && <PatientMessageCopy message={patientMessage} align={slug === "folliculitis-care" ? "left" : "right"} />}
         <nav aria-label="현재 위치" className={styles.breadcrumb}><Link href="/">홈</Link><span> / </span><Link href={basePath}>피부질환 의료정보</Link></nav>
-        <div className="kicker">{(slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide" || slug === "teen-acne-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
+        <div className="kicker">{(slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide" || slug === "teen-acne-care" || slug === "folliculitis-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
         {article.draft && <p role="status">검토용 초안 · 원장 의학적 검토 대기 · 아직 게시되지 않은 자료입니다.</p>}
         {!article.draft && !publication.medicalReviewCompleted && <p role="status">의학적 검토 대기 · 일반 의료정보</p>}
         <h1>{article.title}</h1>
@@ -119,6 +120,12 @@ export default async function Page({ params }: Props) {
         <h2 id="isotretinoin-guide-intro">피지조절제 이소트레티노인을 처방받으셨나요?</h2>
         <p>임신 예방과 약 공유 금지, 음주·간 건강, 피부 건조·보습의 세 가지 주의사항을 확인하세요.</p>
         <PatientGuideActions href="/medical/dermatology/isotretinoin-guide" copyText={isotretinoinGuideMessage} viewLabel="이소트레티노인 복용 안내문 보기" />
+      </aside>}
+      {slug === "folliculitis" && <aside id="folliculitis-care" className={styles.guideIntro} aria-labelledby="folliculitis-care-intro">
+        <span className={styles.guideLabel}>진료 후 집에서 읽는 안내</span>
+        <h2 id="folliculitis-care-intro">얼굴 모낭염, 집에서는 이렇게 관리하세요</h2>
+        <p>처방약 사용, 자극을 줄이는 세안·면도, 보습과 주사 처치 후 관리 방법을 확인하세요.</p>
+        <PatientGuideActions href="/medical/dermatology/folliculitis-care" copyText={folliculitisCareMessage} viewLabel="얼굴 모낭염 관리 안내문 보기" />
       </aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
       {article.sections.map((section) => <Fragment key={section.id}><section id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>

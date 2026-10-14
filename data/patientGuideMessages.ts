@@ -92,3 +92,19 @@ https://atowell.kr/medical/dermatology/teen-acne-care
 
 ${clinic.name}
 ${clinic.phone}`;
+
+export const folliculitisCareMessage = `[얼굴 모낭염·진료 후 관리 안내]
+
+진료실에서 안내드린 얼굴 모낭염 관리 방법입니다. 아래 안내문을 읽고 집에서 실천해 주세요.
+
+얼굴 모낭염 관리 안내문
+https://atowell.kr/medical/dermatology/folliculitis-care
+
+꼭 기억해 주세요.
+- 처방받은 연고와 먹는 약은 안내받은 용량·횟수·기간대로 사용하세요.
+- 짜거나 문지르지 말고, 면도 자극을 줄이세요.
+- 세안 후 순한 보습제를 바르세요.
+- 주사 부위를 누르지 말고, 붓기·통증·고름이 늘거나 열이 나면 다시 진료받으세요.
+
+${clinic.name}
+${clinic.phone}`;

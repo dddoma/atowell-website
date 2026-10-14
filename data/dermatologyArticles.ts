@@ -1,3 +1,4 @@
+import { folliculitisCareArticle } from "./folliculitisCareArticle";
 import { teenAcneGuideArticle } from "./teenAcneGuideArticle";
 import { isotretinoinGuideArticle } from "./isotretinoinGuideArticle";
 import { drySkinArticle, drySkinCareArticle } from "./drySkinArticles";
@@ -230,7 +231,7 @@ const newlyReviewedArticles: DermatologyArticle[] = [
   {
     "slug": "folliculitis",
     "draft": false,
-    "publication": { "publishedAt": "2026-10-01", "modifiedAt": "2026-10-01", "reviewedAt": "2026-10-01" },
+    "publication": { "publishedAt": "2026-10-01", "modifiedAt": "2026-10-14", "reviewedAt": "2026-10-01" },
     "title": "여드름처럼 보이는 모낭염, 어떻게 관리하나요?",
     "description": "모낭염의 원인과 여드름과의 구분, 면도·마찰 관리와 진료가 필요한 경우를 안내합니다.",
     "answer": "모낭염은 털이 나오는 모낭에 염증이 생긴 상태입니다. 여드름처럼 붉거나 고름이 찬 뾰루지로 보이지만, 세균·효모균·면도 자극 등 원인에 따라 치료가 달라집니다.",
@@ -410,7 +411,7 @@ const newlyReviewedArticles: DermatologyArticle[] = [
 // Unpublished drafts are accessible only in Preview or local development.
 // Explicitly authorized publications may still be awaiting medical review.
 export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
-export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle, isotretinoinGuideArticle, teenAcneGuideArticle]
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle, isotretinoinGuideArticle, teenAcneGuideArticle, folliculitisCareArticle]
   .filter((article) => !article.draft || dermatologyDraftsVisible);
 
 export function getDermatologyPublication(article: DermatologyArticle) {
