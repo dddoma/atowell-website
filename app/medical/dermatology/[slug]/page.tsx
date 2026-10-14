@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import PatientMessageCopy from "@/components/PatientMessageCopy";
-import { shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage, teenAcneGuideMessage, folliculitisCareMessage, postherpeticNeuralgiaMessage, athletesFootCareMessage } from "@/data/patientGuideMessages";
+import { shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage, teenAcneGuideMessage, folliculitisCareMessage, postherpeticNeuralgiaMessage, athletesFootCareMessage, tineaCorporisCareMessage } from "@/data/patientGuideMessages";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -49,6 +49,7 @@ export default async function Page({ params }: Props) {
     : slug === "shingles-aftercare" ? shinglesAftercareMessage
     : slug === "seborrheic-dermatitis-scalp" ? scalpSeborrheicMessage
     : slug === "postherpetic-neuralgia-care" ? postherpeticNeuralgiaMessage
+    : slug === "tinea-corporis-care" ? tineaCorporisCareMessage
     : slug === "athletes-foot-care" ? athletesFootCareMessage
     : slug === "folliculitis-care" ? folliculitisCareMessage
     : slug === "teen-acne-care" ? teenAcneGuideMessage
@@ -84,7 +85,7 @@ export default async function Page({ params }: Props) {
       <div className={`wrap article ${styles.hero}`}>
         {patientMessage && <PatientMessageCopy message={patientMessage} />}
         <nav aria-label="현재 위치" className={styles.breadcrumb}><Link href="/">홈</Link><span> / </span><Link href={basePath}>피부질환 의료정보</Link></nav>
-        <div className="kicker">{(slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide" || slug === "teen-acne-care" || slug === "folliculitis-care" || slug === "postherpetic-neuralgia-care" || slug === "athletes-foot-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
+        <div className="kicker">{(slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide" || slug === "teen-acne-care" || slug === "folliculitis-care" || slug === "postherpetic-neuralgia-care" || slug === "athletes-foot-care" || slug === "tinea-corporis-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
         {article.draft && <p role="status">검토용 초안 · 원장 의학적 검토 대기 · 아직 게시되지 않은 자료입니다.</p>}
         {!article.draft && !publication.medicalReviewCompleted && <p role="status">의학적 검토 대기 · 일반 의료정보</p>}
         <h1>{article.title}</h1>
@@ -167,6 +168,12 @@ export default async function Page({ params }: Props) {
         <h2 id="phn-care-intro">대상포진이 나았는데도 계속 아픈가요?</h2>
         <p>신경통 약 복용, 졸림·낙상 주의, 피부 보호와 수면·일상 회복 방법을 확인하세요.</p>
         <PatientGuideActions href="/medical/dermatology/postherpetic-neuralgia-care" copyText={postherpeticNeuralgiaMessage} viewLabel="대상포진 후 신경통 관리 안내문 보기" />
+      </aside>}
+      {slug === "athletes-foot-eczema" && <aside id="tinea-corporis-care" className={styles.guideIntro} aria-labelledby="tinea-corporis-care-intro">
+        <span className={styles.guideLabel}>진료 후 집에서 읽는 안내</span>
+        <h2 id="tinea-corporis-care-intro">체부백선, 집에서는 이렇게 관리하세요</h2>
+        <p>몸통·팔·다리에 생기는 곰팡이 감염의 연고 사용법, 피부 관리와 전염·재발 예방 방법을 확인하세요.</p>
+        <PatientGuideActions href="/medical/dermatology/tinea-corporis-care" copyText={tineaCorporisCareMessage} viewLabel="체부백선 관리 안내문 보기" />
       </aside>}
       {article.faq.length > 0 && <section className={styles.section}><h2>자주 묻는 질문</h2><div className="faq">{article.faq.map((faq) => <article key={faq.question} id={faq.id} className={styles.faqItem}><h3>{faq.question}</h3><p>{faq.answer}</p><Sources numbers={faq.sources} />{faq.links && <ul className={styles.related}>{faq.links.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul>}</article>)}</div></section>}
       <section className={styles.section}><h2>함께 읽어보세요</h2><ul className={styles.related}>{article.related.map((link) => <li key={link.href}><Link href={link.href}>{link.title} →</Link></li>)}</ul></section>

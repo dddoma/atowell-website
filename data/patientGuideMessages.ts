@@ -140,3 +140,19 @@ https://atowell.kr/medical/dermatology/athletes-foot-care
 
 ${clinic.name}
 ${clinic.phone}`;
+
+export const tineaCorporisCareMessage = `[체부백선·진료 후 관리 안내]
+
+진료실에서 안내드린 체부백선 관리 방법입니다. 아래 자료를 읽고 집에서 확인해 주세요.
+
+체부백선 관리 안내문
+https://atowell.kr/medical/dermatology/tinea-corporis-care
+
+꼭 기억해 주세요.
+- 처방 연고는 병변과 주변까지, 안내받은 기간 동안 꾸준히 바르세요.
+- 습진 연고를 임의로 추가하지 마세요.
+- 땀과 마찰을 줄이고, 수건과 옷은 따로 사용하세요.
+- 계속 번지거나 붉음·열감·심한 통증·고름·발열이 생기면 다시 진료받으세요.
+
+${clinic.name}
+${clinic.phone}`;
