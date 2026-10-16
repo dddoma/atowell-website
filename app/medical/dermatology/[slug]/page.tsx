@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import PatientMessageCopy from "@/components/PatientMessageCopy";
-import { shingrixAftercareMessage, gardasilAftercareMessage, coldSoreCareMessage, shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage, teenAcneGuideMessage, folliculitisCareMessage, postherpeticNeuralgiaMessage, athletesFootCareMessage, tineaCorporisCareMessage } from "@/data/patientGuideMessages";
+import { fluAftercareMessage, shingrixAftercareMessage, gardasilAftercareMessage, coldSoreCareMessage, shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage, teenAcneGuideMessage, folliculitisCareMessage, postherpeticNeuralgiaMessage, athletesFootCareMessage, tineaCorporisCareMessage } from "@/data/patientGuideMessages";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -46,6 +46,7 @@ export default async function Page({ params }: Props) {
   const url = `https://atowell.kr${basePath}/${slug}`;
   const patientMessage = slug === "hand-protection" ? handProtectionMessage
     : slug === "atopic-dermatitis-care" ? atopicCareMessage
+    : slug === "influenza-aftercare" ? fluAftercareMessage
     : slug === "shingrix-aftercare" ? shingrixAftercareMessage
     : slug === "gardasil9-aftercare" ? gardasilAftercareMessage
     : slug === "cold-sore-care" ? coldSoreCareMessage
@@ -88,7 +89,7 @@ export default async function Page({ params }: Props) {
       <div className={`wrap article ${styles.hero}`}>
         {patientMessage && <PatientMessageCopy message={patientMessage} />}
         <nav aria-label="현재 위치" className={styles.breadcrumb}><Link href="/">홈</Link><span> / </span><Link href={basePath}>피부질환 의료정보</Link></nav>
-        <div className="kicker">{(slug === "shingrix-aftercare" || slug === "gardasil9-aftercare" || slug === "cold-sore-care" || slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide" || slug === "teen-acne-care" || slug === "folliculitis-care" || slug === "postherpetic-neuralgia-care" || slug === "athletes-foot-care" || slug === "tinea-corporis-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
+        <div className="kicker">{(slug === "influenza-aftercare" || slug === "shingrix-aftercare" || slug === "gardasil9-aftercare" || slug === "cold-sore-care" || slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide" || slug === "teen-acne-care" || slug === "folliculitis-care" || slug === "postherpetic-neuralgia-care" || slug === "athletes-foot-care" || slug === "tinea-corporis-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
         {article.draft && <p role="status">검토용 초안 · 원장 의학적 검토 대기 · 아직 게시되지 않은 자료입니다.</p>}
         {!article.draft && !publication.medicalReviewCompleted && <p role="status">의학적 검토 대기 · 일반 의료정보</p>}
         <h1>{article.title}</h1>

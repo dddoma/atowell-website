@@ -1,3 +1,5 @@
+import { fluAftercareArticle } from "./fluAftercareArticle";
+import { fluAftercareMessage } from "./patientGuideMessages";
 import { shingrixAftercareArticle } from "./shingrixAftercareArticle";
 import { shingrixAftercareMessage } from "./patientGuideMessages";
 import { gardasilAftercareArticle } from "./gardasilAftercareArticle";
@@ -14,4 +16,9 @@ export const vaccinationGuides = [{
   href: `/medical/dermatology/${shingrixAftercareArticle.slug}`,
   draft: shingrixAftercareArticle.draft,
   message: shingrixAftercareMessage,
+}, {
+  title: "독감(인플루엔자)",
+  href: `/medical/dermatology/${fluAftercareArticle.slug}`,
+  draft: fluAftercareArticle.draft,
+  message: fluAftercareMessage,
 }];
