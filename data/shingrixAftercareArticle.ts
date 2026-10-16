@@ -1,11 +1,14 @@
 import type { DermatologyArticle } from "./dermatologyArticles";
 export const shingrixAftercareArticle: DermatologyArticle = {
   "slug": "shingrix-aftercare",
-  "draft": true,
-  "draftDates": {
-    "createdAt": "2026-10-16",
+  "draft": false,
+  "publication": {
+    "publishedAt": "2026-10-16",
     "modifiedAt": "2026-10-16",
-    "sourceCheckedAt": "2026-10-16"
+    "sourceCheckedAt": "2026-10-16",
+    "reviewedAt": "2026-10-16",
+    "medicalReviewCompleted": true,
+    "reviewerName": "권병현"
   },
   "title": "싱그릭스 예방접종 후, 이렇게 관리하세요",
   "description": "대상포진 예방백신 싱그릭스 접종 후 통증·몸살 관리, 응급 증상과 2차 접종 일정을 안내합니다.",
