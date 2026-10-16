@@ -156,3 +156,11 @@ https://atowell.kr/medical/dermatology/tinea-corporis-care
 
 ${clinic.name}
 ${clinic.phone}`;
+
+export const coldSoreCareMessage = `[입술포진 관리 안내]
+
+진료실에서 안내드린 약 사용법과 물집 관리, 전염·재발 예방 방법을 집에서 다시 읽어보세요.
+
+https://atowell.kr/medical/dermatology/cold-sore-care
+
+아토웰의원`;

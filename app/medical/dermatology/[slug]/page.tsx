@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import PatientMessageCopy from "@/components/PatientMessageCopy";
-import { shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage, teenAcneGuideMessage, folliculitisCareMessage, postherpeticNeuralgiaMessage, athletesFootCareMessage, tineaCorporisCareMessage } from "@/data/patientGuideMessages";
+import { coldSoreCareMessage, shinglesAftercareMessage, scalpSeborrheicMessage, drySkinCareMessage, isotretinoinGuideMessage, teenAcneGuideMessage, folliculitisCareMessage, postherpeticNeuralgiaMessage, athletesFootCareMessage, tineaCorporisCareMessage } from "@/data/patientGuideMessages";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -46,6 +46,7 @@ export default async function Page({ params }: Props) {
   const url = `https://atowell.kr${basePath}/${slug}`;
   const patientMessage = slug === "hand-protection" ? handProtectionMessage
     : slug === "atopic-dermatitis-care" ? atopicCareMessage
+    : slug === "cold-sore-care" ? coldSoreCareMessage
     : slug === "shingles-aftercare" ? shinglesAftercareMessage
     : slug === "seborrheic-dermatitis-scalp" ? scalpSeborrheicMessage
     : slug === "postherpetic-neuralgia-care" ? postherpeticNeuralgiaMessage
@@ -85,7 +86,7 @@ export default async function Page({ params }: Props) {
       <div className={`wrap article ${styles.hero}`}>
         {patientMessage && <PatientMessageCopy message={patientMessage} />}
         <nav aria-label="현재 위치" className={styles.breadcrumb}><Link href="/">홈</Link><span> / </span><Link href={basePath}>피부질환 의료정보</Link></nav>
-        <div className="kicker">{(slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide" || slug === "teen-acne-care" || slug === "folliculitis-care" || slug === "postherpetic-neuralgia-care" || slug === "athletes-foot-care" || slug === "tinea-corporis-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
+        <div className="kicker">{(slug === "cold-sore-care" || slug === "shingles-aftercare" || slug === "seborrheic-dermatitis-scalp" || slug === "dry-skin-care" || slug === "isotretinoin-guide" || slug === "teen-acne-care" || slug === "folliculitis-care" || slug === "postherpetic-neuralgia-care" || slug === "athletes-foot-care" || slug === "tinea-corporis-care") ? "진료 후 안내" : "SKIN GUIDE"}</div>
         {article.draft && <p role="status">검토용 초안 · 원장 의학적 검토 대기 · 아직 게시되지 않은 자료입니다.</p>}
         {!article.draft && !publication.medicalReviewCompleted && <p role="status">의학적 검토 대기 · 일반 의료정보</p>}
         <h1>{article.title}</h1>
@@ -137,7 +138,14 @@ export default async function Page({ params }: Props) {
         <PatientGuideActions href="/medical/dermatology/athletes-foot-care" copyText={athletesFootCareMessage} viewLabel="발 무좀 관리 안내문 보기" />
       </aside>}
       <nav aria-label="이 글의 내용" className={styles.contents}><strong>이 글에서 확인할 내용</strong><ul>{article.sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
-      {article.sections.map((section) => <Fragment key={section.id}><section id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>
+      {article.sections.map((section) => <Fragment key={section.id}>
+      {slug === "herpes-simplex" && section.id === "treatment" && dermatologyArticles.some((item) => item.slug === "cold-sore-care") && <aside id="cold-sore-care" className={styles.guideIntro} aria-labelledby="cold-sore-care-intro">
+        <span className={styles.guideLabel}>진료 후 집에서 읽는 안내</span>
+        <h2 id="cold-sore-care-intro">입술포진, 집에서는 이렇게 관리하세요</h2>
+        <p>처방약 사용과 물집 관리, 전염·재발 예방과 다시 진료받아야 할 증상을 확인하세요.</p>
+        <PatientGuideActions href="/medical/dermatology/cold-sore-care" copyText={coldSoreCareMessage} viewLabel="입술포진 관리 안내문 보기" />
+      </aside>}
+      <section id={section.id} className={`${styles.section}${section.guide ? ` ${styles.handGuide}` : ""}`}>
         {section.guide && <span className={styles.guideLabel}>손의 자극성피부염 · 환자 안내</span>}
         <h2>{section.title}</h2>
         {section.table && <div className={styles.tableScroll} role="region" aria-label={section.title} tabIndex={0}><table><caption className={styles.caption}>{section.title} — 진단을 돕는 참고 정보</caption><thead><tr>{section.table.headers.map((header) => <th scope="col" key={header}>{header}</th>)}</tr></thead><tbody>{section.table.rows.map(([label, ...cells]) => <tr key={label}><th scope="row">{label}</th>{cells.map((cell) => <td key={cell}>{cell}</td>)}</tr>)}</tbody></table></div>}
