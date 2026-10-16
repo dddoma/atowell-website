@@ -172,3 +172,11 @@ export const gardasilAftercareMessage = `[가다실9 예방접종 후 안내]
 https://atowell.kr/medical/dermatology/gardasil9-aftercare
 
 아토웰의원`;
+
+export const shingrixAftercareMessage = `[싱그릭스 예방접종 후 안내]
+
+접종 후 팔 통증·몸살 관리, 진료가 필요한 증상과 2차 접종 일정을 확인해 주세요.
+
+https://atowell.kr/medical/dermatology/shingrix-aftercare
+
+아토웰의원`;
