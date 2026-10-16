@@ -1,11 +1,14 @@
 import type { DermatologyArticle } from "./dermatologyArticles";
 export const fluAftercareArticle: DermatologyArticle = {
   "slug": "influenza-aftercare",
-  "draft": true,
-  "draftDates": {
-    "createdAt": "2026-10-16",
+  "draft": false,
+  "publication": {
+    "publishedAt": "2026-10-16",
     "modifiedAt": "2026-10-16",
-    "sourceCheckedAt": "2026-10-16"
+    "sourceCheckedAt": "2026-10-16",
+    "reviewedAt": "2026-10-16",
+    "medicalReviewCompleted": true,
+    "reviewerName": "권병현"
   },
   "title": "독감(인플루엔자) 예방접종 후, 이렇게 관리하세요",
   "description": "주사형 독감 예방접종 후 흔한 반응, 가정 관리, 응급 증상과 매년 접종 및 어린이 추가 접종을 안내합니다.",
