@@ -1,11 +1,14 @@
 import type { DermatologyArticle } from "./dermatologyArticles";
 export const gardasilAftercareArticle: DermatologyArticle = {
   "slug": "gardasil9-aftercare",
-  "draft": true,
-  "draftDates": {
-    "createdAt": "2026-10-16",
+  "draft": false,
+  "publication": {
+    "publishedAt": "2026-10-16",
     "modifiedAt": "2026-10-16",
-    "sourceCheckedAt": "2026-10-16"
+    "sourceCheckedAt": "2026-10-16",
+    "reviewedAt": "2026-10-16",
+    "medicalReviewCompleted": true,
+    "reviewerName": "권병현"
   },
   "title": "가다실9 예방접종 후, 이렇게 관리하세요",
   "description": "가다실9 접종 후 흔한 반응, 집에서의 관리, 응급 증상과 다음 접종 일정을 안내합니다.",
