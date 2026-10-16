@@ -164,3 +164,11 @@ export const coldSoreCareMessage = `[입술포진 관리 안내]
 https://atowell.kr/medical/dermatology/cold-sore-care
 
 아토웰의원`;
+
+export const gardasilAftercareMessage = `[가다실9 예방접종 후 안내]
+
+접종 후 흔한 반응과 집에서의 관리, 진료가 필요한 증상과 다음 접종 일정을 확인해 주세요.
+
+https://atowell.kr/medical/dermatology/gardasil9-aftercare
+
+아토웰의원`;

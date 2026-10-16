@@ -1,3 +1,5 @@
+import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
+import { vaccinationGuides } from "@/data/vaccinationGuides";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { dermatologyDraftsVisible } from "@/data/dermatologyArticles";
@@ -107,6 +109,7 @@ const conditions = [
 ];
 
 export default function Page() {
+  const visibleVaccinations = vaccinationGuides.filter((guide) => !guide.draft || dermatologyDraftsVisible);
   return (
     <>
       <section className="page-hero care-hero">
@@ -124,6 +127,7 @@ export default function Page() {
             {conditions.map(({title, text, links}, index) => (
               <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{text}</p><div className="condition-guide-links">{links.filter((link) => !link.draft || dermatologyDraftsVisible).map((link) => <Link className="text-link" key={link.href} href={link.href}>{link.title} →</Link>)}</div></div></article>
             ))}
+            {visibleVaccinations.length > 0 && <article id="vaccinations"><span>07</span><div><h3>예방접종</h3><p>예방접종 후 관리 방법과 다음 접종 일정을 확인하세요.</p><VaccinationGuideLinks guides={visibleVaccinations} /></div></article>}
           </div>
         </div>
       </section>

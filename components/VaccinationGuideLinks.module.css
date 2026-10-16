@@ -1,0 +1,9 @@
+.list { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 12px; }
+.item { max-width: 100%; }
+.row { display: flex; align-items: center; gap: 5px; }
+.copy { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--accent-dark); cursor: pointer; flex-shrink: 0; }
+.copy:hover { background: #edf4ef; }
+.copy:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
+.status { display: block; font-size: 12px; color: var(--muted); }
+.status:empty { display: none; }
+.item textarea { display: block; width: 100%; min-width: 220px; max-width: 420px; padding: 10px; font: inherit; font-size: 14px; }
