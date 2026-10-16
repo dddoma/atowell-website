@@ -183,7 +183,7 @@ https://atowell.kr/medical/dermatology/shingrix-aftercare
 
 export const fluAftercareMessage = `[독감(인플루엔자) 예방접종 후 안내]
 
-접종 후 흔한 반응과 집에서의 관리, 진료가 필요한 증상과 추가 접종 여부를 확인해 주세요.
+접종 후 흔한 반응과 집에서의 관리, 진료가 필요한 증상을 확인해 주세요.
 
 https://atowell.kr/medical/dermatology/influenza-aftercare
 
