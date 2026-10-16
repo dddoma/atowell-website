@@ -2,11 +2,14 @@ import type { DermatologyArticle } from "./dermatologyArticles";
 
 export const coldSoreCareArticle: DermatologyArticle = {
   "slug": "cold-sore-care",
-  "draft": true,
-  "draftDates": {
-    "createdAt": "2026-10-16",
+  "draft": false,
+  "publication": {
+    "publishedAt": "2026-10-16",
     "modifiedAt": "2026-10-16",
-    "sourceCheckedAt": "2026-10-16"
+    "sourceCheckedAt": "2026-10-16",
+    "reviewedAt": "2026-10-16",
+    "medicalReviewCompleted": true,
+    "reviewerName": "권병현"
   },
   "title": "입술포진, 집에서는 이렇게 관리하세요",
   "description": "입술포진 진료 후 집에서 읽는 안내문. 처방약 사용, 물집과 딱지 관리, 전염·재발 예방과 다시 진료받아야 할 증상을 설명합니다.",
