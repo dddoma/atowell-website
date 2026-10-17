@@ -1,3 +1,4 @@
+import { hairGuideArticle } from "./hairGuideArticle";
 import { fluAftercareArticle } from "./fluAftercareArticle";
 import { shingrixAftercareArticle } from "./shingrixAftercareArticle";
 import { gardasilAftercareArticle } from "./gardasilAftercareArticle";
@@ -419,7 +420,7 @@ const newlyReviewedArticles: DermatologyArticle[] = [
 // Unpublished drafts are accessible only in Preview or local development.
 // Explicitly authorized publications may still be awaiting medical review.
 export const dermatologyDraftsVisible = process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
-export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle, isotretinoinGuideArticle, teenAcneGuideArticle, folliculitisCareArticle, postherpeticNeuralgiaArticle, athletesFootCareArticle, tineaCorporisCareArticle, coldSoreCareArticle, gardasilAftercareArticle, shingrixAftercareArticle, fluAftercareArticle]
+export const dermatologyArticles = [...publishedArticles, ...newlyReviewedArticles, ...herpesArticles, ...dermatitisArticles, handProtectionArticle, atopicCareArticle, shinglesAftercareArticle, scalpSeborrheicArticle, drySkinArticle, drySkinCareArticle, isotretinoinGuideArticle, teenAcneGuideArticle, folliculitisCareArticle, postherpeticNeuralgiaArticle, athletesFootCareArticle, tineaCorporisCareArticle, coldSoreCareArticle, gardasilAftercareArticle, shingrixAftercareArticle, fluAftercareArticle, hairGuideArticle]
   .filter((article) => !article.draft || dermatologyDraftsVisible);
 
 export function getDermatologyPublication(article: DermatologyArticle) {

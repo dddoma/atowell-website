@@ -44,7 +44,8 @@ export default async function Page({ params }: Props) {
   if (!article) notFound();
   const publication = getDermatologyPublication(article);
   const url = `https://atowell.kr${basePath}/${slug}`;
-  const patientMessage = slug === "hand-protection" ? handProtectionMessage
+  const patientMessage = slug === "hair-loss-guide" ? "[모발·탈모 안내]\n\n탈모의 원인과 치료, 집에서의 관리 및 진료가 필요한 증상을 확인해 주세요.\n\nhttps://atowell.kr/medical/dermatology/hair-loss-guide\n\n아토웰의원"
+    : slug === "hand-protection" ? handProtectionMessage
     : slug === "atopic-dermatitis-care" ? atopicCareMessage
     : slug === "influenza-aftercare" ? fluAftercareMessage
     : slug === "shingrix-aftercare" ? shingrixAftercareMessage
