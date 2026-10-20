@@ -107,7 +107,7 @@ export default function BmiCalculator() {
   const healthyMin = BMI_THRESHOLDS[0] * ((height / 100) ** 2);
   const healthyMax = BMI_THRESHOLDS[1] * ((height / 100) ** 2);
 
-  const resultText = `BMI 체크 결과\n키: ${height}cm\n현재 체중: ${Math.round(currentWeight)}kg\n현재 BMI: ${Math.round(bmi)} (${status.label})\n정상 체중 범위: ${Math.round(healthyMin)}kg - ${Math.round(healthyMax)}kg\n목표 체중: ${Math.round(targetWeight)}kg\n목표 BMI: ${Math.round(targetBmi)}\n${change >= 0 ? '감량 목표' : '증량 목표'}: ${Math.round(Math.abs(change))}kg`;
+  const resultText = (date: string) => `BMI 체크 결과 ${date}\n키: ${height}cm\n현재 체중: ${Math.round(currentWeight)}kg\n현재 BMI: ${Math.round(bmi)} (${status.label})\n정상 체중 범위: ${Math.round(healthyMin)}kg - ${Math.round(healthyMax)}kg\n목표 체중: ${Math.round(targetWeight)}kg\n목표 BMI: ${Math.round(targetBmi)}\n${change >= 0 ? '감량 목표' : '증량 목표'}: ${Math.round(Math.abs(change))}kg`;
   const consultationText = `[BMI·목표체중 안내]
 
 BMI Slider
@@ -133,7 +133,10 @@ ${clinic.phone}`;
     setCopied(null);
     setCopyError(false);
     try {
-      await navigator.clipboard.writeText(type === 'bmi' ? resultText : consultationText);
+      const copyDate = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+      }).format(new Date());
+      await navigator.clipboard.writeText(type === 'bmi' ? resultText(copyDate) : consultationText);
       setCopied(type);
       copyTimer.current = setTimeout(() => setCopied(null), 1800);
     } catch {
