@@ -91,7 +91,8 @@ export const lesionRemovalPrices = [
 export const documentPrices = [
   { item: "진료확인서", detail: "장당", price: "3,000원" },
   { item: "진단서·소견서", detail: "장당", price: "15,000원" },
-  { item: "차트 복사", detail: "1~5매", price: "15,000원" },
+  { item: "차트 복사", detail: "1~5매", price: "1매당 1,000원" },
+  { item: "차트 복사", detail: "6매부터", price: "1매당 100원" },
 ];
 
 export const nonCoveredVisitFee = 15000;
