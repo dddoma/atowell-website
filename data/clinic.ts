@@ -45,7 +45,7 @@ export const vaccinationPrices = [
   { item: "싱글릭스(대상포진)", detail: "2회", price: "440,000원" },
   { item: "독감(인플루엔자)", detail: "1회", price: "35,000원" },
   { item: "파상풍(Td)", detail: "1회", price: "50,000원" },
-  { item: "캡박시브(PCV21, 폐렴)", detail: "1회", price: "150,000원" },
+  { item: "캡박시브(PCV21, 폐렴)", detail: "1회", price: "170,000원" },
 ];
 
 export const aestheticPrices = [
