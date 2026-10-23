@@ -1,3 +1,5 @@
+import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
+import { constipationGuide } from "@/data/constipationGuide";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -36,6 +38,10 @@ export default function Page() {
                 <div>
                   <h3>{title}</h3>
                   <p>{text}</p>
+                  {index === 4 && <div style={{ marginTop: 16 }}>
+                    <p>진료 후 집에서 읽는 안내</p>
+                    <VaccinationGuideLinks guides={[constipationGuide]} />
+                  </div>}
                   {title === "목표 함께 정하기" && (
                     <div style={{ marginTop: 16 }}>
                       <p>진료실에서 함께 보거나, 집에서도 직접 BMI와 체중 변화를 살펴볼 수 있습니다.</p>
