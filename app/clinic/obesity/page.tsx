@@ -1,3 +1,4 @@
+import { glp1CareGuide } from "@/data/glp1CareGuide";
 import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
 import { constipationGuide } from "@/data/constipationGuide";
 import type { Metadata } from "next";
@@ -38,6 +39,10 @@ export default function Page() {
                 <div>
                   <h3>{title}</h3>
                   <p>{text}</p>
+                  {index === 3 && <div style={{ marginTop: 16 }}>
+                    <p>진료 후 집에서 읽는 안내</p>
+                    <VaccinationGuideLinks guides={[glp1CareGuide]} />
+                  </div>}
                   {index === 4 && <div style={{ marginTop: 16 }}>
                     <p>진료 후 집에서 읽는 안내</p>
                     <VaccinationGuideLinks guides={[constipationGuide]} />
