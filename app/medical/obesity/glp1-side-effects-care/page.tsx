@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: glp1CareGuide.title,
   description: "위고비·마운자로 치료 중 흔한 불편감의 대처법과 바로 진료가 필요한 증상을 정리한 환자용 안내문입니다.",
   alternates: { canonical: glp1CareGuide.href },
-  robots: { index: false, follow: false },
+  robots: { index: process.env.VERCEL_ENV !== "preview", follow: true },
 };
 const sections = [
   { id: "nausea", title: "① 메스껍고 토할 것 같아요", intro: "평소 먹던 양도 치료 중에는 많게 느껴질 수 있습니다.", items: ["식사 전에 덜어 놓고, 평소보다 적은 양을 천천히 드세요.", "배가 부르기 시작하면 남아 있어도 그만 드세요.", "튀김·기름진 고기·크림 음식, 매운 음식과 술은 줄이세요.", "냄새가 강한 음식이 불편하면 담백하고 냄새가 적은 음식을 선택하세요.", "한 끼를 먹기 어렵다면 소량씩 나누어 드세요. 억지로 한 번에 먹거나 하루 종일 굶지는 마세요.", "물은 한꺼번에 많이 마시지 말고 조금씩 자주 드세요."], end: "반복해서 토하거나 식사·수분 섭취가 어려우면 당일 병원에 연락하세요. 필요하면 증상 완화 치료나 주사 용량 조정이 필요합니다." },
@@ -24,7 +24,6 @@ export default function Page() {
     <nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/">홈</Link><span aria-hidden="true">/</span><Link href="/clinic/obesity">비만·체중관리</Link></nav>
     <PatientMessageCopy message={glp1CareGuide.message} />
     <header className={styles.header}><div className="kicker">진료 후 집에서 읽는 안내</div><h1>위고비·마운자로 치료 중 불편한 증상,<br />이렇게 대처하세요</h1><p className={styles.lead}>위고비·마운자로 같은 체중관리 주사 치료 중에는 메스꺼움, 더부룩함, 변비, 설사 등이 생길 수 있습니다. 특히 처음 시작하거나 용량을 올린 뒤 나타나기 쉽습니다.</p><span className={styles.scope}>성인 환자를 위한 일반 의료정보 · 아토웰의원</span></header>
-    <aside className={styles.reviewBanner}><strong>공개 전 검토용</strong><p>원장 최종 확인 전의 안내문입니다. 아직 환자에게 전달하지 마세요.</p></aside>
     <div className={styles.answer}><strong>참기보다 조절하는 것이 중요합니다</strong><p>가벼운 증상은 식사 방법을 조절하면서 좋아지는 경우가 많습니다. 하지만 먹거나 마시기 어려울 정도라면 참지 말고 병원에 알려주세요. 부작용이 심하다고 체중감량 효과가 더 좋은 것은 아닙니다.</p></div>
     <section className={styles.section} id="urgent"><h2>먼저, 이런 증상은 바로 진료받으세요</h2><p>다음 증상은 단순한 소화불량으로 생각하고 기다리지 마세요.</p>
       <ul className={styles.bullets}><li>심하고 지속되는 복통, 특히 윗배 통증이 등으로 퍼지거나 구토가 동반되는 경우</li><li>배가 심하게 부풀고 아프면서 대변과 방귀가 모두 나오지 않는 경우</li><li>반복해서 토해 물을 마셔도 유지하지 못하거나, 소변량이 뚜렷하게 줄어드는 경우</li><li>오른쪽 윗배 통증과 함께 열이 나거나 눈·피부가 노랗게 되는 경우</li><li>피를 토하거나 혈변·검은 변이 나오는 경우</li><li>갑자기 시력이 떨어지거나 보이지 않는 경우</li></ul>
@@ -46,7 +45,7 @@ export default function Page() {
       <li><a href="https://www.niddk.nih.gov/health-information/diabetes/overview/preventing-problems/low-blood-glucose-hypoglycemia">미국 NIDDK · 저혈당 대처</a></li>
       <li><a href="https://diabetes.org/living-with-diabetes/hypoglycemia-low-blood-glucose">미국당뇨병학회 · 저혈당과 15/15 원칙</a></li>
     </ol><p className={styles.sourceNote}>자료 확인일: 2026년 10월 23일. 해외 제품정보는 안전수칙의 보조 근거이며, 국내 처방·투여에는 국내 허가사항과 담당 의료진의 안내를 따릅니다. 모든 이상반응과 금기·주의사항을 나열한 자료는 아닙니다.</p></section>
-    <footer className={styles.footer}><p>작성: AI 보조 초안 · 의학적 검토: 원장 최종 확인 대기</p><p>최초 작성·최종 수정: 2026년 10월 23일 · 최초 게시: 공개 전</p><p>이 안내문은 흔한 증상에 대한 일반적인 대처법이며, 개인의 진단이나 처방을 대신하지 않습니다.</p></footer>
+    <footer className={styles.footer}><p>작성: AI 보조 · 의학적 검토: 아토웰의원 권병현 원장</p><p>최초 작성·최초 게시·최종 수정·최근 의학적 검토: 2026년 10월 23일</p><p>이 안내문은 흔한 증상에 대한 일반적인 대처법이며, 개인의 진단이나 처방을 대신하지 않습니다.</p></footer>
     <Link className={styles.back} href="/clinic/obesity">← 비만·체중관리 진료 안내</Link>
   </article>;
 }
