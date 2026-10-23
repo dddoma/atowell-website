@@ -1,0 +1,25 @@
+.plan { margin-top: 40px; scroll-margin-top: 90px; }
+.heading { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.heading h2, .heading h3 { margin: 0; }
+.plan > p { color: var(--muted); line-height: 1.8; }
+.plan fieldset { min-width: 0; border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin: 24px 0; }
+.plan legend { font-size: 18px; font-weight: 700; padding: 0 8px; }
+.field { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; font-size: 15px; }
+.field input:not([type=range]), .field select, .field textarea, .preview textarea { width: 100%; min-width: 0; border: 1px solid #aebcb5; border-radius: 8px; padding: 11px 12px; font: inherit; font-size: 16px; background: white; color: var(--text, #202b25); }
+.field input[type=number], .field input[type=date] { max-width: 240px; }
+.field textarea, .preview textarea { resize: vertical; line-height: 1.75; }
+.field input[type=range] { width: 100%; min-height: 36px; accent-color: var(--accent-dark); cursor: pointer; }
+.ends { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; margin-top: -8px; }
+.result { display: block; background: var(--soft); padding: 18px; border-radius: 10px; margin-top: 18px; line-height: 1.8; font-variant-numeric: tabular-nums; }
+.plan small { display: block; color: var(--muted); line-height: 1.7; margin-top: 12px; }
+.choices { display: grid; gap: 8px; }
+.choices label { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; cursor: pointer; line-height: 1.6; }
+.choices input { width: 19px; height: 19px; margin-top: 3px; flex-shrink: 0; accent-color: var(--accent-dark); }
+.row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.preview { padding: 24px; border: 1px solid var(--line); background: var(--soft); border-radius: 14px; }
+.preview p { font-size: 14px; line-height: 1.7; }
+.plan button:disabled { opacity: .5; cursor: not-allowed; }
+.plan :is(input,select,textarea,button):focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.print { display: none; }
+@media (max-width: 600px) { .plan fieldset, .preview { padding: 16px; } .row { grid-template-columns: 1fr; gap: 0; } }
+@media print { .plan > :not(.print) { display: none; } .print { display: block; font: inherit; font-size: 12px; white-space: pre-wrap; line-height: 1.7; } }

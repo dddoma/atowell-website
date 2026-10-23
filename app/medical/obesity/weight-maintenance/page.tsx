@@ -1,3 +1,4 @@
+import MaintenancePlan from "./MaintenancePlan";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PatientMessageCopy from "@/components/PatientMessageCopy";
@@ -23,9 +24,10 @@ export default function Page() {
   <PatientMessageCopy message={weightMaintenanceGuide.message} />
   <header className={styles.header}><div className="kicker">진료 후 집에서 읽는 안내 · 체중 유지기</div><h1>마운자로 치료로 목표 체중에 도달했다면</h1><p className={styles.lead}>이제는 체중을 계속 줄이기보다 적절한 식사를 하면서 근육과 건강을 지키고, 감량한 체중을 유지하는 것이 중요합니다.</p></header>
   <div className={styles.answer}><strong>유지기에도 관리 계획이 필요합니다</strong><p>약을 줄이거나 중단하면 배고픔이 커지면서 체중이 다시 증가할 수 있습니다. 이것은 의지가 약해서만 생기는 일이 아닙니다. 감량 후에는 몸이 이전 체중으로 돌아가려는 변화가 나타나므로, 유지기에도 관리 계획이 필요합니다.</p></div>
+  <p><a href="#my-plan">나의 유지기 계획 작성·문자 복사 →</a></p>
   <nav className={styles.toc} aria-label="목차"><strong>유지기 관리 방법</strong><ol>{sections.map(s=><li key={s.id}><a href={`#${s.id}`}>{s.title.slice(2)}</a></li>)}</ol></nav>
   {sections.map(s=><section key={s.id} id={s.id} className={styles.section}><h2>{s.title}</h2>{s.paragraphs.map(p=><p key={p}>{p}</p>)}{s.bullets && <ul className={styles.bullets}>{s.bullets.map(b=><li key={b}>{b}</li>)}</ul>}{s.after?.map(p=><p key={p}>{p}</p>)}</section>)}
-  <section className={styles.section}><h2>나의 유지기 계획</h2><p>진료실에서 함께 정하고, 인쇄한 안내문에 적어 두세요.</p><div className={styles.tableWrap}><table><caption>개인별 유지 계획</caption><thead><tr><th scope="col">항목</th><th scope="col">함께 정할 내용</th></tr></thead><tbody>{["유지체중 범위 (kg)","병원에 연락할 체중·증상 기준","유지할 식사 규칙","걷기·근력운동 계획","주사 치료 계획","다음 진료일"].map(label=><tr key={label}><th scope="row">{label}</th><td>____________________</td></tr>)}</tbody></table></div></section>
+  <MaintenancePlan />
   <aside className={styles.takeHome}><strong>기억할 한 문장</strong><p>유지기의 목표는 체중을 더 낮추는 것이 아니라, 감량한 체중과 건강을 오래 지키는 것입니다.</p></aside>
   <section className={styles.sources}><h2>참고 자료</h2><ol>
    <li><a href="https://jamanetwork.com/journals/jama/fullarticle/2812936">SURMOUNT-4: 티르제파타이드 지속 치료와 중단 후 체중 변화 (JAMA, 2024)</a></li>
