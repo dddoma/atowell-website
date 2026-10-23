@@ -6,7 +6,7 @@ import styles from "../obesity.module.css";
 export const metadata: Metadata = {
   title: "마운자로 목표 체중 도달 후 체중 유지기 안내",
   description: "유지체중 범위와 식사·운동, 약물치료 계획, 체중 재증가에 대응하는 방법을 정리한 환자 안내문입니다.",
-  alternates: { canonical: weightMaintenanceGuide.href }, robots: { index: false, follow: false },
+  alternates: { canonical: weightMaintenanceGuide.href }, robots: { index: process.env.VERCEL_ENV !== "preview", follow: true },
 };
 const sections = [
   { id: "range", title: "① 목표 숫자 대신 유지할 범위를 정하세요", paragraphs: ["체중은 수분, 짠 음식, 변비, 생리 등에 따라 일시적으로 달라집니다. 하루의 숫자에 맞춰 식사나 약을 바꾸지 마세요.", "진료실에서 유지체중 범위, 병원에 연락할 체중·증상 기준, 다음 진료일을 함께 정합니다.", "예를 들어 목표 체중이 65kg이라면 64~67kg을 유지 범위로 정할 수 있습니다. 이는 설명을 위한 예시이며, 모든 사람에게 같은 범위를 적용하지 않습니다.", "유지 범위 아래로 계속 빠지는 경우도 점검이 필요합니다. 식사가 부족하거나 근육이 줄고 있지는 않은지 확인하세요."] },
@@ -22,7 +22,6 @@ export default function Page() {
   <nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/clinic/mounjaro">마운자로 처방상담</Link><span aria-hidden="true">/</span><span>체중 유지기</span></nav>
   <PatientMessageCopy message={weightMaintenanceGuide.message} />
   <header className={styles.header}><div className="kicker">진료 후 집에서 읽는 안내 · 체중 유지기</div><h1>마운자로 치료로 목표 체중에 도달했다면</h1><p className={styles.lead}>이제는 체중을 계속 줄이기보다 적절한 식사를 하면서 근육과 건강을 지키고, 감량한 체중을 유지하는 것이 중요합니다.</p></header>
-  <aside className={styles.reviewBanner}><strong>공개 전 검토용</strong><p>원장 최종 확인 전의 안내문입니다. 아직 환자에게 전달하지 마세요.</p></aside>
   <div className={styles.answer}><strong>유지기에도 관리 계획이 필요합니다</strong><p>약을 줄이거나 중단하면 배고픔이 커지면서 체중이 다시 증가할 수 있습니다. 이것은 의지가 약해서만 생기는 일이 아닙니다. 감량 후에는 몸이 이전 체중으로 돌아가려는 변화가 나타나므로, 유지기에도 관리 계획이 필요합니다.</p></div>
   <nav className={styles.toc} aria-label="목차"><strong>유지기 관리 방법</strong><ol>{sections.map(s=><li key={s.id}><a href={`#${s.id}`}>{s.title.slice(2)}</a></li>)}</ol></nav>
   {sections.map(s=><section key={s.id} id={s.id} className={styles.section}><h2>{s.title}</h2>{s.paragraphs.map(p=><p key={p}>{p}</p>)}{s.bullets && <ul className={styles.bullets}>{s.bullets.map(b=><li key={b}>{b}</li>)}</ul>}{s.after?.map(p=><p key={p}>{p}</p>)}</section>)}
@@ -35,7 +34,7 @@ export default function Page() {
    <li><a href="https://doi.org/10.2337/dc26-s008">미국당뇨병학회: 체중관리 지침 (2026)</a></li>
    <li><a href="https://www.lilly.com/kr/our-medicines/mounjaro-faq">한국릴리: 마운자로 용법·용량 안내</a></li>
   </ol><p className={styles.sourceNote}>자료 확인일: 2026년 10월 23일. 해외 지침은 보조 근거이며 국내 처방에는 국내 허가사항을 따릅니다. 유지체중 범위와 재상담 시점은 개인별로 정할 실무 예시입니다. 임상시험에서 주사 간격을 10일·14일로 늘리는 방법을 검증한 것은 아닙니다.</p></section>
-  <footer className={styles.footer}><p>작성: AI 보조 초안 · 의학적 검토: 원장 최종 확인 대기</p><p>최초 작성·최종 수정: 2026년 10월 23일 · 최초 게시: 공개 전</p><p>이 안내문은 일반적인 의료정보이며, 개인의 진단이나 처방을 대신하지 않습니다.</p><p>아토웰의원 <a href="tel:054-776-0294">054-776-0294</a></p></footer>
+  <footer className={styles.footer}><p>작성: AI 보조 · 의학적 검토: 권병현 원장 · 2026년 10월 23일</p><p>최초 작성·최종 수정: 2026년 10월 23일 · 최초 게시: 2026년 10월 23일</p><p>이 안내문은 일반적인 의료정보이며, 개인의 진단이나 처방을 대신하지 않습니다.</p><p>아토웰의원 <a href="tel:054-776-0294">054-776-0294</a></p></footer>
   <Link className={styles.back} href="/clinic/mounjaro">← 마운자로 처방상담</Link>
  </article>;
 }
