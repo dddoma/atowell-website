@@ -7,8 +7,8 @@ import styles from "./plan.module.css";
 export default function MaintenancePlan() {
   const [today, setToday] = useState("");
   const [nextDate, setNextDate] = useState("");
-  const [height, setHeight] = useState("");
-  const [bmi, setBmi] = useState(24);
+  const [height, setHeight] = useState("170");
+  const [bmi, setBmi] = useState(23);
   const [margin, setMargin] = useState(1.5);
   const [contact, setContact] = useState<string | null>(null);
   const [meals, setMeals] = useState<string[]>(mealChoices.slice(0, 3));
@@ -38,7 +38,7 @@ export default function MaintenancePlan() {
     catch { setError(true); previewRef.current?.focus(); previewRef.current?.select(); }
   }
   function reset() {
-    const d = koreaDate(); setToday(d); setNextDate(addWeeks(d)); setHeight(""); setBmi(24); setMargin(1.5); setContact(null);
+    const d = koreaDate(); setToday(d); setNextDate(addWeeks(d)); setHeight("170"); setBmi(23); setMargin(1.5); setContact(null);
     setMeals(mealChoices.slice(0, 3)); setMealNote(""); setMinutes("30"); setDays("5"); setStrengthDays("2"); setStrength([strengthChoices[0], strengthChoices[1]]);
     setExerciseNote(""); setMedicine(""); setMedicineNote(""); setCopied(""); setError(false);
   }
@@ -47,7 +47,7 @@ export default function MaintenancePlan() {
     <div className={styles.heading}><h2 id="plan-title">나의 유지기 계획</h2><button type="button" className="button secondary" onClick={reset}>새 상담 시작</button></div>
     <p>진료실에서 함께 입력·선택한 뒤, 완성된 계획을 복사해 문자에 붙여넣으세요. 입력 내용은 저장되지 않으며 새로고침하면 초기화됩니다.</p>
     <fieldset><legend>1. 목표 체중과 유지 범위</legend>
-      <label className={styles.field}>키 (cm)<input type="number" inputMode="decimal" min="100" max="230" step="0.1" placeholder="예: 165" value={height} onChange={e => setHeight(e.target.value)} /></label>
+      <label className={styles.field}>키 (cm)<input type="number" inputMode="numeric" min="100" max="230" step="1" placeholder="예: 170" value={height} onChange={e => setHeight(e.target.value)} /></label>
       <label className={styles.field}>목표 BMI <strong>{bmi}</strong><input type="range" min="20" max="30" step="1" value={bmi} onChange={e => setBmi(Number(e.target.value))} aria-valuetext={`목표 BMI ${bmi}`} /></label>
       <div className={styles.ends}><span>20</span><span>25</span><span>30</span></div>
       <label className={styles.field}>유지 범위 <strong>목표 체중 ±{margin}kg</strong><input type="range" min="0.5" max="3" step="0.5" value={margin} onChange={e => setMargin(Number(e.target.value))} aria-valuetext={`목표 체중에서 위아래 ${margin}kg`} /></label>
