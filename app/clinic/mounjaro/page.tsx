@@ -1,3 +1,5 @@
+import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
+import { weightLossGuide, weightMaintenanceGuide } from "@/data/weightPhaseGuides";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canReadMounjaroFaq, mounjaroFaqCategories } from "@/data/mounjaroFaq";
@@ -31,11 +33,10 @@ export default function Page() {
       <h1>경주 마운자로<br />처방 상담·가격 안내</h1>
       <p className="lead">아토웰의원에서는 마운자로(티르제파타이드) 비만치료 상담을 시행합니다. 처방 여부와 적절한 용량은 진료 후 결정됩니다.</p>
       <h2>체중 감량·유지</h2>
-      <Link className="quick-card" href="/medical/obesity/mounjaro-guide">
-        <span className="quick-icon" aria-hidden="true">5</span>
-        <span><strong>마운자로로 체중을 줄이고 유지하는 방법</strong><small>식사 루틴부터 유지 전략까지 · 진료실에서 함께 보고 집에서 다시 읽는 상담자료</small></span>
-        <span className="quick-arrow" aria-hidden="true">→</span>
-      </Link>
+      <div className="medical-grid">
+        <section className="notice"><h3>체중 감량기</h3><p>식사 습관과 용량 조절, 치료 중 불편감 대처</p><VaccinationGuideLinks guides={[weightLossGuide]} /></section>
+        <section className="notice"><h3>체중 유지기</h3><p>목표 체중 이후의 식사·운동과 약물치료 계획</p><VaccinationGuideLinks guides={[weightMaintenanceGuide]} /></section>
+      </div>
       <h2>현재 비급여 가격</h2>
       <div className="table-scroll">
         <table><thead><tr><th>용량</th><th>수량</th><th>가격</th></tr></thead><tbody>{mounjaroPrices.map((item) => <tr key={item.dose}><td>{item.dose}</td><td>{item.quantity}</td><td>{item.price.toLocaleString()}원</td></tr>)}</tbody></table>
