@@ -91,7 +91,7 @@ export const lesionRemovalPrices = [
 export const documentPrices = [
   { item: "진료확인서", detail: "장당", price: "3,000원" },
   { item: "일반진단서", detail: "장당", price: "20,000원" },
-  { item: "소견서", detail: "장당", price: "15,000원" },
+  { item: "건강진단서", detail: "장당", price: "20,000원" },
   { item: "영문 일반진단서", detail: "장당", price: "20,000원" },
   { item: "상해진단서", detail: "치료기간 3주 미만", price: "100,000원" },
   { item: "향후진료비추정서", detail: "예상 치료비 1천만 원 미만", price: "50,000원" },
