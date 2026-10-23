@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: constipationGuide.title,
   description: "진료 후 집에서 읽는 변비 관리 안내. 식이섬유와 수분, 배변 습관, 약국 변비약과 의사 상담이 필요한 증상을 확인하세요.",
   alternates: { canonical: constipationGuide.href },
-  robots: { index: false, follow: false },
+  robots: { index: process.env.VERCEL_ENV !== "preview", follow: true },
 };
 
 export default function Page() {
@@ -21,7 +21,6 @@ export default function Page() {
       <p className={styles.lead}>체중을 줄이면서 식사량이 감소하면 대변의 양도 줄어들 수 있습니다. 특히 위고비·마운자로 같은 주사 치료 중에는 변비가 생기거나 기존 변비가 심해질 수 있습니다.</p>
       <span className={styles.scope}>성인 환자를 위한 일반 의료정보 · 아토웰의원</span>
     </header>
-    <aside className={styles.reviewBanner}><strong>공개 전 검토용</strong><p>원장 최종 확인 전의 안내문입니다. 아직 환자에게 전달하지 마세요.</p></aside>
     <div className={styles.answer}><strong>관리 순서</strong><p>식이섬유와 물 챙기기 → 규칙적으로 화장실 가기 → 약국에서 변비약 상담 → 호전되지 않으면 의사와 상담</p><p>매일 대변을 보지 않는 것보다, 변이 딱딱하고 힘을 많이 줘야 하거나 배변 후에도 불편한지가 중요합니다.</p></div>
     <section className={styles.section}>
       <h2>① 채소와 식이섬유를 챙기고, 물도 함께 드세요</h2>
@@ -64,7 +63,7 @@ export default function Page() {
       <li><a href="https://pubmed.ncbi.nlm.nih.gov/36614945/">GLP-1 치료 중 위장관 이상반응 관리에 관한 전문가 합의문 (2022)</a></li>
       <li><a href="https://www.kpanet.or.kr/medicineContentList.cm?menuCd=1002080000">대한약사회 · 일반의약품 안내</a></li>
     </ol><p className={styles.sourceNote}>자료 확인일: 2026년 10월 23일. 제품별 용법과 주의사항은 국내 제품 설명서 및 약사의 안내를 따르세요.</p></section>
-    <footer className={styles.footer}><p>작성: AI 보조 초안 · 의학적 검토: 원장 최종 확인 대기</p><p>최초 작성·최종 수정: 2026년 10월 23일 · 최초 게시: 공개 전</p><p>이 글은 일반적인 의료정보로, 개인의 진단이나 처방을 대신하지 않습니다.</p></footer>
+    <footer className={styles.footer}><p>작성: AI 보조 · 의학적 검토: 아토웰의원 권병현 원장</p><p>최초 작성·최초 게시·최종 수정·최근 의학적 검토: 2026년 10월 23일</p><p>이 글은 일반적인 의료정보로, 개인의 진단이나 처방을 대신하지 않습니다.</p></footer>
     <Link href="/clinic/obesity" className={styles.back}>← 비만·체중관리 진료 안내</Link>
   </article>;
 }
