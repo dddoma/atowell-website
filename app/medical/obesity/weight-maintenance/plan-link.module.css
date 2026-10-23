@@ -1,4 +1,4 @@
-.card { display: grid; gap: 10px; margin: 0 0 28px; padding: 24px 26px; border: 1px solid #a7c4b4; border-left: 5px solid var(--accent-dark); border-radius: 14px; background: #edf5ef; color: var(--accent-dark); scroll-margin-top: 100px; transition: background .15s, border-color .15s; }
+.card { display: grid; gap: 10px; margin: 28px 0; padding: 24px 26px; border: 1px solid #a7c4b4; border-left: 5px solid var(--accent-dark); border-radius: 14px; background: #edf5ef; color: var(--accent-dark); scroll-margin-top: 100px; transition: background .15s, border-color .15s; }
 .card:hover { background: #e3efe7; border-color: var(--accent-dark); }
 .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 .label { font-size: 12px; font-weight: 700; letter-spacing: .04em; }
