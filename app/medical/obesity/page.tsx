@@ -1,3 +1,4 @@
+import { canReadMounjaroInjection, mounjaroInjectionGuide } from "@/data/mounjaroInjection";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { obesityArticles, canReadObesityArticle, isObesityArticlePublished } from "@/data/obesityPublication";
@@ -18,6 +19,7 @@ export default function Page() {
       <h1>비만·체중관리 의료정보</h1>
       <p className="lead">체중과 약물치료에 관해 진료실에서 자주 나누는 질문을 정리했습니다. 내 몸을 이해하고, 진료 후 집에서도 다시 읽을 수 있는 자료입니다.</p>
       {hasDraftPreview && <aside className={styles.reviewBanner} aria-label="공개 전 검토 안내"><strong>공개 전 검토용 · 원장 검토 대기</strong><p>검토와 승인 전에는 운영 사이트에 공개하지 않습니다.</p></aside>}
+      {canReadMounjaroInjection() && <p className={styles.guide}><Link href={mounjaroInjectionGuide.href}>마운자로 주사 놓는 방법 · 공식 동영상과 단계별 안내 →</Link></p>}
       <div className={styles.cards}>
         {obesityArticles.map((article, index) => {
           const readable = canReadObesityArticle(article);

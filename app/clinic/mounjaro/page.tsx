@@ -1,3 +1,4 @@
+import { canReadMounjaroInjection, mounjaroInjectionGuide } from "@/data/mounjaroInjection";
 import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
 import { weightLossGuide, weightMaintenanceGuide } from "@/data/weightPhaseGuides";
 import type { Metadata } from "next";
@@ -42,6 +43,7 @@ export default function Page() {
         <table><thead><tr><th>용량</th><th>수량</th><th>가격</th></tr></thead><tbody>{mounjaroPrices.map((item) => <tr key={item.dose}><td>{item.dose}</td><td>{item.quantity}</td><td>{item.price.toLocaleString()}원</td></tr>)}</tbody></table>
       </div>
       <p className="notice">비급여 진료비 {nonCoveredVisitFee.toLocaleString()}원 별도 · 가격 최종 업데이트 {priceUpdatedAt}</p>
+      {canReadMounjaroInjection() && <section className="notice"><h2>마운자로 주사 놓는 방법</h2><p>주사 순서와 완료 확인, 보관 방법을 한국릴리 공식 동영상과 함께 확인하세요.</p><VaccinationGuideLinks guides={[mounjaroInjectionGuide]} /></section>}
       <h2 id="faq">자주 묻는 질문</h2>
       {canReadMounjaroFaq() && <nav aria-label="마운자로 질문 카테고리">
         <p>진료실에서 자주 나누는 54개 질문을 6개 주제로 정리했습니다.</p>
