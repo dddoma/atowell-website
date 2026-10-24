@@ -1,5 +1,5 @@
 // Change only after explicit physician review and publication approval.
-export const mounjaroInjectionPublished = false;
+export const mounjaroInjectionPublished = true;
 export const canReadMounjaroInjection = () => mounjaroInjectionPublished || process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
 export const mounjaroInjectionGuide = {
   title: "마운자로 주사 놓는 방법",

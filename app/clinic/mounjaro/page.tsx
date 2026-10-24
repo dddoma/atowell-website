@@ -33,7 +33,6 @@ export default function Page() {
       <div className="kicker">비만·체중관리 · 약물치료</div>
       <h1>경주 마운자로<br />처방 상담·가격 안내</h1>
       <p className="lead">아토웰의원에서는 마운자로(티르제파타이드) 비만치료 상담을 시행합니다. 처방 여부와 적절한 용량은 진료 후 결정됩니다.</p>
-      {canReadMounjaroInjection() && <section className="notice"><h2>마운자로 주사 놓는 방법</h2><p>주사 순서와 완료 확인, 보관 방법을 한국릴리 공식 동영상과 함께 확인하세요.</p><VaccinationGuideLinks guides={[mounjaroInjectionGuide]} /></section>}
       <h2>체중 감량·유지</h2>
       <div className="medical-grid">
         <section className="notice"><h3>체중 감량기</h3><p>식사 습관과 용량 조절, 치료 중 불편감 대처</p><VaccinationGuideLinks guides={[weightLossGuide]} /></section>
@@ -44,6 +43,7 @@ export default function Page() {
         <table><thead><tr><th>용량</th><th>수량</th><th>가격</th></tr></thead><tbody>{mounjaroPrices.map((item) => <tr key={item.dose}><td>{item.dose}</td><td>{item.quantity}</td><td>{item.price.toLocaleString()}원</td></tr>)}</tbody></table>
       </div>
       <p className="notice">비급여 진료비 {nonCoveredVisitFee.toLocaleString()}원 별도 · 가격 최종 업데이트 {priceUpdatedAt}</p>
+      {canReadMounjaroInjection() && <section className="notice"><h2>마운자로 주사 놓는 방법</h2><p>주사 순서와 완료 확인, 보관 방법을 한국릴리 공식 동영상과 함께 확인하세요.</p><VaccinationGuideLinks guides={[mounjaroInjectionGuide]} /></section>}
       <h2 id="faq">자주 묻는 질문</h2>
       {canReadMounjaroFaq() && <nav aria-label="마운자로 질문 카테고리">
         <p>진료실에서 자주 나누는 54개 질문을 6개 주제로 정리했습니다.</p>

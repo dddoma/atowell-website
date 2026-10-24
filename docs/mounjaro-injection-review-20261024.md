@@ -7,3 +7,7 @@
 - 원장 검토 대기. production에서는 notFound, 진입 링크 숨김, sitemap 제외. preview/development에서 읽을 수 있음.
 - 승인 후: data/mounjaroInjection.ts 공개 플래그 변경, 페이지 하단 실제 검토/게시일 반영, sitemap 항목 및 수정일 추가. 검토 전 승인 표시 금지.
 - 링크 복사는 게시 예정 운영 URL과 환자 안내 문구를 복사. Preview에 게시 전 공유 금지 안내 표시.
+
+## 운영 게시 승인 — 2026-10-24
+
+원장이 기존 초안에 대해 FAQ 바로 위 바로가기 및 복사 아이콘 배치와 운영 배포를 요청함. 공개 플래그, 검토·게시일 및 sitemap을 반영함.

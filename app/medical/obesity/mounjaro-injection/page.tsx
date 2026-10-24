@@ -21,7 +21,7 @@ const steps = [
 
 export default function Page() {
   if (!canReadMounjaroInjection()) notFound();
-  const schema = { "@context": "https://schema.org", "@type": "MedicalWebPage", name: guide.title, url: `https://atowell.kr${guide.href}`, dateModified: "2026-10-24", about: { "@type": "Drug", name: "마운자로", activeIngredient: "tirzepatide" }, citation: Object.values(sources) };
+  const schema = { "@context": "https://schema.org", "@type": "MedicalWebPage", name: guide.title, url: `https://atowell.kr${guide.href}`, dateModified: "2026-10-24", datePublished: "2026-10-24", lastReviewed: "2026-10-24", reviewedBy: { "@type": "Person", name: "권병현" }, about: { "@type": "Drug", name: "마운자로", activeIngredient: "tirzepatide" }, citation: Object.values(sources) };
   return <article className={styles.article}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/clinic/mounjaro">마운자로 처방상담</Link><span>/</span><span>주사 방법</span></nav>
@@ -58,6 +58,6 @@ export default function Page() {
       <li><a href={sources.ifu}>Lilly · 일회용 프리필드펜 사용설명서 (영문 PDF)</a><small>2026년 4월 개정. 동일한 일회용 펜의 조작 순서를 확인한 보조 자료입니다. 미국의 폐기 제도를 국내에 그대로 적용하지 않습니다.</small></li>
     </ol><p className={styles.sourceNote}>자료 확인: 2026년 10월 24일. 실제 사용하는 제품에 동봉된 국내 설명서와 의료진의 안내를 우선하세요.</p></section>
     <section className={styles.related}><h2>함께 읽기</h2><div className={styles.relatedLinks}><Link href="/medical/obesity/glp1-side-effects-care">치료 중 불편한 증상 관리 →</Link><Link href="/medical/obesity/mounjaro-guide">체중 감량·유지 상담자료 →</Link></div></section>
-    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 10월 24일</p><p>의학적 검토: 대기 · 최초 게시: 미게시</p><p>이 안내는 개인의 진단이나 처방을 대신하지 않습니다.</p><p>아토웰의원 <a href="tel:054-776-0294">054-776-0294</a></p></footer>
+    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 10월 24일</p><p>의학적 검토: 권병현 원장 · 최근 의학적 검토·최초 게시: 2026년 10월 24일</p><p>이 안내는 개인의 진단이나 처방을 대신하지 않습니다.</p><p>아토웰의원 <a href="tel:054-776-0294">054-776-0294</a></p></footer>
   </article>;
 }
