@@ -4,12 +4,12 @@ import { notFound } from "next/navigation";
 import { canReadEpe, epePublished, epeDoseSchedule, epeFaqCategories, epeInjectionGuide, epeSources } from "@/data/epe";
 import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
 import { EpeReviewBanner, EpeFooter } from "@/components/EpeEditorial";
-export const metadata: Metadata = { title: "에페(에페글레나타이드) 치료 안내와 FAQ", description: "에페의 치료 대상, 증량 일정, 주사 방법과 자주 묻는 질문. 국내 허가사항을 바탕으로 정리한 환자용 안내입니다.", alternates: { canonical: "/clinic/epe" }, robots: { index: epePublished && process.env.VERCEL_ENV !== "preview", follow: epePublished } };
+export const metadata: Metadata = { title: "경주 에페 치료 안내와 자주 묻는 질문", description: "에페의 치료 대상, 증량 일정, 주사 방법과 자주 묻는 질문. 국내 허가사항을 바탕으로 정리한 환자용 안내입니다.", alternates: { canonical: "/clinic/epe" }, robots: { index: epePublished && process.env.VERCEL_ENV !== "preview", follow: epePublished } };
 export default function Page() {
   if (!canReadEpe()) notFound();
   return <div className="wrap section article">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: "에페 치료 안내와 자주 묻는 질문", url: "https://atowell.kr/clinic/epe", dateModified: "2026-10-24", about: { "@type": "Drug", name: "에페", activeIngredient: "efpeglenatide" }, citation: epeSources.slice(0,3).map(s => s.url) }) }} />
-    <div className="kicker">비만·체중관리 · 약물치료</div><h1>에페<br />치료 안내와 자주 묻는 질문</h1>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: "경주 에페 치료 안내와 자주 묻는 질문", url: "https://atowell.kr/clinic/epe", dateModified: "2026-10-24", about: { "@type": "Drug", name: "에페", activeIngredient: "efpeglenatide" }, citation: epeSources.slice(0,3).map(s => s.url) }) }} />
+    <div className="kicker">비만·체중관리 · 약물치료</div><h1>경주 에페<br />치료 안내와 자주 묻는 질문</h1>
     <p className="lead">에페글레나타이드 성분의 주 1회 비만치료 주사제입니다. 치료 대상과 사용 방법을 확인하고 개인에게 맞는 치료를 상담하세요.</p>
     <EpeReviewBanner />
     <section className="notice"><h2>처방·가격 안내</h2><p>아토웰의 에페 처방 시작일과 가격은 확인 후 안내할 예정입니다. 이 페이지는 제품의 의료정보를 제공하며 현재 공급이나 처방 가능 여부를 보장하지 않습니다.</p></section>
