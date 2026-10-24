@@ -1,3 +1,4 @@
+import { canReadEpe } from "@/data/epe";
 import { canReadWegovyInjection, wegovyInjectionGuide } from "@/data/wegovyInjection";
 import { canReadMounjaroInjection, mounjaroInjectionGuide } from "@/data/mounjaroInjection";
 import type { Metadata } from "next";
@@ -22,6 +23,7 @@ export default function Page() {
       {hasDraftPreview && <aside className={styles.reviewBanner} aria-label="공개 전 검토 안내"><strong>공개 전 검토용 · 원장 검토 대기</strong><p>검토와 승인 전에는 운영 사이트에 공개하지 않습니다.</p></aside>}
       {canReadMounjaroInjection() && <p className={styles.guide}><Link href={mounjaroInjectionGuide.href}>마운자로 주사 놓는 방법 · 공식 동영상과 단계별 안내 →</Link></p>}
       {canReadWegovyInjection() && <p className={styles.guide}><Link href={wegovyInjectionGuide.href}>위고비 주사 놓는 방법 · 공식 동영상과 단계별 안내 →</Link></p>}
+      {canReadEpe() && <p className={styles.guide}><Link href="/clinic/epe">에페 치료 안내 · 주사 방법과 자주 묻는 질문 →</Link></p>}
       <div className={styles.cards}>
         {obesityArticles.map((article, index) => {
           const readable = canReadObesityArticle(article);
