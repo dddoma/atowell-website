@@ -1,5 +1,5 @@
-// New medical content remains preview-only until physician approval.
-export const epePublished = false;
+// Physician reviewed and approved for publication on 2026-10-24.
+export const epePublished = true;
 export const canReadEpe = () => epePublished || process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
 export const epeSources = [
   { name: "식품의약품안전처 · 에페오토인젝터주 허가사항", url: "https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetailCache?cacheSeq=202603059" },

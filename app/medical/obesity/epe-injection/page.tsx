@@ -16,7 +16,7 @@ const steps = [
 export default function Page() {
   if (!canReadEpe()) notFound();
   return <article className={styles.article}>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: "에페 주사 놓는 방법", url: "https://atowell.kr/medical/obesity/epe-injection", dateModified: "2026-10-24", about: { "@type": "Drug", name: "에페", activeIngredient: "efpeglenatide" }, citation: epeSources.slice(0,3).map(s => s.url) }) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: "에페 주사 놓는 방법", url: "https://atowell.kr/medical/obesity/epe-injection", dateModified: "2026-10-24", datePublished: "2026-10-24", lastReviewed: "2026-10-24", reviewedBy: { "@type": "Person", name: "권병현" }, about: { "@type": "Drug", name: "에페", activeIngredient: "efpeglenatide" }, citation: epeSources.slice(0,3).map(s => s.url) }) }} />
     <nav className={styles.breadcrumb}><Link href="/clinic/epe">에페 안내</Link><span>/</span><span>주사 방법</span></nav>
     <PatientMessageCopy message={guide.message} /><EpeReviewBanner />
     <header className={styles.header}><div className="kicker">진료 후 집에서 읽는 안내</div><h1>{guide.title}</h1><p className={styles.lead}>첫 주사는 의료인의 지도 아래 시행하세요. 이 안내는 실습 교육을 대신하지 않습니다.</p></header>

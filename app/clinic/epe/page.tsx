@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: "경주 에페 치료 안내와 자�
 export default function Page() {
   if (!canReadEpe()) notFound();
   return <div className="wrap section article">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: "경주 에페 치료 안내와 자주 묻는 질문", url: "https://atowell.kr/clinic/epe", dateModified: "2026-10-24", about: { "@type": "Drug", name: "에페", activeIngredient: "efpeglenatide" }, citation: epeSources.slice(0,3).map(s => s.url) }) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: "경주 에페 치료 안내와 자주 묻는 질문", url: "https://atowell.kr/clinic/epe", dateModified: "2026-10-24", datePublished: "2026-10-24", lastReviewed: "2026-10-24", reviewedBy: { "@type": "Person", name: "권병현" }, about: { "@type": "Drug", name: "에페", activeIngredient: "efpeglenatide" }, citation: epeSources.slice(0,3).map(s => s.url) }) }} />
     <div className="kicker">비만·체중관리 · 약물치료</div><h1>경주 에페<br />치료 안내와 자주 묻는 질문</h1>
     <p className="lead">에페글레나타이드 성분의 주 1회 비만치료 주사제입니다. 치료 대상과 사용 방법을 확인하고 개인에게 맞는 치료를 상담하세요.</p>
     <EpeReviewBanner />
