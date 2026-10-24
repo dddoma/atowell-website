@@ -5,9 +5,7 @@ const path = "/medical/dermatology/male-pattern-hair-loss";
 export const metadata: Metadata = {
  title:"경주 남성형 탈모 치료 안내 | 피나스테리드·두타스테리드·미녹시딜 | 아토웰의원",
  description:"남성형 탈모의 특징, 약물치료 효과와 부작용, 치료 기간, 주의사항을 환자 눈높이로 설명합니다.",
- alternates:{canonical:path},
- // Publicly accessible at the owner's request; indexing awaits a recorded clinical review.
- robots:{index:false,follow:true}
+ alternates:{canonical:path}
 };
 const faq=[
  ["탈모약은 평생 먹어야 하나요?","약을 복용하는 동안 효과가 유지되는 치료입니다. 중단하면 수개월에 걸쳐 다시 탈모가 진행할 수 있어 장기 계획을 상담합니다."],
@@ -43,7 +41,7 @@ export default function Page(){
  <li><a href="https://nedrug.mfds.go.kr/searchDrug" target="_blank" rel="noopener noreferrer">식품의약품안전처 의약품안전나라 — 국내 제품별 허가사항 검색</a></li>
  </ul><p>해외 자료의 허가 범위와 국내 허가사항은 다를 수 있습니다. 실제 약 선택과 사용법은 국내 제품 설명서와 의료진·약사의 안내를 따르세요.</p>
  <h2>요약</h2><p>남성형 탈모는 진행을 늦추고 모발을 유지하는 것이 치료의 핵심입니다. 먹는 약과 바르는 약을 중심으로 장기간 관리하며, 부작용과 치료 반응을 정기적으로 확인합니다.</p>
- <p className="meta">이 내용은 공개 의학 자료를 참고한 일반적인 환자 안내이며 개인의 진단·처방을 대신하지 않습니다. 자료 확인일: 2026-10-24. 별도의 의료진 내용 검토는 아직 완료되지 않았습니다.</p>
+ <p className="meta">이 내용은 공개 의학 자료를 참고한 일반적인 환자 안내이며 개인의 진단·처방을 대신하지 않습니다. 자료 확인일: 2026-10-24. 내용 검토 완료일: 2026-10-24.</p>
  <div className="actions"><Link className="button secondary" href="/clinic/dermatology#hair-loss">피부질환 진료 안내</Link><Link className="button primary" href="/location">진료시간·오시는 길</Link></div>
  </article></>;
 }
