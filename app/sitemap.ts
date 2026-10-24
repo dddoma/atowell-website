@@ -1,3 +1,4 @@
+import { epePublished, epeFaqCategories, epeInjectionGuide } from "@/data/epe";
 import { wegovyFaqCategories, wegovyFaqPublished } from "@/data/wegovyFaq";
 import { wegovyInjectionPublished, wegovyInjectionGuide } from "@/data/wegovyInjection";
 import { dermatologyArticles, getDermatologyPublication } from "@/data/dermatologyArticles";
@@ -20,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const medicalUpdateDates: Record<string, string> = {
     "/clinic/wegovy": "2026-10-24",
     "": "2026-10-02", "/about": "2026-10-02", "/price": "2026-10-02",
-    "/clinic/dermatology": "2026-10-17", "/clinic/aesthetic": "2026-10-02", "/clinic/obesity": "2026-10-23",
+    "/clinic/dermatology": "2026-10-17", "/clinic/aesthetic": "2026-10-02", "/clinic/obesity": "2026-10-24",
     "/medical/obesity/mounjaro-injection": "2026-10-24", "/medical/obesity/glp1-side-effects-care": "2026-10-23", "/medical/obesity/constipation-care": "2026-10-23", "/medical/obesity": "2026-10-24", "/medical/obesity/mounjaro-guide": "2026-10-23", "/medical/obesity/weight-maintenance": "2026-10-23", "/clinic/mounjaro": "2026-10-24",
     "/medical/dermatology": "2026-10-17",
     "/medical/dermatology/milia": medicalArticles.milia.modifiedAt,
@@ -50,5 +51,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
   if (wegovyInjectionPublished) entries.push({ url: `${base}${wegovyInjectionGuide.href}`, lastModified: new Date("2026-10-24"), changeFrequency: "monthly", priority: 0.8 });
   if (wegovyFaqPublished) for (const category of wegovyFaqCategories) entries.push({ url: `${base}/medical/obesity/wegovy-faq/${category.slug}`, lastModified: new Date("2026-10-24"), changeFrequency: "monthly", priority: 0.8 });
+  if (epePublished) for (const path of ["/clinic/epe", epeInjectionGuide.href, ...epeFaqCategories.map(category => `/medical/obesity/epe-faq/${category.slug}`)]) entries.push({ url: `${base}${path}`, lastModified: new Date("2026-10-24"), changeFrequency: "monthly", priority: 0.8 });
   return entries;
 }

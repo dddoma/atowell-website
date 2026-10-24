@@ -1,3 +1,4 @@
+import { canReadEpe } from "@/data/epe";
 import { glp1CareGuide } from "@/data/glp1CareGuide";
 import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
 import { constipationGuide } from "@/data/constipationGuide";
@@ -73,9 +74,10 @@ export default function Page() {
       <section className="section section-tint">
         <div className="wrap">
           <div className="section-heading"><div><div className="eyebrow">약물치료</div><h2>진료 후 적절한 치료를 결정합니다</h2></div><p>처방 여부와 용량은 개인의 상태, 치료 반응과 이상반응을 고려해 의료진이 판단합니다.</p></div>
-          <div className="medical-grid">
+          <div className={`medical-grid${canReadEpe() ? " medication-grid" : ""}`}>
             <Link className="medical-card" href="/clinic/mounjaro"><span>티르제파타이드</span><h3>마운자로<br />처방 상담</h3><p>진료 과정과 현재 비급여 가격 확인</p><b aria-hidden="true">→</b></Link>
             <Link className="medical-card accent-card" href="/clinic/wegovy"><span>세마글루타이드</span><h3>위고비<br />처방 상담</h3><p>진료 과정과 현재 비급여 가격 확인</p><b aria-hidden="true">→</b></Link>
+            {canReadEpe() && <Link className="medical-card" href="/clinic/epe"><span>에페글레나타이드</span><h3>에페<br />치료 안내</h3><p>주사 방법과 자주 묻는 질문</p><b aria-hidden="true">→</b></Link>}
           </div>
         </div>
       </section>

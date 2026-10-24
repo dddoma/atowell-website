@@ -280,3 +280,8 @@ td:last-child, th:last-child { text-align: right; }
 .condition-guide-links a { padding: 6px 0; text-underline-offset: 4px; }
 
 .price-card[id] { scroll-margin-top: 100px; }
+
+/* Three treatment options on wide screens; readable stacked cards on mobile. */
+@media (min-width: 681px) {
+  .medical-grid.medication-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
