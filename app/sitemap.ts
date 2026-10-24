@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/clinic/obesity", 0.9], ["/clinic/mounjaro", 0.9], ["/clinic/wegovy", 0.9],
     ["/medical/obesity/mounjaro-injection", 0.8], ["/medical/obesity/weight-maintenance", 0.8], ["/medical/obesity/glp1-side-effects-care", 0.8], ["/medical/obesity/constipation-care", 0.8], ["/medical/obesity", 0.8], ["/medical/obesity/mounjaro-guide", 0.8],
     ["/medical/dermatology", 0.8], ["/medical/dermatology/milia", 0.8],
+    ["/medical/dermatology/male-pattern-hair-loss", 0.8],
     ["/medical/dermatology/seborrheic-dermatitis", 0.8], ["/price", 0.9], ["/location", 0.9],
   ] as const;
   const medicalUpdateDates: Record<string, string> = {
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/medical/obesity/mounjaro-injection": "2026-10-24", "/medical/obesity/glp1-side-effects-care": "2026-10-23", "/medical/obesity/constipation-care": "2026-10-23", "/medical/obesity": "2026-10-24", "/medical/obesity/mounjaro-guide": "2026-10-23", "/medical/obesity/weight-maintenance": "2026-10-23", "/clinic/mounjaro": "2026-10-24",
     "/medical/dermatology": "2026-10-17",
     "/medical/dermatology/milia": medicalArticles.milia.modifiedAt,
+    "/medical/dermatology/male-pattern-hair-loss": "2026-10-24",
     "/medical/dermatology/seborrheic-dermatitis": medicalArticles.seborrheicDermatitis.modifiedAt,
   };
   const entries: MetadataRoute.Sitemap = routes.map(([path, priority]) => ({
