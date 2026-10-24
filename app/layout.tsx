@@ -20,7 +20,10 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   verification: {
-    other: { "naver-site-verification": "9c78cc6393948a0c0439dd832afd77ee97b834bb" },
+    other: {
+      "naver-site-verification": "9c78cc6393948a0c0439dd832afd77ee97b834bb",
+      "msvalidate.01": "36189CC3720E66636F0CFA4FA6AE735D",
+    },
   },
 };
 
