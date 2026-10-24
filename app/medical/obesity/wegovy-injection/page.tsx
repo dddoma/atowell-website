@@ -20,7 +20,7 @@ const steps = [
 ];
 export default function Page() {
   if (!canReadWegovyInjection()) notFound();
-  const schema = { "@context": "https://schema.org", "@type": "MedicalWebPage", name: guide.title, url: `https://atowell.kr${guide.href}`, dateModified: "2026-10-24", about: { "@type": "Drug", name: "위고비", activeIngredient: "semaglutide" }, citation: Object.values(sources) };
+  const schema = { "@context": "https://schema.org", "@type": "MedicalWebPage", name: guide.title, url: `https://atowell.kr${guide.href}`, dateModified: "2026-10-24", datePublished: "2026-10-24", lastReviewed: "2026-10-24", reviewedBy: { "@type": "Person", name: "권병현" }, about: { "@type": "Drug", name: "위고비", activeIngredient: "semaglutide" }, citation: Object.values(sources) };
   return <article className={styles.article}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/clinic/wegovy">위고비 처방상담</Link><span>/</span><span>주사 방법</span></nav>
@@ -38,6 +38,6 @@ export default function Page() {
     <aside className={`${styles.note} ${styles.urgent}`}><strong>바로 진료가 필요한 증상</strong><p>호흡곤란이나 얼굴·혀의 부종, 실신이 있으면 119 또는 응급실의 도움을 받으세요. 지속되는 심한 복통이나 물도 마시기 어려운 반복 구토가 있으면 다음 투여를 보류하고 신속히 진료받으세요.</p></aside>
     <section className={styles.sources}><h2>공식 자료와 참고문헌</h2><ol><li><a href={sources.video}>노보 노디스크 코리아 · 위고비 사용법 동영상</a></li><li><a href={sources.safety}>노보 노디스크 코리아 · 위고비 안전 사용 안내</a></li><li><a href={sources.label}>식품의약품안전처 · 위고비 국내 허가사항</a></li><li><a href={sources.product}>노보 노디스크 코리아 · 용량별 제품정보</a></li><li><a href={sources.ifu}>Novo Nordisk · Wegovy FlexTouch 환자용 설명서 (영문)</a><small>다회용 펜 조작법을 확인한 보조 자료입니다. 해외 적응증·고용량 요법은 국내에 적용하지 않았습니다.</small></li></ol><p className={styles.sourceNote}>자료 확인: 2026년 10월 24일. 실제 제품에 동봉된 국내 사용설명서와 의료진의 안내를 우선하세요.</p></section>
     <section className={styles.related}><h2>함께 읽기</h2><div className={styles.relatedLinks}><Link href="/medical/obesity/glp1-side-effects-care">치료 중 불편한 증상 관리 →</Link><Link href="/clinic/wegovy">위고비 처방상담 →</Link></div></section>
-    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 10월 24일</p><p>의학적 검토: 대기 · 최초 게시: 미게시</p><p>이 안내는 개인의 진단이나 처방을 대신하지 않습니다.</p><p>아토웰의원 <a href="tel:054-776-0294">054-776-0294</a></p></footer>
+    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 10월 24일</p><p>의학적 검토: 권병현 원장 · 최근 의학적 검토·최초 게시: 2026년 10월 24일</p><p>이 안내는 개인의 진단이나 처방을 대신하지 않습니다.</p><p>아토웰의원 <a href="tel:054-776-0294">054-776-0294</a></p></footer>
   </article>;
 }

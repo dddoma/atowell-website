@@ -25,7 +25,9 @@ export default async function Page({ params }: Props) {
   const category = getCategory((await params).category);
   const used = [...new Set(category.items.flatMap((item) => item.refs))].sort((a,b) => a-b);
   const path = `/medical/obesity/wegovy-faq/${category.slug}`;
+  const schema = { "@context": "https://schema.org", "@type": "MedicalWebPage", name: category.title, url: `https://atowell.kr${path}`, datePublished: "2026-10-24", dateModified: "2026-10-24", lastReviewed: "2026-10-24", reviewedBy: { "@type": "Person", name: "권병현" }, citation: used.map(ref => wegovyFaqSources[ref-1].url) };
   return <article className={styles.article}>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/clinic/wegovy#faq">위고비 상담</Link><span>/</span><span>자주 묻는 질문</span></nav>
     <PatientMessageCopy message={`[위고비 · ${category.title}]\n\n${category.intro}\n\nhttps://atowell.kr${path}\n\n아토웰의원 054-776-0294`} />
     <header className={styles.header}><div className="kicker">위고비 · 자주 묻는 질문</div><h1>{category.title}</h1><p className={styles.lead}>{category.intro}</p></header>
@@ -35,7 +37,7 @@ export default async function Page({ params }: Props) {
     <p className={styles.guide}><Link href="/medical/obesity/wegovy-injection">위고비 주사법·공식 동영상 →</Link></p>
     <nav className={styles.related} aria-label="다른 카테고리"><h2>다른 질문도 살펴보세요</h2><div className={styles.relatedLinks}>{wegovyFaqCategories.filter((item) => item.slug !== category.slug).map((item) => <Link key={item.slug} href={`/medical/obesity/wegovy-faq/${item.slug}`}>{item.title} →</Link>)}</div></nav>
     <section className={styles.sources}><h2>참고 자료</h2><ol>{used.map((ref) => <li id={`source-${ref}`} value={ref} key={ref}><a href={wegovyFaqSources[ref-1].url} target="_blank" rel="noreferrer">{wegovyFaqSources[ref-1].name}</a></li>)}</ol><p className={styles.sourceNote}>자료 확인일: 2026년 10월 24일. 국내 처방에는 식품의약품안전처 허가사항을 우선합니다. 해외 학회 자료와 연구는 생활관리·장기 관리의 보조 근거입니다. 모든 금기와 이상반응을 담은 자료는 아닙니다.</p></section>
-    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 10월 24일</p><p>의학적 검토: 대기 · 최초 게시: 미게시</p><p>운영 게시 승인 후 링크를 환자에게 전달해 주세요. 이 글은 개인의 진단이나 처방을 대신하지 않습니다.</p></footer>
+    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 10월 24일</p><p>의학적 검토: 권병현 원장 · 최근 의학적 검토·최초 게시: 2026년 10월 24일</p><p>이 글은 개인의 진단이나 처방을 대신하지 않습니다.</p></footer>
     <Link className={styles.back} href="/clinic/wegovy#faq">← 위고비 자주 묻는 질문으로</Link>
   </article>;
 }

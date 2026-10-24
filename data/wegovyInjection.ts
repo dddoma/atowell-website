@@ -1,5 +1,5 @@
 // Physician review and publication approval pending.
-export const wegovyInjectionPublished = false;
+export const wegovyInjectionPublished = true;
 export const canReadWegovyInjection = () => wegovyInjectionPublished || process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
 export const wegovyInjectionGuide = {
   title: "위고비 주사 놓는 방법",

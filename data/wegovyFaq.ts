@@ -1,5 +1,5 @@
 import { wegovyInjectionSources } from "./wegovyInjection";
-export const wegovyFaqPublished = false;
+export const wegovyFaqPublished = true;
 export const canReadWegovyFaq = () => wegovyFaqPublished || process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
 export const wegovyFaqSources = [
   { name: "식품의약품안전처 · 위고비 국내 허가사항", url: wegovyInjectionSources.label },
