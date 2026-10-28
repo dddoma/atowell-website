@@ -1,3 +1,4 @@
+import EmergencyGuideCopy from "@/components/EmergencyGuideCopy";
 import CopyGuideLink from "@/components/CopyGuideLink";
 import { hairGuideArticle } from "@/data/hairGuideArticle";
 import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
@@ -134,7 +135,8 @@ export default function Page() {
               <span style={{display:"inline-flex",alignItems:"center",gap:6}}><Link className="text-link" href="/medical/dermatology/male-pattern-hair-loss">남성형탈모 →</Link><CopyGuideLink href="/medical/dermatology/male-pattern-hair-loss" label="남성형 탈모 안내 링크 복사" /></span>
               <Link className="text-link" href="/medical/dermatology/hair-loss-guide#female-pattern-hair-loss">여성형탈모 →</Link>
             </div></div></article>}
-            {visibleVaccinations.length > 0 && <article id="vaccinations"><span>{(!hairGuideArticle.draft || dermatologyDraftsVisible) ? "08" : "07"}</span><div><h3>예방접종</h3><p>예방접종 후 관리 방법과 다음 접종 일정을 확인하세요.</p><VaccinationGuideLinks guides={visibleVaccinations} /></div></article>}
+            <article id="sexual-health"><span>08</span><div><h3>발기부전·사후피임</h3><p>사후피임약 복용 후 주의사항과 임신검사 시기를 확인하세요.</p><div className="condition-guide-links"><span style={{display:"inline-flex",alignItems:"center",gap:6}}><Link className="text-link" href="/medical/emergency-contraception">사후피임 바로가기 →</Link><EmergencyGuideCopy iconOnly /></span></div></div></article>
+            {visibleVaccinations.length > 0 && <article id="vaccinations"><span>{(!hairGuideArticle.draft || dermatologyDraftsVisible) ? "09" : "08"}</span><div><h3>예방접종</h3><p>예방접종 후 관리 방법과 다음 접종 일정을 확인하세요.</p><VaccinationGuideLinks guides={visibleVaccinations} /></div></article>}
           </div>
         </div>
       </section>
