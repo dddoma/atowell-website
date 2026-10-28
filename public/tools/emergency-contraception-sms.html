@@ -1,10 +1,10 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>진료실용 복약 안내 문자 작성</title><meta name="description" content="응급피임약 복용 후 구토, 임신검사, 이후 피임과 진료가 필요한 증상 안내"><meta name="robots" content="noindex,nofollow"><style>*{box-sizing:border-box}body{margin:0;background:#f5f7f6;color:#22322f;font:17px/1.85 system-ui,-apple-system,"Noto Sans KR",sans-serif}main{max-width:860px;margin:0 auto;padding:42px 26px 64px;background:white;min-height:100vh}header{border-bottom:1px solid #d8e3df;padding-bottom:25px;margin-bottom:28px}.eyebrow{color:#46766a;font-size:14px;letter-spacing:.04em}h1{font-size:34px;line-height:1.4;letter-spacing:-.04em;margin:12px 0}h2{font-size:23px;line-height:1.5;margin:32px 0 12px}p{margin:12px 0}a{color:#176b58;text-underline-offset:4px}li{margin:8px 0}table{border-collapse:collapse;width:100%;font-size:15px;margin:18px 0}th,td{border:1px solid #d8e3df;padding:14px;text-align:left;vertical-align:top}th{background:#edf4f1}.muted{color:#61736c;font-size:14px}.lead{font-size:19px}button{font:inherit;cursor:pointer;border:0;border-radius:7px;padding:11px 20px;background:#176b58;color:white}button.secondary{background:#eaf1ee;color:#234d40}button:disabled{opacity:.45;cursor:not-allowed}label{display:block;font-weight:650;font-size:15px}input,select,textarea{display:block;width:100%;font:inherit;color:inherit;border:1px solid #aabdb4;border-radius:6px;padding:10px;margin:5px 0 0;background:white}textarea{min-height:340px;font-size:15px;line-height:1.7}input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid #b0d8c8;outline-offset:2px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.notice{color:#894816;font-size:15px;white-space:pre-line}.result{background:#f5f8f6;padding:18px;border-radius:8px;margin-top:20px}footer{border-top:1px solid #d8e3df;margin-top:40px;padding-top:20px}summary{cursor:pointer;font-weight:650}.refs{font-size:14px;padding-left:22px}#status{min-height:1.8em;color:#176b58}@media(max-width:600px){main{padding:24px 18px 40px}h1{font-size:28px}h2{font-size:21px}.grid{grid-template-columns:1fr}th,td{padding:9px;font-size:14px}}@media print{body{background:white}main{max-width:none;padding:0}button,.actions{display:none}h2{break-after:avoid}tr{break-inside:avoid}}</style></head><body><main><header><div class="eyebrow">진료실용 도구</div><h1>복약 안내 문자 작성</h1><p>상담에서 확정한 내용을 입력하고, 생성된 문구를 확인한 뒤 복사하세요.</p><p class="muted">입력 내용은 이 화면에서만 처리하며 저장·전송하지 않습니다. 새 환자 상담 전에는 ‘새 환자용 초기화’를 누르세요.</p></header>
 <form id="form" autocomplete="off" onsubmit="return false"><h2>처방과 복용 정보</h2><div class="grid">
-<label>제품명 *<select id="product" required><option value="">선택하세요</option><option value="노레보원정">노레보원정</option><option value="엘라원정">엘라원정</option></select></label>
+<label>제품명 *<select id="product" required><option value="">선택하세요</option><option value="노레보원정" selected>노레보원정</option><option value="엘라원정">엘라원정</option></select></label>
 <label>처방 성분 · 자동 선택<input id="drugDisplay" readonly placeholder="제품명을 먼저 선택하세요"><input id="drug" type="hidden"></label>
 <label>마지막 피임 실패 관계일 *<input id="relation" type="date" required></label>
 <label>실제 복용 일시 *<input id="dose" type="datetime-local" required></label></div>
-<p class="muted">날짜와 시각은 한국 시간 기준입니다. 복용 전이라면 실제 복용을 확인한 뒤 입력하세요. 환자 이름·전화번호는 입력하지 않습니다.</p>
+<p class="muted">노레보원정, 어제 관계일, 오늘 현재 시각이 기본 입력됩니다. 실제 처방과 복용 일시를 확인·수정하세요. 날짜와 시각은 한국 시간 기준입니다. 복용 전이라면 실제 복용을 확인한 뒤 입력하세요. 환자 이름·전화번호는 입력하지 않습니다.</p>
 <div class="result"><strong>임신검사 예정일</strong><div id="testdate" aria-live="polite"></div><small>마지막 관계일 + 21일</small></div>
 <h2>상담에서 정한 후속 계획</h2><p class="muted">일반 피임약을 계획한 경우 제품명·시작 일시·추가 피임 종료일을 함께 입력하세요. 종료일은 제품별 지침에 따라 의료진이 정합니다.</p>
 <div class="grid"><label>일반 피임약 이름<input id="regular"></label><label>시작 또는 재개 일시<input id="start" type="datetime-local"></label><label>추가 피임 종료일<input id="barrier" type="date"></label><label>다음 진료일 <span class="muted">선택</span><input id="followup" type="date"></label><label>병원 연락처 <span class="muted">선택</span><input id="phone" type="tel" value="054-776-0294"></label><label>게시된 환자 안내문 주소 <span class="muted">선택</span><input id="link" type="url" value="https://atowell.kr/medical/emergency-contraception"></label></div>
@@ -40,9 +40,10 @@ function build(data){
  else lines.push(data.drug==='upa'?'일반 호르몬 피임약은 이 약 복용 후 최소 5일을 기다려야 합니다. 시작일은 병원에 확인하세요.':'일반 피임약의 시작·재개 날짜는 병원에 확인하세요.');
  lines.push('심한 한쪽 아랫배 통증, 실신, 심한 출혈 또는 호흡곤란은 즉시 진료받으세요. 심한 증상은 응급실 또는 119를 이용하세요.','임신테스트가 양성이거나 음성인데 생리가 계속 없으면 진료받으세요.');
  if(data.followup)lines.push(`다음 진료일: ${displayDay(data.followup)}`);
- if(data.phone.trim())lines.push(`병원 연락처: ${data.phone.trim()}`);
- if(data.link.trim())lines.push(`자세한 안내: ${data.link.trim()}`);
  if(data.note.trim())lines.push('',data.note.trim());
+ if(data.link.trim())lines.push('','더 읽어볼 안내문',data.link.trim());
+ lines.push('','아토웰의원');
+ if(data.phone.trim())lines.push(data.phone.trim());
  return {errors,warnings,test,text:lines.join('\n')};
 }
 const ids=['drug','product','relation','dose','regular','start','barrier','followup','phone','link','note'];
@@ -50,7 +51,15 @@ function update(){const selected=$('product').value;const mapped={'노레보원�
 function count(){$('count').textContent=`${$('message').value.length}자 · 길이에 따라 장문 문자(LMS)로 전송될 수 있습니다.`}
 ids.forEach(id=>$(id).addEventListener('input',update));$('message').addEventListener('input',count);
 $('copy').addEventListener('click',async()=>{const text=$('message').value;if(!text.trim())return;try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(text);else{ $('message').focus();$('message').select();if(!document.execCommand('copy'))throw Error();}$('status').textContent='복사했습니다. 문자 입력창에 붙여 넣으세요.'}catch{$('message').focus();$('message').select();$('status').textContent='자동 복사가 지원되지 않습니다. 선택된 문구를 Ctrl+C 또는 길게 눌러 복사하세요.'}});
-$('reset').addEventListener('click',()=>{$('form').reset();update();$('product').focus();});
-window.addEventListener('pageshow',()=>{$('form').reset();update()});
-update();
+function resetDefaults(now = new Date()) {
+ $('form').reset();
+ const korea = new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString();
+ $('product').value = '노레보원정';
+ $('relation').value = addDays(korea.slice(0,10), -1);
+ $('dose').value = korea.slice(0,16);
+ update();
+}
+$('reset').addEventListener('click',()=>{resetDefaults();$('product').focus();});
+window.addEventListener('pageshow',()=>resetDefaults());
+resetDefaults();
 </script></body></html>
