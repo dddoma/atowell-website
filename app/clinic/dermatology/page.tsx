@@ -1,3 +1,4 @@
+import FemaleHairGuideCopy from "@/components/FemaleHairGuideCopy";
 import ErectileGuideCopy from "@/components/ErectileGuideCopy";
 import EmergencyGuideCopy from "@/components/EmergencyGuideCopy";
 import CopyGuideLink from "@/components/CopyGuideLink";
@@ -134,7 +135,7 @@ export default function Page() {
             {(!hairGuideArticle.draft || dermatologyDraftsVisible) && <article id="hair-loss"><span>07</span><div><h3>모발·탈모</h3><p>빠지는 양과 분포, 모발의 굵기와 두피 상태를 살펴 원인에 맞는 치료와 관리 방법을 안내합니다.</p><div className="condition-guide-links">
               <Link className="text-link" href="/medical/dermatology/hair-loss-guide#alopecia-areata">원형탈모 →</Link>
               <span style={{display:"inline-flex",alignItems:"center",gap:6}}><Link className="text-link" href="/medical/dermatology/male-pattern-hair-loss">남성형탈모 →</Link><CopyGuideLink href="/medical/dermatology/male-pattern-hair-loss" label="남성형 탈모 안내 링크 복사" /></span>
-              <Link className="text-link" href="/medical/dermatology/hair-loss-guide#female-pattern-hair-loss">여성형탈모 →</Link>
+              <span style={{display:"inline-flex",alignItems:"center",gap:6}}><Link className="text-link" href="/medical/dermatology/female-pattern-hair-loss">여성형탈모 →</Link><FemaleHairGuideCopy iconOnly /></span>
             </div></div></article>}
             <article id="sexual-health"><span>08</span><div><h3>발기부전·사후피임</h3><p>발기부전치료제와 사후피임약의 복용 방법 및 주의사항을 확인하세요.</p><div className="condition-guide-links"><span style={{display:"inline-flex",alignItems:"center",gap:6}}><Link className="text-link" href="/medical/erectile-dysfunction-medication">발기부전치료제 바로가기 →</Link><ErectileGuideCopy iconOnly /></span><span style={{display:"inline-flex",alignItems:"center",gap:6}}><Link className="text-link" href="/medical/emergency-contraception">사후피임 바로가기 →</Link><EmergencyGuideCopy iconOnly /></span></div></div></article>
             {visibleVaccinations.length > 0 && <article id="vaccinations"><span>{(!hairGuideArticle.draft || dermatologyDraftsVisible) ? "09" : "08"}</span><div><h3>예방접종</h3><p>예방접종 후 관리 방법과 다음 접종 일정을 확인하세요.</p><VaccinationGuideLinks guides={visibleVaccinations} /></div></article>}

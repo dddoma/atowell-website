@@ -43,3 +43,18 @@ https://atowell.kr/medical/erectile-dysfunction-medication
 
 아토웰의원
 054-776-0294`;
+
+export const femaleHairMessage = `[여성형 탈모 치료·복약 안내]
+
+진료실에서 안내드린 여성형 탈모 치료와 복약 방법입니다. 아래 자료를 읽고 치료에 참고해 주세요.
+
+여성형 탈모 치료·복약 안내
+https://atowell.kr/medical/dermatology/female-pattern-hair-loss
+
+꼭 기억해 주세요.
+- 미녹시딜은 처방받은 함량과 정수대로 복용하고 임의로 늘리지 마세요.
+- 부종·두근거림·반복되는 어지럼은 병원에 알려 주세요. 가슴 통증·숨참·실신은 즉시 응급진료가 필요합니다.
+- 임신을 준비하거나 임신이 의심되면 복용을 중단하고 상담하세요.
+
+아토웰의원
+054-776-0294`;
