@@ -100,4 +100,14 @@ export const documentPrices = [
 ];
 
 export const nonCoveredVisitFee = 15000;
-export const priceUpdatedAt = "2026-10-24";
+export const priceUpdatedAt = "2026-10-30";
+
+export const epePriceUpdatedAt = "2026-10-30";
+export const epePrices: { dose: string; quantity: string; price: number | null }[] = [
+  { dose: "2mg", quantity: "2펜", price: 70000 },
+  { dose: "4mg", quantity: "2펜", price: 110000 },
+  { dose: "2mg+4mg Combo", quantity: "2펜+2펜", price: 180000 },
+  { dose: "6mg", quantity: "4펜", price: 280000 },
+  { dose: "8mg", quantity: "4펜", price: null },
+  { dose: "10mg", quantity: "4펜", price: null },
+];

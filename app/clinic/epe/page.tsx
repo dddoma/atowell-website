@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import EpePriceTable from "@/components/EpePriceTable";
 import { notFound } from "next/navigation";
 import { canReadEpe, epePublished, epeDoseSchedule, epeFaqCategories, epeInjectionGuide, epeSources } from "@/data/epe";
 import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
@@ -8,11 +9,11 @@ export const metadata: Metadata = { title: "경주 에페 치료 안내와 자�
 export default function Page() {
   if (!canReadEpe()) notFound();
   return <div className="wrap section article">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: "경주 에페 치료 안내와 자주 묻는 질문", url: "https://atowell.kr/clinic/epe", dateModified: "2026-10-24", datePublished: "2026-10-24", lastReviewed: "2026-10-24", reviewedBy: { "@type": "Person", name: "권병현" }, about: { "@type": "Drug", name: "에페", activeIngredient: "efpeglenatide" }, citation: epeSources.slice(0,3).map(s => s.url) }) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: "경주 에페 치료 안내와 자주 묻는 질문", url: "https://atowell.kr/clinic/epe", dateModified: "2026-10-30", datePublished: "2026-10-24", lastReviewed: "2026-10-24", reviewedBy: { "@type": "Person", name: "권병현" }, about: { "@type": "Drug", name: "에페", activeIngredient: "efpeglenatide" }, citation: epeSources.slice(0,3).map(s => s.url) }) }} />
     <div className="kicker">비만·체중관리 · 약물치료</div><h1>경주 에페<br />치료 안내와 자주 묻는 질문</h1>
     <p className="lead">에페글레나타이드 성분의 주 1회 비만치료 주사제입니다. 치료 대상과 사용 방법을 확인하고 개인에게 맞는 치료를 상담하세요.</p>
     <EpeReviewBanner />
-    <section className="notice"><h2>처방·가격 안내</h2><p>아토웰의 에페 처방 시작일과 가격은 확인 후 안내할 예정입니다. 이 페이지는 제품의 의료정보를 제공하며 현재 공급이나 처방 가능 여부를 보장하지 않습니다.</p></section>
+    <section className="price-card" id="price"><div className="eyebrow">비만 약물치료 · 가격 안내</div><EpePriceTable /><p className="table-note">비급여 진료비는 약품비와 별도입니다. 현재 공급·처방 가능 여부는 병원에 문의해 주세요.</p></section>
     <h2>치료 전 확인하세요</h2><p>당뇨를 동반하지 않은 성인의 비만·과체중 치료에 허가된 약입니다. BMI와 동반질환, 현재 복용약과 병력을 확인해 처방 여부를 결정합니다.</p><Link className="text-link" href="/medical/obesity/epe-faq/before-starting">구체적인 치료 대상과 주의사항 →</Link>
     <h2>주 1회, 단계적으로 증량합니다</h2><div className="table-scroll"><table><caption>에페의 허가된 증량 일정</caption><thead><tr><th scope="col">기간</th><th scope="col">주 1회 용량</th></tr></thead><tbody>{epeDoseSchedule.map(([period,dose]) => <tr key={period}><td>{period}</td><td>{dose}</td></tr>)}</tbody></table></div><p>증량 시점은 불편한 증상과 치료 반응에 따라 의료진과 조정합니다. <a className="text-link" href={epeSources[1].url} target="_blank" rel="noreferrer">공식 제품정보 ↗</a></p>
     <h2>체중 감량·유지</h2><div className="actions"><Link className="button secondary" href="/medical/obesity/goals">감량 목표 세우기</Link><Link className="button secondary" href="/medical/obesity/weight-maintenance">유지기 생활관리</Link></div>
