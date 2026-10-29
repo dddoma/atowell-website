@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import EpePriceTable from "@/components/EpePriceTable";
 import {
   aestheticPrices,
   documentPrices,
@@ -14,7 +15,7 @@ import {
 
 export const metadata: Metadata = {
   title: "비급여 가격 안내",
-  description: "아토웰의원 마운자로·위고비 등 현재 공개 중인 비급여 가격 안내.",
+  description: "아토웰의원 마운자로·위고비·에페 등 현재 공개 중인 비급여 가격 안내.",
   alternates: { canonical: "/price" },
 };
 
@@ -59,6 +60,7 @@ export default function Page() {
         <div className="wrap price-grid">
           <article className="price-card"><div className="eyebrow">비만 약물치료</div><DrugTitle>마운자로</DrugTitle><PriceTable items={mounjaroPrices} /></article>
           <article className="price-card"><div className="eyebrow">비만 약물치료</div><DrugTitle>위고비</DrugTitle><PriceTable items={wegovyPrices} /></article>
+          <article className="price-card" id="epe"><div className="eyebrow">비만 약물치료</div><EpePriceTable /></article>
         </div>
         <div className="wrap"><p className="notice price-notice">비급여 진료비는 약품비와 별도입니다. 실제 비용은 진료 내용에 따라 달라질 수 있습니다.</p></div>
         <div className="wrap price-grid price-section">
