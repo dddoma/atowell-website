@@ -4,12 +4,13 @@ import { notFound } from "next/navigation";
 import { canReadGlp1Maintenance, glp1MaintenanceGuide as guide } from "@/data/glp1Maintenance";
 import styles from "../obesity.module.css";
 import CopyLink from "./CopyLink";
+import copyStyles from "./copy.module.css";
 
 export const metadata: Metadata = {
   title: guide.title,
-  description: "목표 체중 도달 후 체중을 유지하면서 근력·영양·허리둘레를 함께 관리하는 성인 환자용 안내 초안입니다.",
+  description: "목표 체중 도달 후 체중을 유지하면서 근력·영양·허리둘레를 함께 관리하는 성인 환자용 안내입니다.",
   alternates: { canonical: guide.href },
-  robots: { index: false, follow: false },
+  robots: { index: process.env.VERCEL_ENV !== "preview", follow: true },
 };
 
 const sources = [
@@ -30,11 +31,10 @@ function Refs({ numbers }: { numbers: number[] }) {
 export default function Page() {
   if (!canReadGlp1Maintenance()) notFound();
   return <article className={styles.article}>
-    <nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/medical/obesity">비만·체중관리 의료정보</Link><span aria-hidden="true">/</span><span>GLP-1 유지치료</span></nav>
-    <aside className={styles.reviewBanner}><strong>공개 전 초안 · 원장 의학적 검토 대기</strong><p>의학적 검토와 공개 승인이 완료되지 않은 Preview입니다.</p></aside>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: guide.title, url: `https://atowell.kr${guide.href}`, datePublished: "2026-11-02", dateModified: "2026-11-02", lastReviewed: "2026-11-02", reviewedBy: { "@type": "Person", name: "권병현" }, citation: sources.map(([, url]) => url) }) }} />
+    <div className={copyStyles.toolbar}><nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/medical/obesity">비만·체중관리 의료정보</Link><span aria-hidden="true">/</span><span>GLP-1 유지치료</span></nav><CopyLink /></div>
     <header className={styles.header}><div className="kicker">진료 후 집에서 읽는 안내</div><h1>{guide.title}</h1><p className={styles.lead}>목표 체중에 도달했다면,<br />이제는 체중을 지키면서 근력과 생활을 돌볼 때입니다.</p><span className={styles.scope}>성인 체중관리 치료 환자를 위한 일반 의료정보</span></header>
     <div className={styles.answer}><strong>체지방률이 높다고 주사 용량부터 올리지는 마세요</strong><p>체중·허리둘레·근력·식사 상태를 함께 보고, 더 감량할지 유지할지 의료진과 정합니다. 체중이 비슷해도 지방이 줄고 근육과 기능이 좋아지는 방향을 목표로 할 수 있습니다. 변화의 속도와 정도는 사람마다 다릅니다.</p></div>
-    <CopyLink />
     <p>이 안내는 마운자로·위고비 등으로 감량한 뒤 체성분 개선을 원하는 분을 위한 관리 틀입니다. 별도 진료 상품이나 효과 보장을 뜻하지 않습니다. 마운자로(터제파타이드)는 GIP·GLP-1 이중 작용제, 위고비(세마글루티드)는 GLP-1 수용체 작용제입니다.</p>
     <nav className={styles.toc} aria-label="목차"><strong>집에서 실천할 순서</strong><ol><li><a href="#assessment">체중과 체성분 함께 보기</a></li><li><a href="#medicine">유지 약물치료를 정하는 방법</a></li><li><a href="#exercise">근력운동과 걷기</a></li><li><a href="#food">단백질과 충분한 식사</a></li><li><a href="#follow-up">기록과 다음 진료</a></li></ol></nav>
     <section className={styles.section} id="assessment"><h2>1. 체지방률 한 번의 숫자로 판단하지 마세요</h2><p>체지방률은 몸무게 중 지방이 차지하는 비율입니다. 지방이 많아서 높을 수도 있고, 근육 등 지방을 제외한 조직이 적어서 높을 수도 있습니다. 제지방량은 근육만을 뜻하지 않으므로 검사 수치가 줄었다고 모두 근육 손실로 해석하지 않습니다.</p><p>체성분 검사(BIA)는 수분 상태와 식사·운동 등에 영향을 받습니다. 같은 기기와 비슷한 조건에서 추세를 보고, 허리둘레와 근력을 함께 확인하세요. 정상 BMI에서 체지방률만 높다는 이유로 약을 새로 시작하거나 증량하는 것은 적절하지 않습니다.</p><ul className={styles.bullets}><li><strong>체중</strong>하나의 목표 숫자 대신 유지할 범위와 연락할 기준을 진료실에서 정합니다.</li><li><strong>허리둘레</strong>갈비뼈 아래와 골반뼈 위의 중간 높이에서 줄자를 수평으로 대고, 편하게 숨을 내쉰 뒤 잽니다. 같은 위치에서 비교하세요.</li><li><strong>근력과 일상 기능</strong>의자에서 일어나기, 계단 오르기, 운동 무게·횟수의 변화를 살펴봅니다. 필요하면 진료실에서 악력이나 의자 일어서기 검사를 합니다. 넘어질 위험이 있으면 혼자 검사하지 마세요.</li></ul><Refs numbers={[5, 9]} /></section>
@@ -45,6 +45,6 @@ export default function Page() {
     <section className={styles.consult}><h2>아토웰의원 진료에서 함께 정하세요</h2><p>“체중을 더 빼야 하나요?”와 함께 “식사는 충분한가요, 근력은 좋아지고 있나요?”를 확인하세요. 진료에서는 체중과 건강상태, 식욕·이상반응을 살피고 약물치료와 생활관리 방향을 상담합니다.</p><div className="actions"><Link className="button primary" href="/location">진료시간·오시는 길</Link><a className="button secondary" href="tel:054-776-0294">전화 문의</a></div></section>
     <section className={styles.related}><h2>함께 읽기</h2><div className={styles.relatedLinks}><Link href="/medical/obesity/weight-maintenance">목표 체중 도달 후, 체중 재증가를 예방하는 기본 안내 →</Link><Link href="/medical/obesity/glp1-side-effects-care">치료 중 불편한 증상 대처 →</Link><Link href="/clinic/obesity">아토웰 비만·체중관리 진료 →</Link><Link href="/medical/obesity">비만·체중관리 의료정보 전체 →</Link></div></section>
     <section className={styles.sources}><h2>참고문헌과 근거</h2><ol>{sources.map(([name, url], i) => <li id={`ref-${i + 1}`} key={url}><a href={url}>{name}</a></li>)}</ol><p className={styles.sourceNote}>자료 확인: 2026년 11월 2일. 임상시험은 치료 지속·중단의 근거이며 개인의 처방을 정하지 않습니다. 영양·운동 권고와 위 기록 주기는 개인 상태에 맞춰 조정합니다. 국내 처방에는 최신 국내 허가사항을 우선합니다.</p></section>
-    <footer className={styles.footer}><p>작성: AI 보조 초안 · 의학적 검토: 미완료(원장 검토 대기)</p><p>최초 작성·최종 수정: 2026년 11월 2일 · 공개 전</p><p>이 글은 일반 의료정보이며 개인의 진단이나 처방을 대신하지 않습니다.</p></footer>
+    <footer className={styles.footer}><p>작성: AI 보조 · 의학적 검토: 권병현 원장 · 검토 완료</p><p>최초 작성·최초 게시·최종 수정·최근 의학적 검토: 2026년 11월 2일</p><p>이 글은 일반 의료정보이며 개인의 진단이나 처방을 대신하지 않습니다.</p></footer>
   </article>;
 }
