@@ -1,3 +1,4 @@
+import { canReadIplGuide, iplGuide } from "@/data/iplGuide";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { skinTreatmentArticles, canReadSkinTreatment, isSkinTreatmentPublished } from "@/data/skinTreatmentPublication";
@@ -30,6 +31,7 @@ export default function Page() {
       <h1>피부치료 의료정보</h1>
       <p className="lead">어떤 치료가 필요한지, 시술 전 무엇을 확인하고 이후 어떻게 관리할지 정리했습니다. 진료실에서 함께 보고, 집에서도 다시 읽는 자료입니다.</p>
       {hasDraft && <aside className={styles.reviewBanner} aria-label="공개 전 검토 안내"><strong>공개 전 검토용 · 원장 검토 대기</strong><p>새로 작성한 다섯 글과 의료정보 메뉴를 확인해 주세요. 승인 전에는 운영 사이트에 본문과 새 메뉴를 공개하지 않습니다.</p></aside>}
+      {canReadIplGuide() && <p className={styles.guide}><Link href={iplGuide.href}>IPL 치료 전후 안내 · 검토용 초안 →</Link></p>}
       <div className={styles.cards}>
         {skinTreatmentArticles.map((article, index) => {
           const available = canReadSkinTreatment(article);

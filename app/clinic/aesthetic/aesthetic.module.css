@@ -63,3 +63,6 @@
   .card { padding: 24px; }
   .card h3 { margin-top: 18px; }
 }
+
+.guideLinks { display: grid; gap: 14px; margin-top: auto; }
+.guideLinks a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
