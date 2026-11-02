@@ -1,5 +1,5 @@
-// New medical content: physician review and publication approval pending.
-export const canReadIplGuide = () => process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
+// Physician medical review and publication approved on 2026-11-02.
+export const canReadIplGuide = () => true;
 export const iplGuide = {
   title: "IPL 치료 전후 안내",
   href: "/medical/skin-treatments/ipl",

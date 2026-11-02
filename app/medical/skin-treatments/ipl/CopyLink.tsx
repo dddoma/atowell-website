@@ -9,8 +9,7 @@ export default function CopyLink() {
   const [message, setMessage] = useState("");
   const id = useId();
   async function copy() {
-    // A draft must link to its accessible Preview, rather than a production 404.
-    const text = iplGuide.message.replace(`https://atowell.kr${iplGuide.href}`, new URL(iplGuide.href, window.location.origin).href);
+    const text = iplGuide.message;
     setMessage(text);
     try { await navigator.clipboard.writeText(text); setStatus("copied"); }
     catch { setStatus("error"); }

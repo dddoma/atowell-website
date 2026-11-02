@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: iplGuide.title,
   description: iplGuide.description,
   alternates: { canonical: iplGuide.href },
-  robots: { index: false, follow: false },
+  robots: { index: process.env.VERCEL_ENV !== "preview", follow: true },
   openGraph: { title: iplGuide.title, description: iplGuide.description, url: iplGuide.href, type: "article" },
 };
 
@@ -36,8 +36,8 @@ const sections = [
 export default function Page() {
   if (!canReadIplGuide()) notFound();
   return <article className={styles.article}>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: iplGuide.title, description: iplGuide.description, url: `https://atowell.kr${iplGuide.href}`, datePublished: "2026-11-02", dateModified: "2026-11-02", lastReviewed: "2026-11-02", reviewedBy: { "@type": "Person", name: "권병현" }, citation: sources.map(source => source.url) }) }} />
     <div className={local.toolbar}><nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/clinic/aesthetic">피부치료</Link><span aria-hidden="true">/</span><span aria-current="page">IPL</span></nav><CopyLink /></div>
-    <aside className={styles.reviewBanner}><strong>공개 전 검토용 · 원장 의학적 검토 대기</strong><p>새로 작성한 초안입니다. 검토와 공개 승인 전에는 환자에게 전달하는 자료로 사용하지 마세요.</p></aside>
     <header className={styles.header}><div className="kicker">진료 전후에 읽는 피부치료 안내</div><h1>IPL 치료 전후 안내</h1><p className={styles.lead}>잡티·붉은기 치료를 고민할 때,<br />기대할 수 있는 변화와 피부를 지키는 방법을 함께 확인하세요.</p><span className={styles.scope}>아토웰의원 · 일반 의료정보</span></header>
     <div className={styles.answer}><strong>먼저 기억하세요</strong><p>IPL은 일부 갈색 반점과 혈관성 붉은기에 사용하는 빛 치료입니다. 기미를 포함한 모든 색소에 같은 방법을 쓰지는 않습니다. 진단과 피부 상태에 맞춘 계획, 시술 후 광선 차단이 중요합니다.</p><Refs numbers={[2, 3, 4]} /></div>
     <nav className={styles.toc} aria-label="목차"><strong>이 글에서 확인할 내용</strong><ol>{sections.map(s => <li key={s.id}><a href={`#${s.id}`}>{s.title}</a></li>)}<li><a href="#aftercare">회복 중 반응과 집에서의 관리</a></li><li><a href="#urgent">병원에 연락해야 할 때</a></li></ol></nav>
@@ -52,6 +52,6 @@ export default function Page() {
     <section className={styles.consult}><h2>아토웰의원에서 상담할 때</h2><p>가장 신경 쓰이는 부위, 변화가 시작된 시점, 최근 햇빛 노출과 이전 시술 기록을 알려주세요. 실제 적용 가능한 치료와 시점은 진찰 후 정합니다. 특정 장비·병행 시술·횟수는 이 안내만으로 정하지 않습니다.</p><div className="actions"><Link className="button primary" href="/location">진료시간·오시는 길</Link><a className="button secondary" href="tel:054-776-0294">전화 문의</a></div></section>
     <nav className={styles.related} aria-label="함께 읽기"><h2>함께 읽기</h2><div className={styles.relatedLinks}><Link href="/medical/skin-treatments/ipl-toning">IPL과 토닝, 내 피부에는 어떤 치료가 맞을까요? →</Link><Link href="/clinic/aesthetic">피부치료 진료 안내 →</Link><Link href="/medical/skin-treatments">피부치료 의료정보 전체 →</Link></div></nav>
     <section className={styles.sources}><h2>참고자료</h2><ol>{sources.map((s, i) => <li id={`source-${i + 1}`} key={s.url}><a href={s.url}>{s.name}</a><small>{s.note}</small></li>)}</ol><p className={styles.sourceNote}>자료 확인일: 2026년 11월 2일. 참고 페이지의 문장·이미지를 복제하지 않고 환자 안내로 새로 정리했습니다. 해외 자료는 일반 원리와 안전관리의 근거이며, 실제 치료에는 국내 장비 허가사항과 개별 진료 지침을 따릅니다.</p></section>
-    <footer className={styles.footer}><p>작성: AI 보조 초안 · 의학적 검토: 미완료(원장 검토 대기)</p><p>최초 작성·최종 수정: 2026년 11월 2일 · 최초 게시: 공개 전</p><p>원장 확인 사항: 원내 장비·대상 병변, 실제 시술 후 세안·화장·운동 재개 안내, 연락이 필요한 증상.</p><p>이 글은 일반적인 의료정보로 개인의 진단과 치료를 대신하지 않습니다.</p></footer>
+    <footer className={styles.footer}><p>작성: AI 보조 · 의학적 검토: 권병현 원장 · 검토 완료</p><p>최초 작성·최초 게시·최종 수정·최근 의학적 검토: 2026년 11월 2일</p><p>이 글은 일반적인 의료정보로 개인의 진단과 치료를 대신하지 않습니다.</p></footer>
   </article>;
 }
