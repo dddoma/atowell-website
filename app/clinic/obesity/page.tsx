@@ -1,3 +1,4 @@
+import { canReadGlp1Maintenance, glp1MaintenanceGuide } from "@/data/glp1Maintenance";
 import { canReadEpe } from "@/data/epe";
 import { glp1CareGuide } from "@/data/glp1CareGuide";
 import VaccinationGuideLinks from "@/components/VaccinationGuideLinks";
@@ -47,6 +48,7 @@ export default function Page() {
                   {index === 4 && <div style={{ marginTop: 16 }}>
                     <p>진료 후 집에서 읽는 안내</p>
                     <VaccinationGuideLinks guides={[constipationGuide]} />
+                    {canReadGlp1Maintenance() && <p style={{ marginTop: 16 }}><Link className="text-link" href={glp1MaintenanceGuide.href}>GLP-1 유지치료 프로그램 · 체중 유지와 체성분 개선 →</Link></p>}
                   </div>}
                   {title === "목표 함께 정하기" && (
                     <div style={{ marginTop: 16 }}>
