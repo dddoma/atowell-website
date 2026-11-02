@@ -1,3 +1,4 @@
+import { canReadGlp1Maintenance, glp1MaintenanceGuide } from "@/data/glp1Maintenance";
 import { canReadEpe } from "@/data/epe";
 import { canReadWegovyInjection, wegovyInjectionGuide } from "@/data/wegovyInjection";
 import { canReadMounjaroInjection, mounjaroInjectionGuide } from "@/data/mounjaroInjection";
@@ -24,6 +25,7 @@ export default function Page() {
       {canReadMounjaroInjection() && <p className={styles.guide}><Link href={mounjaroInjectionGuide.href}>마운자로 주사 놓는 방법 · 공식 동영상과 단계별 안내 →</Link></p>}
       {canReadWegovyInjection() && <p className={styles.guide}><Link href={wegovyInjectionGuide.href}>위고비 주사 놓는 방법 · 공식 동영상과 단계별 안내 →</Link></p>}
       {canReadEpe() && <p className={styles.guide}><Link href="/clinic/epe">에페 치료 안내 · 주사 방법과 자주 묻는 질문 →</Link></p>}
+      {canReadGlp1Maintenance() && <p className={styles.guide}><Link href={glp1MaintenanceGuide.href}>GLP-1 유지치료 프로그램 · 체중 유지와 체성분 개선 →</Link></p>}
       <div className={styles.cards}>
         {obesityArticles.map((article, index) => {
           const readable = canReadObesityArticle(article);

@@ -1,3 +1,4 @@
+import { canReadGlp1Maintenance, glp1MaintenanceGuide } from "@/data/glp1Maintenance";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PatientMessageCopy from "@/components/PatientMessageCopy";
@@ -30,6 +31,7 @@ export default function Page() {
     <span className={linkStyles.description}>목표 체중과 식사·운동·주사 계획을 함께 정하세요. 작성한 내용을 복사해 환자에게 문자로 보낼 수 있습니다.</span>
     <span className={linkStyles.action}>계획 작성하기</span>
   </Link>
+  {canReadGlp1Maintenance() && <aside className={styles.note}><strong>체중 유지와 함께 체성분을 개선하고 싶다면</strong><p><Link href={glp1MaintenanceGuide.href}>GLP-1 유지치료 프로그램 · 근력·영양·허리둘레 관리 →</Link></p></aside>}
   <nav className={styles.toc} aria-label="목차"><strong>유지기 관리 방법</strong><ol>{sections.map(s=><li key={s.id}><a href={`#${s.id}`}>{s.title.slice(2)}</a></li>)}</ol></nav>
   {sections.map(s=><section key={s.id} id={s.id} className={styles.section}><h2>{s.title}</h2>{s.paragraphs.map(p=><p key={p}>{p}</p>)}{s.bullets && <ul className={styles.bullets}>{s.bullets.map(b=><li key={b}>{b}</li>)}</ul>}{s.after?.map(p=><p key={p}>{p}</p>)}</section>)}
   <aside className={styles.takeHome}><strong>기억할 한 문장</strong><p>유지기의 목표는 체중을 더 낮추는 것이 아니라, 감량한 체중과 건강을 오래 지키는 것입니다.</p></aside>
