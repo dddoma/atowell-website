@@ -1,0 +1,9 @@
+.toolbar { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px 20px; margin-bottom: 28px; }
+.toolbar nav { flex: 1 1 260px; margin-bottom: 0; }
+.copy { display: flex; flex-direction: column; align-items: flex-end; margin-left: auto; max-width: 100%; }
+.copy button { min-height: 44px; }
+.copy button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.status { max-width: 260px; text-align: right; font-size: 12px; line-height: 1.6; color: var(--muted); }
+.status:not(:empty) { margin-top: 8px; }
+.fallback { width: min(100%, 350px); margin-top: 8px; padding: 12px; font-size: 16px; line-height: 1.7; }
+@media print { .copy { display: none; } }

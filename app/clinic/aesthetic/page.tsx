@@ -1,3 +1,4 @@
+import { canReadIplGuide, iplGuide } from "@/data/iplGuide";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { aestheticTreatments } from "@/data/aestheticTreatments";
@@ -35,7 +36,11 @@ export default function Page() {
           </div>
           <div className={styles.treatments}>
             {aestheticTreatments.map((treatment, index) => (
-              <Link className={styles.card} key={treatment.slug} href={`/medical/skin-treatments/${treatment.slug}`} aria-label={`${treatment.title} 의료정보 보기`}>
+              treatment.slug === "ipl-toning" && canReadIplGuide() ? <article className={styles.card} key={treatment.slug}>
+                <span className="card-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{treatment.title}</h3><p>{treatment.description}</p>
+                <div className={styles.guideLinks}><Link className="text-link" href={iplGuide.href}>IPL 치료 전후 안내 →</Link><Link className="text-link" href="/medical/skin-treatments/ipl-toning">IPL·토닝 비교 안내 →</Link></div>
+              </article> : <Link className={styles.card} key={treatment.slug} href={`/medical/skin-treatments/${treatment.slug}`} aria-label={`${treatment.title} 의료정보 보기`}>
                 <span className="card-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <h3>{treatment.title}</h3>
                 <p>{treatment.description}</p>
