@@ -8,7 +8,7 @@ import local from "./guide.module.css";
 
 export const metadata: Metadata = {
   title: burnsGuide.title, description: burnsGuide.description,
-  alternates: { canonical: burnsGuide.href }, robots: { index: false, follow: false },
+  alternates: { canonical: burnsGuide.href }, robots: { index: true, follow: true },
   openGraph: { title: burnsGuide.title, description: burnsGuide.description, url: burnsGuide.href, type: "article" },
 };
 const sources = [
@@ -20,8 +20,8 @@ function Refs({ numbers }: { numbers: number[] }) { return <p className={styles.
 export default function Page() {
   if (!canReadBurns()) notFound();
   return <article className={styles.article}>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: burnsGuide.title, description: burnsGuide.description, url: `https://atowell.kr${burnsGuide.href}`, datePublished: "2026-11-04", dateModified: "2026-11-04", lastReviewed: "2026-11-04", citation: sources.map(([, url]) => url) }) }} />
     <div className={local.toolbar}><nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/medical/dermatology">피부질환 의료정보</Link><span aria-hidden="true">/</span><span aria-current="page">화상</span></nav><PatientMessageCopy message={burnsMessage} label="화상 진료 후 안내 문구와 링크 복사" /></div>
-    <aside className={styles.reviewBanner}><strong>공개 전 검토용 · 원장 의학적 검토 대기</strong><p>의학적 검토와 공개 승인 전에는 환자에게 전달하지 마세요. 링크 복사 기능도 검토를 위한 시연용입니다.</p></aside>
     <header className={styles.header}><div className="kicker">피부질환 의료정보 · 진료 후 안내</div><h1>화상 치료와 관리</h1><p className={styles.lead}>처음 데었을 때의 대처부터<br />진료 후 집에서 상처를 돌보는 방법까지</p></header>
     <div className={styles.answer}><strong>처음 데었다면</strong><p>뜨거운 물·물체에 데었다면 열원에서 벗어나 화상 부위를 시원한 흐르는 물로 20분간 식히세요. 얼음이나 민간요법은 사용하지 마세요. 넓거나 깊은 화상, 호흡 이상은 즉시 응급진료가 필요합니다.</p><Refs numbers={[1, 2]} /></div>
     <nav className={styles.toc} aria-label="목차"><strong>필요한 내용 바로 찾기</strong><ol><li><a href="#first-aid">화상 초기처치</a></li><li><a href="#urgent">즉시 진료가 필요한 경우</a></li><li><a href="#blisters">물집과 병원 치료</a></li><li><a href="#aftercare">진료 후 집에서 읽는 안내문</a></li><li><a href="#revisit">예정일 전에 다시 진료받아야 할 때</a></li><li><a href="#questions">자주 묻는 질문</a></li></ol></nav>
@@ -42,6 +42,6 @@ export default function Page() {
     <section className={styles.section} id="revisit"><h2>예정일 전에 다시 진료받아야 할 때</h2><aside className={`${styles.note} ${styles.urgent}`}><strong>이런 변화는 당일 연락·진료가 필요합니다</strong><p>점점 심해지는 통증·붓기, 주변으로 퍼지는 붉음·열감, 고름·악취·발열, 드레싱이 젖거나 진물이 많이 새는 경우입니다. 손발이 창백하거나 차가워짐, 저림·감각 저하가 새로 생기면 즉시 응급진료를 받으세요. 열과 함께 심하게 처지거나 의식이 흐려지면 119에 연락하세요.</p></aside><p>상처가 낫지 않거나 더 깊어 보임, 움직임 제한이 생겨도 다시 확인하세요. 작은 화상은 약 2주 안에 아물기도 하지만 깊이에 따라 더 오래 걸립니다. 회복이 늦으면 재평가가 필요합니다. 증상이 좋아져도 안내받은 재진일을 지켜주세요.</p><div className="actions"><a className="button primary" href="tel:054-776-0294">아토웰의원 전화 문의</a><Link className="button secondary" href="/location">진료시간·오시는 길</Link></div><p>진료시간 밖에 악화되면 응급실을 이용하세요.</p><Refs numbers={[1, 2, 3]} /></section>
     <section className={styles.section} id="questions"><h2>자주 묻는 질문</h2><h3>매일 드레싱을 갈아야 하나요?</h3><p>상처와 드레싱마다 교체 간격이 다릅니다. 임의로 매일 벗기지 말고 진료 때 안내받은 일정을 따르세요.</p><h3>무엇을 바르면 좋을까요?</h3><p>처음 데었을 때는 충분한 냉각이 먼저입니다. 민간요법이나 임의의 크림 대신 진료 후 정한 방법으로 관리하세요. 모든 화상에 같은 약이나 연고가 필요한 것은 아닙니다.</p><Refs numbers={[1, 3]} /></section>
     <section className={styles.sources}><h2>근거 및 참고자료</h2><ol>{sources.map(([title, url], i) => <li id={`source-${i + 1}`} key={url}><a href={url}>{title}</a></li>)}</ol><p className={styles.sourceNote}>근거 확인일: 2026년 11월 4일. 해외 응급 연락처는 국내 119·응급실 안내로 조정했습니다. 전문기관 의뢰 기준은 자가진단을 위한 기준이 아닙니다.</p></section>
-    <footer className={styles.footer}><p>작성: AI 보조 초안 · 의학적 검토자: 미지정(원장 검토 대기)</p><p>최초 작성·최종 수정: 2026년 11월 4일 · 최근 의학적 검토일: 미완료 · 최초 공개일: 미공개</p><p>일반 의료정보이며 개인별 진단과 치료를 대신하지 않습니다.</p></footer>
+    <footer className={styles.footer}><p>작성: AI 보조 초안 · 의학적 검토: 아토웰의원 원장</p><p>최초 작성·최종 수정: 2026년 11월 4일 · 최근 의학적 검토일: 2026년 11월 4일 · 최초 공개일: 2026년 11월 4일</p><p>일반 의료정보이며 개인별 진단과 치료를 대신하지 않습니다.</p></footer>
   </article>;
 }

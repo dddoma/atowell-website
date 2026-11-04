@@ -1,4 +1,5 @@
-export const burnsPublished = false;
+// Physician reviewed Preview and approved publication on 2026-11-04.
+export const burnsPublished = true;
 export const canReadBurns = () => burnsPublished || process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
 export const burnsGuide = {
   title: "화상 치료와 관리",
