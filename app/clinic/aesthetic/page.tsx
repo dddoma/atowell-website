@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { aestheticTreatments } from "@/data/aestheticTreatments";
 import styles from "./aesthetic.module.css";
+import PatientMessageCopy from "@/components/PatientMessageCopy";
+import { cornsWartsAftercare } from "@/data/cornsWartsAftercare";
 
 export const metadata: Metadata = {
   title: "경주 피부치료 상담",
@@ -36,7 +38,14 @@ export default function Page() {
           </div>
           <div className={styles.treatments}>
             {aestheticTreatments.map((treatment, index) => (
-              treatment.slug === "ipl-toning" && canReadIplGuide() ? <article className={styles.card} key={treatment.slug}>
+              treatment.slug === "corns-warts" ? <article className={styles.card} key={treatment.slug}>
+                <span className="card-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{treatment.title}</h3><p>{treatment.description}</p>
+                <div className={styles.guideLinks}>
+                  <Link className="text-link" href="/medical/skin-treatments/corns-warts">의료정보 보기 →</Link>
+                  <div className={styles.aftercareLink}><Link className="text-link" href={cornsWartsAftercare.href}>{cornsWartsAftercare.title} →</Link><PatientMessageCopy message={cornsWartsAftercare.message} iconOnly label="티눈·사마귀 제거 후 관리 안내 문구와 링크 복사" /></div>
+                </div>
+              </article> : treatment.slug === "ipl-toning" && canReadIplGuide() ? <article className={styles.card} key={treatment.slug}>
                 <span className="card-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <h3>{treatment.title}</h3><p>{treatment.description}</p>
                 <div className={styles.guideLinks}><Link className="text-link" href={iplGuide.href}>IPL 치료 전후 안내 →</Link><Link className="text-link" href="/medical/skin-treatments/ipl-toning">IPL·토닝 비교 안내 →</Link></div>

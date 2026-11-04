@@ -21,3 +21,8 @@
 
 .left { align-items: flex-start; }
 .left .hint { text-align: left; }
+.compact { display: inline-flex; align-items: flex-start; margin: 0; }
+.compact .hint:empty { display: none; }
+.compact .hint { text-align: left; }
+.iconButton { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 8px; border: 0; background: transparent; color: var(--accent-dark); cursor: pointer; }
+.iconButton:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
