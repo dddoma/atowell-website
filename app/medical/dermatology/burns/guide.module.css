@@ -1,0 +1,4 @@
+.toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+.toolbar nav { margin-bottom: 0; }
+.toolbar > div { margin-left: auto; max-width: 100%; }
+@media print { .toolbar > div { display: none; } }
