@@ -4,6 +4,8 @@
   font-size: 17px;
   font-weight: 600;
 }
+.aftercareLink { display: flex; align-items: flex-start; gap: 4px; }
+.aftercareLink > a { padding-block: 9px; }
 
 .treatments {
   display: grid;
