@@ -1,3 +1,4 @@
+import { canReadInflammationInjection, inflammationInjection as injection } from "@/data/inflammationInjection";
 import { canReadIplGuide, iplGuide } from "@/data/iplGuide";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -56,6 +57,10 @@ export default function Page() {
                 <span className={`text-link ${styles.link}`}>의료정보 보기 <span aria-hidden="true">→</span></span>
               </Link>
             ))}
+          {canReadInflammationInjection() && <article className={styles.card}>
+            <span className="card-number" aria-hidden="true">06</span><h3>{injection.title}</h3><p>크고 아픈 염증성 여드름 등의 상태를 확인하고, 주사 필요성과 부작용·시술 후 관리를 안내합니다.</p>
+            <div className={styles.guideLinks}><Link className="text-link" href={injection.href}>염증 주사 자세히 보기 →</Link><Link className="text-link" href={injection.aftercareHref}>주사 후 집에서의 관리 →</Link></div>
+          </article>}
           </div>
           <p className={styles.allTreatments}><Link className="text-link" href="/medical/skin-treatments">피부치료 의료정보 전체 보기 <span aria-hidden="true">→</span></Link></p>
         </div>
