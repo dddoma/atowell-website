@@ -9,14 +9,13 @@ export const metadata: Metadata = {
   description: cornsWartsAftercare.description,
   alternates: { canonical: cornsWartsAftercare.href },
   openGraph: { title: cornsWartsAftercare.title, description: cornsWartsAftercare.description, url: cornsWartsAftercare.href },
-  robots: { index: false, follow: false },
 };
 
 export default function Page() {
   return <article className={styles.article}>
     <PatientMessageCopy message={cornsWartsAftercare.message} />
     <nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/clinic/aesthetic">피부치료</Link><span aria-hidden="true">/</span><span aria-current="page">제거 후 관리</span></nav>
-    <header className={styles.header}><div className="kicker">시술 후 환자 안내</div><h1>{cornsWartsAftercare.title}</h1><p className={styles.scope}>검토용 초안 · 원장 검토 전</p></header>
+    <header className={styles.header}><div className="kicker">시술 후 환자 안내</div><h1>{cornsWartsAftercare.title}</h1><p className={styles.scope}>아토웰의원 · 시술 후 관리 안내</p></header>
     <section className={styles.section}>
 <p>티눈이나 사마귀를 제거한 뒤에는 <strong>상처가 깨끗하게 아물도록 관리하고, 발바닥이나 발가락의 경우 치료 부위에 지나친 압력이 가해지지 않도록 하는 것</strong>이 중요합니다.</p>
 <p>시술 방법과 상처의 깊이·위치에 따라 관리 방법이 조금 다를 수 있으므로, 진료실에서 별도로 안내받은 내용이 있다면 그 안내를 우선해 주세요.</p>
@@ -58,7 +57,7 @@ export default function Page() {
 <p>티눈은 압력과 마찰의 원인을 줄이는 것이 재발 예방에 중요하고, 사마귀는 치료 후에도 재발할 수 있으므로 상처가 아문 뒤에도 치료 부위를 한동안 관찰해 주세요.</p>
     </section>
     <div className="actions"><a className="button primary" href="tel:054-776-0294">병원에 문의하기</a><Link className="button secondary" href="/location">진료시간·오시는 길</Link></div>
-    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 11월 4일</p><p>의학적 검토: 원장 검토 전 · 최근 의학적 검토일: 미정</p><p>진료실에서 별도로 안내받은 내용이 있다면 그 안내를 우선해 주세요.</p></footer>
+    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 11월 4일</p><p>의학적 검토: 권병현 원장 · 최근 의학적 검토·최초 게시: 2026년 11월 4일</p><p>진료실에서 별도로 안내받은 내용이 있다면 그 안내를 우선해 주세요.</p></footer>
   </article>;
 }
 

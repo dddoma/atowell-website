@@ -14,12 +14,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     ["", 1], ["/about", 0.7], ["/clinic/dermatology", 0.9], ["/clinic/aesthetic", 0.8],
     ["/clinic/obesity", 0.9], ["/clinic/mounjaro", 0.9], ["/clinic/wegovy", 0.9],
-    ["/medical/obesity/mounjaro-injection", 0.8], ["/medical/obesity/glp1-maintenance", 0.8], ["/medical/obesity/weight-maintenance", 0.8], ["/medical/obesity/glp1-side-effects-care", 0.8], ["/medical/obesity/constipation-care", 0.8], ["/medical/skin-treatments/ipl", 0.8], ["/medical/obesity", 0.8], ["/medical/obesity/mounjaro-guide", 0.8],
+    ["/medical/obesity/mounjaro-injection", 0.8], ["/medical/obesity/glp1-maintenance", 0.8], ["/medical/obesity/weight-maintenance", 0.8], ["/medical/obesity/glp1-side-effects-care", 0.8], ["/medical/obesity/constipation-care", 0.8], ["/medical/skin-treatments/corns-warts-aftercare", 0.8], ["/medical/skin-treatments/ipl", 0.8], ["/medical/obesity", 0.8], ["/medical/obesity/mounjaro-guide", 0.8],
     ["/medical/erectile-dysfunction-medication", 0.8], ["/medical/emergency-contraception", 0.8], ["/medical/dermatology", 0.8], ["/medical/dermatology/milia", 0.8],
     ["/medical/dermatology/male-pattern-hair-loss", 0.8], ["/medical/dermatology/female-pattern-hair-loss", 0.8],
     ["/medical/dermatology/seborrheic-dermatitis", 0.8], ["/price", 0.9], ["/location", 0.9],
   ] as const;
   const medicalUpdateDates: Record<string, string> = {
+    "/medical/skin-treatments/corns-warts-aftercare": "2026-11-04",
     "/medical/skin-treatments/ipl": "2026-11-02",
     "/medical/obesity/glp1-maintenance": "2026-11-02",
     "/medical/dermatology/female-pattern-hair-loss": "2026-10-28",
