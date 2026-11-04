@@ -1,3 +1,4 @@
+import { burnsPublished, burnsGuide } from "@/data/burnsGuide";
 import { inflammationInjectionPublished, inflammationInjection } from "@/data/inflammationInjection";
 import { epePublished, epeFaqCategories, epeInjectionGuide } from "@/data/epe";
 import { wegovyFaqCategories, wegovyFaqPublished } from "@/data/wegovyFaq";
@@ -60,5 +61,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (wegovyFaqPublished) for (const category of wegovyFaqCategories) entries.push({ url: `${base}/medical/obesity/wegovy-faq/${category.slug}`, lastModified: new Date("2026-10-24"), changeFrequency: "monthly", priority: 0.8 });
   if (epePublished) for (const path of ["/clinic/epe", epeInjectionGuide.href, ...epeFaqCategories.map(category => `/medical/obesity/epe-faq/${category.slug}`)]) entries.push({ url: `${base}${path}`, lastModified: new Date("2026-10-24"), changeFrequency: "monthly", priority: 0.8 });
   if (inflammationInjectionPublished) for (const href of [inflammationInjection.href, inflammationInjection.aftercareHref]) entries.push({ url: `${base}${href}`, lastModified: new Date("2026-11-04"), changeFrequency: "monthly", priority: 0.8 });
+  if (burnsPublished) entries.push({ url: `${base}${burnsGuide.href}`, lastModified: new Date("2026-11-04"), changeFrequency: "monthly", priority: 0.8 });
   return entries;
 }

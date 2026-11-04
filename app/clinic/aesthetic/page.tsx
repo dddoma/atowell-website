@@ -1,3 +1,4 @@
+import { burnsGuide, burnsMessage, canReadBurns } from "@/data/burnsGuide";
 import { canReadInflammationInjection, inflammationInjection as injection } from "@/data/inflammationInjection";
 import { canReadIplGuide, iplGuide } from "@/data/iplGuide";
 import type { Metadata } from "next";
@@ -60,6 +61,10 @@ export default function Page() {
           {canReadInflammationInjection() && <article className={styles.card}>
             <span className="card-number" aria-hidden="true">06</span><h3>{injection.title}</h3><p>크고 아픈 염증성 여드름 등의 상태를 확인하고, 주사 필요성과 부작용·시술 후 관리를 안내합니다.</p>
             <div className={styles.guideLinks}><Link className="text-link" href={injection.href}>염증 주사 자세히 보기 →</Link><Link className="text-link" href={injection.aftercareHref}>주사 후 집에서의 관리 →</Link></div>
+          </article>}
+          {canReadBurns() && <article className={styles.card}>
+            <span className="card-number" aria-hidden="true">07</span><h3>{burnsGuide.title}</h3><p>화상 초기처치와 진료 후 상처 관리, 다시 진료받아야 할 증상을 확인하세요.</p>
+            <div className={styles.aftercareLink}><Link className="text-link" href={burnsGuide.href}>화상 치료와 관리 →</Link><PatientMessageCopy message={burnsMessage} iconOnly label="화상 진료 후 안내 문구와 링크 복사" /></div>
           </article>}
           </div>
           <p className={styles.allTreatments}><Link className="text-link" href="/medical/skin-treatments">피부치료 의료정보 전체 보기 <span aria-hidden="true">→</span></Link></p>
