@@ -25,7 +25,7 @@ export default function InflammationInjectionArticle({ aftercareOnly = false }: 
   const href = aftercareOnly ? guide.aftercareHref : guide.href;
   const sections = aftercareOnly ? aftercare : explanation;
   return <article className={styles.article}>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: title, url: `https://atowell.kr${href}`, dateModified: "2026-11-04", citation: inflammationSources.map(s => s.url) }) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "MedicalWebPage", name: title, url: `https://atowell.kr${href}`, datePublished: "2026-11-04", dateModified: "2026-11-04", lastReviewed: "2026-11-04", reviewedBy: { "@type": "Person", name: "권병현" }, citation: inflammationSources.map(s => s.url) }) }} />
     <div className={local.toolbar}><nav className={styles.breadcrumb} aria-label="현재 위치"><Link href="/clinic/aesthetic">피부치료</Link><span>/</span><span aria-current="page">{aftercareOnly ? "주사 후 안내" : "염증 주사"}</span></nav><PatientMessageCopy message={inflammationInjectionMessage} /></div>
     {!inflammationInjectionPublished && <aside className={styles.reviewBanner}><strong>공개 전 검토용 · 원장 검토 대기</strong><p>의료 내용과 병원의 실제 시술 후 안내를 확인하기 위한 초안입니다.</p></aside>}
     <header className={styles.header}><div className="kicker">{aftercareOnly ? "집에서 다시 읽는 환자 안내" : "피부치료 의료정보"}</div><h1>{title}</h1><p className={styles.lead}>{aftercareOnly ? "주사 후 무엇을 지키고, 어떤 변화가 있을 때 연락해야 하는지 확인하세요." : "트리암시놀론 병변내주사의 효과와 한계, 주사 전후에 알아둘 내용을 정리했습니다."}</p></header>
@@ -34,7 +34,7 @@ export default function InflammationInjectionArticle({ aftercareOnly = false }: 
     <nav className={styles.toc} aria-label="목차"><strong>이 안내에서 확인할 내용</strong><ol>{sections.map(([heading], i) => <li key={heading}><a href={`#section-${i}`}>{heading}</a></li>)}<li><a href="#urgent">병원에 연락해야 할 때</a></li></ol></nav>
     {sections.map(([heading, text], i) => <section className={styles.section} id={`section-${i}`} key={heading}><h2>{heading}</h2><p>{text}</p></section>)}
     <section className={styles.section} id="urgent"><h2>이런 증상은 병원에 연락하세요</h2><aside className={`${styles.note} ${styles.urgent}`}><strong>점점 심해지는 붓기·열감·통증, 퍼지는 붉음, 고름·발열</strong><p>감염 여부 등을 확인해야 하므로 당일 병원에 연락해 진료받으세요. 호흡곤란, 입술·혀·목의 부종, 실신할 듯한 느낌이 있으면 119 또는 응급실을 이용하세요.</p></aside><p>패임이나 피부색 변화도 병원에 알려주세요. 주사 부위를 다시 짜거나 임의로 약을 추가해 해결하려 하지 마세요.</p><div className="actions"><a className="button primary" href="tel:054-776-0294">아토웰의원 054-776-0294</a><Link className="button secondary" href="/location">진료시간·오시는 길</Link></div></section>
-    <section className={styles.sources}><h2>참고자료</h2><ol>{inflammationSources.map(s => <li key={s.url}><a href={s.url}>{s.title}</a></li>)}</ol><p className={styles.sourceNote}>자료 확인일: 2026년 11월 4일. 시술의 적응증·부작용은 위 자료를 참고했으며, 일상 관리 안내는 원장 검토 후 병원의 실제 지침에 맞춰 확정합니다.</p></section>
-    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 11월 4일</p><p>의학적 검토: 대기 · 최근 의학적 검토일: 미확정</p><p>이 안내는 일반적인 의료정보이며 개인의 진단과 치료를 대신하지 않습니다.</p></footer>
+    <section className={styles.sources}><h2>참고자료</h2><ol>{inflammationSources.map(s => <li key={s.url}><a href={s.url}>{s.title}</a></li>)}</ol><p className={styles.sourceNote}>자료 확인일: 2026년 11월 4일. 시술의 적응증·부작용은 위 자료를 참고했으며, 일상 관리에는 개별 진료에서 받은 안내를 우선합니다.</p></section>
+    <footer className={styles.footer}><p>작성: AI 보조 · 최초 작성·최종 수정: 2026년 11월 4일</p><p>의학적 검토: 권병현 원장 · 최근 의학적 검토·최초 게시: 2026년 11월 4일</p><p>이 안내는 일반적인 의료정보이며 개인의 진단과 치료를 대신하지 않습니다.</p></footer>
   </article>;
 }

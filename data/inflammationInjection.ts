@@ -1,5 +1,5 @@
-// New medical content remains available only in Preview/development until physician approval.
-export const inflammationInjectionPublished = false;
+// Physician reviewed Preview and approved production publication on 2026-11-04.
+export const inflammationInjectionPublished = true;
 export const canReadInflammationInjection = () => inflammationInjectionPublished || process.env.VERCEL_ENV === "preview" || process.env.NODE_ENV === "development";
 export const inflammationInjection = {
   title: "염증 주사·병변내 주사",
