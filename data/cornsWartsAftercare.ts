@@ -4,5 +4,5 @@ const description = "시술 후 상처 소독과 드레싱, 샤워 시 주의사
 
 export const cornsWartsAftercare = {
   title, href, description,
-  message: `[${title}]\n${description}\nhttps://atowell.kr${href}`,
+  message: `[${title}]\n${description}\nhttps://atowell.kr${href}\n아토웰의원 054-776-0294`,
 };
