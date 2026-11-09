@@ -3,6 +3,7 @@ import type { DermatologyArticle } from "./dermatologyArticles";
 export const psoriasisArticle: DermatologyArticle = {
   slug: "psoriasis",
   draft: false,
+  publication: { publishedAt: "2026-11-09", modifiedAt: "2026-11-09", reviewedAt: "2026-11-09", medicalReviewCompleted: true, reviewerName: "권병현", sourceCheckedAt: "2026-11-06" },
   draftDates: { createdAt: "2026-11-06", modifiedAt: "2026-11-06", sourceCheckedAt: "2026-11-06" },
   title: "건선은 어떤 질환인가요? 증상·치료·생활관리",
   description: "건선의 특징, 습진과의 차이, 바르는 약과 광선·전신치료, 재발 관리, 건선관절염의 신호를 안내합니다.",
