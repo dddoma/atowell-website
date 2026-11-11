@@ -79,7 +79,8 @@ const conditions = [
     "title": "건선",
     "text": "붉은 반점과 각질의 분포, 반복 양상을 확인하고 치료와 관리 방법을 안내합니다.",
     "links": [
-      { title: "건선 의료정보", href: "/medical/dermatology/psoriasis", draft: false }
+      { title: "건선 의료정보", href: "/medical/dermatology/psoriasis", draft: false },
+      { title: "장미색 비강진 진료 후 안내", href: "/medical/dermatology/pityriasis-rosea", draft: false }
     ]
   },
   {
