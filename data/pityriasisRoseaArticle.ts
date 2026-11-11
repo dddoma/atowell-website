@@ -2,8 +2,7 @@ import type { DermatologyArticle } from "./dermatologyArticles";
 
 export const pityriasisRoseaArticle: DermatologyArticle = {
   slug: "pityriasis-rosea",
-  draft: true,
-  draftDates: { createdAt: "2026-11-11", modifiedAt: "2026-11-11", sourceCheckedAt: "2026-11-11" },
+  publication: { publishedAt: "2026-11-11", modifiedAt: "2026-11-11", reviewedAt: "2026-11-11", sourceCheckedAt: "2026-11-11", medicalReviewCompleted: true, reviewerName: "권병현" },
   title: "장미색 비강진, 집에서는 어떻게 관리하나요?",
   description: "장미색 비강진의 자연 경과, 전염 여부, 가려움 관리, 임신 중 주의사항과 재진이 필요한 상황을 안내합니다.",
   answer: "장미색 비강진은 몸통과 팔다리에 타원형 발진과 잔각질이 생기는 피부질환입니다. 대개 특별한 치료 없이 6~8주 안에 호전되지만 더 오래 지속되기도 합니다. 다른 사람에게 전염되지 않으며, 가려움이 있다면 피부 자극을 줄이고 처방받은 약으로 증상을 조절합니다.",
