@@ -44,7 +44,8 @@ export default async function Page({ params }: Props) {
   if (!article) notFound();
   const publication = getDermatologyPublication(article);
   const url = `https://atowell.kr${basePath}/${slug}`;
-  const patientMessage = slug === "pityriasis-rosea" ? "[장미색 비강진 진료 후 안내]\n\n장미색 비강진은 대부분 시간이 지나면서 저절로 호전됩니다. 피부 자극과 뜨거운 목욕을 피하고, 보습과 가려움 관리, 다시 진료받아야 할 증상을 확인해 주세요.\n\nhttps://atowell.kr/medical/dermatology/pityriasis-rosea\n\n아토웰의원"\n    : slug === "hair-loss-guide" ? "[모발·탈모 안내]\n\n탈모의 원인과 치료, 집에서의 관리 및 진료가 필요한 증상을 확인해 주세요.\n\nhttps://atowell.kr/medical/dermatology/hair-loss-guide\n\n아토웰의원"
+  const patientMessage = slug === "pityriasis-rosea" ? "[장미색 비강진 진료 후 안내]\n\n장미색 비강진은 대부분 시간이 지나면서 저절로 호전됩니다. 피부 자극과 뜨거운 목욕을 피하고, 보습과 가려움 관리, 다시 진료받아야 할 증상을 확인해 주세요.\n\nhttps://atowell.kr/medical/dermatology/pityriasis-rosea\n\n아토웰의원"
+    : slug === "hair-loss-guide" ? "[모발·탈모 안내]\n\n탈모의 원인과 치료, 집에서의 관리 및 진료가 필요한 증상을 확인해 주세요.\n\nhttps://atowell.kr/medical/dermatology/hair-loss-guide\n\n아토웰의원"
     : slug === "hand-protection" ? handProtectionMessage
     : slug === "atopic-dermatitis-care" ? atopicCareMessage
     : slug === "influenza-aftercare" ? fluAftercareMessage
