@@ -1,5 +1,5 @@
-/** New presentation wording awaits physician review. Source articles were previously published. */
-export const slidesPublished = false;
+/** Reviewed and approved for publication by the site owner on 2026-11-14. */
+export const slidesPublished = true;
 export const slides = [
   { label: '진료 준비', title: '오늘, 무엇이 가장 궁금하세요?', text: '체중 변화 · 식사 · 불편한 증상\n진료실에서 꼭 묻고 싶은 한 가지를 생각해 보세요.', cue: '최근 체중 기록과 복용약 목록을 준비해 주세요.', icon: 'message', source: '/medical/obesity/diagnosis' },
   { label: '나에게 맞는 목표', title: '목표는 숫자만이 아닙니다', text: '체중과 함께 허리둘레, 혈압·혈당,\n일상에서 느끼는 체력의 변화를 살펴봅니다.', cue: '어떤 건강 문제가 좋아지면 좋을지 이야기해 주세요.', icon: 'target', source: '/medical/obesity/goals' },
