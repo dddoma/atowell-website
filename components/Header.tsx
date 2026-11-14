@@ -14,6 +14,7 @@ const informationLinks: ReadonlyArray<readonly [string, string]> = [
   ["피부질환 의료정보", "/medical/dermatology"],
   ...(showSkinTreatments ? [["피부치료 의료정보", "/medical/skin-treatments"] as const] : []),
   ["비만·체중관리 의료정보", "/medical/obesity"],
+  ["건강정보", "/medical/health"],
 ];
 
 export function Header() {
@@ -54,3 +55,4 @@ export function Header() {
     </header>
   );
 }
+
